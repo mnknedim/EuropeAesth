@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EuropeAesth.Custom"
+             x:Class="EuropeAesth.ViewPages.RegisterPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <custom:ExGrid>
+                    <Image Source="arkplan.png" 
+                       Aspect="AspectFill" 
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       ></Image>
+                    <StackLayout>
+
+                        <custom:RegEntry Placeholder="Kullanıcı Adı"></custom:RegEntry>
+                        <custom:RegEntry Placeholder="Parola"></custom:RegEntry>
+                        <custom:RegEntry Placeholder="EMail"></custom:RegEntry>
+                        <custom:RegEntry Placeholder="Telefon"></custom:RegEntry>
+                        <custom:RegEntry Placeholder="Temsilci Kodu"></custom:RegEntry>
+                        <custom:RegEntry Placeholder="Ülke"></custom:RegEntry>
+                        <custom:RegEntry Placeholder="Şehir"></custom:RegEntry>
+                        <ImageButton BackgroundColor="Transparent" x:Name="KayitOl" Source="KayitOl.png" Clicked="KayitOl_Clicked"></ImageButton>
+                        <Label Text="Vazgeç" Margin="10" 
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Vazgec_Tapped"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </custom:ExGrid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

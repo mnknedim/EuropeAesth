@@ -12,7 +12,11 @@
                        HorizontalOptions="FillAndExpand"
                        ></Image>
                 <StackLayout>
-                    
+                    <Image Source="Ustlogo.png" 
+                           Margin="15"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           ></Image>
                     <custom:ExEntry Placeholder="Kullanıcı Adı"></custom:ExEntry>
                     <custom:ExEntry Placeholder="Parola"></custom:ExEntry>
                     <ImageButton BackgroundColor="Transparent" x:Name="GirisButon" Source="GirisYap.png" Clicked="GirisButon_Clicked"></ImageButton>
@@ -20,7 +24,11 @@
                            FontSize="Medium"
                            FontAttributes="Bold"
                            HorizontalTextAlignment="Center"
-                           ></Label>
+                           >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Kayit_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
             </custom:ExGrid>
         </StackLayout>

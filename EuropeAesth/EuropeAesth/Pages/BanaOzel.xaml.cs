@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EuropeAesth.ViewPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,11 @@ namespace EuropeAesth.Pages
         private void GirisButon_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private void Kayit_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new RegisterPage());
         }
     }
 }
