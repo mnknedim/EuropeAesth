@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ex="clr-namespace:EuropeAesth.Custom"
+             x:Class="EuropeAesth.ViewPages.ScrollViewPage">
+    <ContentView.Content>
+        <StackLayout>
+            <ScrollView>
+                <ListView x:Name="Lst" ItemsSource="{Binding}"  RowHeight="100" Margin="0,10,0,0" BackgroundColor="Transparent" SeparatorVisibility="None" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout BackgroundColor="#eee"
+                                             Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal" Margin="5,10">
+                                        <Image Source="{Binding ImageUrl}" />
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Title}"
+                                               TextColor="#f35e20" />
+                                            <Label Text="{Binding SubTitle}"
+                                               HorizontalOptions="EndAndExpand"
+                                               TextColor="#503026" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </ScrollView>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
