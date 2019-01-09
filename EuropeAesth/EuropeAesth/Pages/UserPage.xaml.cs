@@ -17,13 +17,13 @@ namespace EuropeAesth.Pages
 		{
 			InitializeComponent ();
 
-            var hastaneButton = new ButtonView { ImageUrl = "ic_hastane.png", UnderText = "Hastane" };
+            var hastaneButton = new ButtonView { ImageUrl = "ic_hastane.png", UnderText = "Hastahane" };
             var tabGest = new TapGestureRecognizer();
             tabGest.Tapped += TabGest_Tapped;
             hastaneButton.GestureRecognizers.Add(tabGest);
 
             UstStack.Children.Add(new ButtonView { ImageUrl = "ic_userLogo.png", UnderText = "Bilgilerim" });
-            UstStack.Children.Add(new ButtonView { ImageUrl = "ic_transfer.png", UnderText = "Hotel" });
+            UstStack.Children.Add(new ButtonView { ImageUrl = "ic_transfer.png", UnderText = "Transfer" });
             AltStack.Children.Add(hastaneButton);
             AltStack.Children.Add(new ButtonView { ImageUrl = "ic_hotel.png", UnderText = "Hotel" });
         }

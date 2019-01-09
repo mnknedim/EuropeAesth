@@ -4,7 +4,7 @@
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.ViewPages.RegisterPage">
     <ContentPage.Content>
-        <ScrollView>
+        
             <StackLayout>
                 <custom:ExGrid>
                     <Image Source="arkplan.png" 
@@ -12,15 +12,17 @@
                        VerticalOptions="FillAndExpand"
                        HorizontalOptions="FillAndExpand"
                        ></Image>
+                <ScrollView>
                     <StackLayout>
-
-                        <custom:RegEntry Placeholder="Kullanıcı Adı"></custom:RegEntry>
+                    
+                        <custom:RegEntry Placeholder="Email"></custom:RegEntry>
+                        <custom:RegEntry Placeholder="AdSoyad"></custom:RegEntry>
                         <custom:RegEntry Placeholder="Parola"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="EMail"></custom:RegEntry>
                         <custom:RegEntry Placeholder="Telefon"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Temsilci Kodu"></custom:RegEntry>
                         <custom:RegEntry Placeholder="Ülke"></custom:RegEntry>
                         <custom:RegEntry Placeholder="Şehir"></custom:RegEntry>
+                        <custom:RegEntry Placeholder="Promosyon Kodu"></custom:RegEntry>
+
                         <ImageButton BackgroundColor="Transparent" x:Name="KayitOl" Source="KayitOl.png" Clicked="KayitOl_Clicked"></ImageButton>
                         <Label Text="Vazgeç" Margin="10" 
                            FontSize="Medium"
@@ -31,8 +33,8 @@
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>
-                </custom:ExGrid>
+                </ScrollView>
+            </custom:ExGrid>
             </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

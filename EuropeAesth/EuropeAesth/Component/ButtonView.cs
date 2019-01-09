@@ -31,9 +31,16 @@ namespace EuropeAesth.Component
             FontAttributes = FontAttributes.Bold,
             HorizontalTextAlignment = TextAlignment.Center
         };
+        public Command TappedCommand
+        {
+            get => (Command)GetValue(TappedCommandProperty);
+            set => SetValue(TappedCommandProperty, value);
+        }
+        public static readonly BindableProperty TappedCommandProperty = BindableProperty.Create("TappedCommand", typeof(Command), typeof(ButtonView), default(Command));
 
         public ButtonView ()
 		{
+
             Margin = new Thickness(5, 30);
             HorizontalOptions = LayoutOptions.CenterAndExpand;
             VerticalOptions = LayoutOptions.CenterAndExpand;
@@ -46,6 +53,9 @@ namespace EuropeAesth.Component
                     SubTitle
                 }
             };
+            var tabSenderObject = this;
+            Helpers.Gesture.TappedGesture((s, e) => TappedCommand?.Execute(tabSenderObject));
+            GestureRecognizers.Add(Helpers.Gesture.TappedGesture((s,e)=>TappedCommand?.Execute(tabSenderObject)));
 		}
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
