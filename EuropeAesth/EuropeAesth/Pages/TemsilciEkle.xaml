@@ -2,28 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
-             x:Class="EuropeAesth.ViewPages.RegisterPage">
+             x:Class="EuropeAesth.Pages.TemsilciEkle">
     <ContentPage.Content>
-        
-            <StackLayout>
-                <custom:ExGrid>
-                    <Image Source="arkplan.png" 
+        <StackLayout>
+            <custom:ExGrid>
+                <Image Source="arkplan.png" 
                        Aspect="AspectFill" 
                        VerticalOptions="FillAndExpand"
                        HorizontalOptions="FillAndExpand"
                        ></Image>
                 <ScrollView>
                     <StackLayout>
-                    
-                        <custom:RegEntry Placeholder="Email"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="AdSoyad"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Parola"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Telefon"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Ülke"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Şehir"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Promosyon Kodu"></custom:RegEntry>
 
-                        <ImageButton BackgroundColor="Transparent" x:Name="KayitOl" Source="KayitOl.png" Clicked="KayitOl_Clicked"></ImageButton>
+                        <custom:RegEntry x:Name="FTemsilciKod" Placeholder="Temsilci Kod"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FParola" Placeholder="Parola"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FTemsilciAd" Placeholder="Temsilci Adı"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FTAdSoyad" Placeholder="Ad Soyad"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FUlke" Placeholder="Ülke"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FSehir" Placeholder="Şehir"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FTelefon" Placeholder="Telefon"></custom:RegEntry>
+
+                        <ImageButton BackgroundColor="Transparent" x:Name="Kayit" Source="KayitOl.png" Clicked="Kayit_Clicked"></ImageButton>
                         <Label Text="Vazgeç" Margin="10" 
                            FontSize="Medium"
                            FontAttributes="Bold"
@@ -35,6 +34,6 @@
                     </StackLayout>
                 </ScrollView>
             </custom:ExGrid>
-            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

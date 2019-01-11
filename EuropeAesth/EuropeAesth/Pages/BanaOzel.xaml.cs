@@ -20,7 +20,7 @@ namespace EuropeAesth.Pages
 
         private void GirisButon_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new YoneticiPage());
         }
 
         private void Kayit_Tapped(object sender, EventArgs e)

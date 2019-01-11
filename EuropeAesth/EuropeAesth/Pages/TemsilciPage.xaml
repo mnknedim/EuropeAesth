@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Custom="clr-namespace:EuropeAesth.Custom"
+             xmlns:component="clr-namespace:EuropeAesth.Component"
+             x:Class="EuropeAesth.Pages.TemsilciPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Custom:ExGrid>
+                <Image Source="arkplan.png" 
+                       Aspect="AspectFill" 
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       ></Image>
+                <ScrollView Margin="0,0,0,30">
+                    <StackLayout>
+                        <Custom:ExGrid>
+                            <StackLayout BackgroundColor="White" Opacity="0.5" />
+                            <StackLayout Orientation="Horizontal">
+                                <component:BaslikLabel Text="Temsilci Kod :"></component:BaslikLabel>
+                                <component:YanLabel Text="{Binding Temsilci.TemsilciKod}"></component:YanLabel>
+                            </StackLayout>
+                            
+                        </Custom:ExGrid>
+                        <Custom:ExGrid>
+                            <StackLayout BackgroundColor="White" Opacity="0.5" />
+                            <StackLayout Orientation="Horizontal">
+                                <component:BaslikLabel Text="Parola"></component:BaslikLabel>
+                                <component:YanLabel Text="{Binding Temsilci.Parola}"></component:YanLabel>
+                            </StackLayout>
+                        </Custom:ExGrid>
+                        <Custom:ExGrid>
+                            <StackLayout BackgroundColor="White" Opacity="0.5" />
+                            <StackLayout Orientation="Horizontal">
+                                <component:BaslikLabel Text="Temsilci Adı"></component:BaslikLabel>
+                                <component:YanLabel Text="{Binding Temsilci.TemsilciAd}"></component:YanLabel>
+                            </StackLayout>
+                        </Custom:ExGrid>
+                        <Custom:ExGrid>
+                            <StackLayout BackgroundColor="White" Opacity="0.5" />
+                            <StackLayout Orientation="Horizontal">
+                                <component:BaslikLabel Text="Ad Soyad"></component:BaslikLabel>
+                                <component:YanLabel Text="{Binding Temsilci.AdSoyad}"></component:YanLabel>
+                            </StackLayout>
+                        </Custom:ExGrid>
+                        <Custom:ExGrid>
+                            <StackLayout BackgroundColor="White" Opacity="0.5" />
+                            <StackLayout Orientation="Horizontal">
+                                <component:BaslikLabel Text="Ülke"></component:BaslikLabel>
+                                <component:YanLabel Text="{Binding Temsilci.Ulke}"></component:YanLabel>
+                            </StackLayout>
+                        </Custom:ExGrid>
+                        <Custom:ExGrid>
+                            <StackLayout BackgroundColor="White" Opacity="0.5" />
+                            <StackLayout Orientation="Horizontal">
+                                <component:BaslikLabel Text="Şehir"></component:BaslikLabel>
+                                <component:YanLabel Text="{Binding Temsilci.Sehir}"></component:YanLabel>
+                            </StackLayout>
+                        </Custom:ExGrid>
+                        <Custom:ExGrid>
+                            <StackLayout BackgroundColor="White" Opacity="0.5" />
+                            <StackLayout Orientation="Horizontal">
+                                <component:BaslikLabel Text="Telefon"></component:BaslikLabel>
+                                <component:YanLabel Text="{Binding Temsilci.Telefon}"></component:YanLabel>
+                            </StackLayout>
+                        </Custom:ExGrid>
+                        <StackLayout Orientation="Horizontal"  >
+                            <Image Source="ic_TemsilciSil.png" VerticalOptions="Start" 
+                                   HorizontalOptions="Center" HeightRequest="60" 
+                                   WidthRequest="60" Margin="5"></Image>
+                            <Label Text="Temsilci Sil" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+            </Custom:ExGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
