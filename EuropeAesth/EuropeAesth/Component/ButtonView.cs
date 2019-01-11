@@ -24,6 +24,12 @@ namespace EuropeAesth.Component
             set { SetValue(UnderTextProperty, value); }
         }
         public static readonly BindableProperty UnderTextProperty = BindableProperty.Create("UnderText", typeof(string), typeof(ButtonView), default(string));
+        public Page PageName
+        {
+            get { return (Page)GetValue(PageNameProperty); }
+            set { SetValue(PageNameProperty, value); }
+        }
+        public static readonly BindableProperty PageNameProperty = BindableProperty.Create("PageName", typeof(Page), typeof(ButtonView), default(Page));
 
         ExButtonImage BtnImage = new ExButtonImage() { HeightRequest = 125, WidthRequest = 125};
         Label SubTitle = new Label() {
@@ -41,7 +47,7 @@ namespace EuropeAesth.Component
         public ButtonView ()
 		{
 
-            Margin = new Thickness(5, 30);
+            Margin = new Thickness(5, 20);
             HorizontalOptions = LayoutOptions.CenterAndExpand;
             VerticalOptions = LayoutOptions.CenterAndExpand;
             Content = new StackLayout

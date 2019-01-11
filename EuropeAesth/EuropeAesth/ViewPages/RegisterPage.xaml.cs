@@ -26,5 +26,7 @@ namespace EuropeAesth.ViewPages
         {
             Navigation.PopModalAsync();
         }
+
+      
     }
 }

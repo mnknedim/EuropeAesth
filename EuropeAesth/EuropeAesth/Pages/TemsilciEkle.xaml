@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EuropeAesth.Custom"
+             x:Class="EuropeAesth.Pages.TemsilciEkle">
+    <ContentPage.Content>
+        <StackLayout>
+            <custom:ExGrid>
+                <Image Source="arkplan.png" 
+                       Aspect="AspectFill" 
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       ></Image>
+                <ScrollView>
+                    <StackLayout>
+
+                        <custom:RegEntry x:Name="FTemsilciKod" Placeholder="Temsilci Kod"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FParola" Placeholder="Parola"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FTemsilciAd" Placeholder="Temsilci Adı"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FTAdSoyad" Placeholder="Ad Soyad"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FUlke" Placeholder="Ülke"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FSehir" Placeholder="Şehir"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FTelefon" Placeholder="Telefon"></custom:RegEntry>
+
+                        <ImageButton BackgroundColor="Transparent" x:Name="Kayit" Source="KayitOl.png" Clicked="Kayit_Clicked"></ImageButton>
+                        <Label Text="Vazgeç" Margin="10" 
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Vazgec_Tapped"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </ScrollView>
+            </custom:ExGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
