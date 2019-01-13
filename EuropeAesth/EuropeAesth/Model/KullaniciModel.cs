@@ -11,7 +11,7 @@ namespace EuropeAesth.Model
         public string Parola { get; set; }
         public int YetkiKod { get; set; }
         public string Telefon { get; set; }
-        public string TemsilciKodu { get; set; }
+        public string PromosyonKod { get; set; }
         public string Ulke { get; set; }
         public string Şehir { get; set; }
     }

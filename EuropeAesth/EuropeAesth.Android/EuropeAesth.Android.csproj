@@ -174,5 +174,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\SatirPanel.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_kodUret.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

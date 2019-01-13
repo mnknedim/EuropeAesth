@@ -15,7 +15,7 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TemsilciEkle : ContentPage
 	{
-        FirebaseClient firebase = new FirebaseClient("https://adjuvan-c1f7e.firebaseio.com/");
+        FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
 
         public TemsilciEkle ()
 		{
@@ -27,7 +27,7 @@ namespace EuropeAesth.Pages
         {
             var Temsilci = new TemsilciModel()
             {
-                TemsilciKod = Convert.ToInt32(FTemsilciKod.Text),
+                TemsilciKod = FTemsilciKod.Text,
                 YetkiKod = 2,
                 AdSoyad = FTAdSoyad.Text,
                 Parola = FParola.Text,

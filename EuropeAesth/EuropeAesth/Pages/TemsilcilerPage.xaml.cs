@@ -15,7 +15,7 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TemsilcilerPage : ContentPage
 	{
-        FirebaseClient firebase = new FirebaseClient("https://adjuvan-c1f7e.firebaseio.com/");
+        FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
         List<TemsilciModel> temsilciler = new List<TemsilciModel>();
         public TemsilcilerPage()
 		{
@@ -37,7 +37,7 @@ namespace EuropeAesth.Pages
         {
             var tmslc = (TemsilciModel)e.Item;
 
-            await Navigation.PushModalAsync(new TemsilciPage() { Temsilci = tmslc });
+            await Navigation.PushModalAsync(new TemsilciView() { Temsilci = tmslc });
         }
     }
 }

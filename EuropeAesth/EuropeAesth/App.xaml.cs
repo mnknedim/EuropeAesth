@@ -8,6 +8,10 @@ namespace EuropeAesth
 {
     public partial class App : Application
     {
+        public static App Uyg => Current as App;
+
+        public string TemsilciKod;
+        public string GirenMail;
         public App()
         {
             InitializeComponent();
