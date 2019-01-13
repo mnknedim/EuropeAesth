@@ -19,6 +19,9 @@
     <Compile Update="Pages\TemsilcilerPage.xaml.cs">
       <DependentUpon>TemsilcilerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\TemsilciView.xaml.cs">
+      <DependentUpon>TemsilciView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +44,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\TemsilciPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TemsilciView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\UserPage.xaml">

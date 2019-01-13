@@ -6,7 +6,7 @@ namespace EuropeAesth.Model
 {
     public class TemsilciModel
     {
-        public int TemsilciKod { get; set; }
+        public string TemsilciKod { get; set; }
         public int YetkiKod { get; set; }
         public string Parola { get; set; }
         public string TemsilciAd { get; set; }

@@ -6,7 +6,7 @@ namespace EuropeAesth.Model
 {
     public class PromosyonModel
     {
-        public int PromosyonKod { get; set; }
-        public int TemsilciKod { get; set; }
+        public string PromosyonKod { get; set; }
+        public string TemsilciKod { get; set; }
     }
 }

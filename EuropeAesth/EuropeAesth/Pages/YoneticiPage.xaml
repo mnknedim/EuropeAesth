@@ -4,10 +4,9 @@
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.Pages.YoneticiPage">
     <ContentPage.Content>
-        
-            <StackLayout >
-                <custom:ExGrid >
-                    <Image Source="arkplan.png" 
+        <StackLayout >
+            <custom:ExGrid >
+                <Image Source="arkplan.png" 
                        Aspect="AspectFill" 
                        VerticalOptions="FillAndExpand"
                        HorizontalOptions="FillAndExpand"
@@ -23,10 +22,10 @@
                         <StackLayout x:Name="Alt2Stack" Orientation="Horizontal">
 
                         </StackLayout>
-                        
+
                     </StackLayout>
                 </ScrollView>
             </custom:ExGrid>
-            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

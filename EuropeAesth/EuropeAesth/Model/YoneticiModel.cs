@@ -6,7 +6,7 @@ namespace EuropeAesth.Model
 {
     public class YoneticiModel
     {
-        public int YoneticiKod { get; set; }
+        public string YoneticiKod { get; set; }
         public int YetkiKod { get; set; }
         public string Parola { get; set; }
         public string YoneticiAd { get; set; }

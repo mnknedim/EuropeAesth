@@ -15,13 +15,13 @@
                 <ScrollView>
                     <StackLayout>
                     
-                        <custom:RegEntry Placeholder="Email"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="AdSoyad"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Parola"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Telefon"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Ülke"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Şehir"></custom:RegEntry>
-                        <custom:RegEntry Placeholder="Promosyon Kodu"></custom:RegEntry>
+                        <custom:RegEntry x:Name="txtEmail" Placeholder="Email"></custom:RegEntry>
+                        <custom:RegEntry x:Name="txtAdSoyad" Placeholder="AdSoyad"></custom:RegEntry>
+                        <custom:RegEntry x:Name="txtParola" Placeholder="Parola"></custom:RegEntry>
+                        <custom:RegEntry x:Name="txtTelefon" Placeholder="Telefon"></custom:RegEntry>
+                        <custom:RegEntry x:Name="txtUlke" Placeholder="Ülke"></custom:RegEntry>
+                        <custom:RegEntry x:Name="txtSehir" Placeholder="Şehir"></custom:RegEntry>
+                        <custom:RegEntry x:Name="txtPromosyonKod" Placeholder="Promosyon Kodu"></custom:RegEntry>
 
                         <ImageButton BackgroundColor="Transparent" x:Name="KayitOl" Source="KayitOl.png" Clicked="KayitOl_Clicked"></ImageButton>
                         <Label Text="Vazgeç" Margin="10" 
