@@ -24,6 +24,14 @@ namespace EuropeAesth.ViewPages
 
         private async void KayitOl_Clicked(object sender, EventArgs e)
         {
+            var promosyonKods = await firebase.Child("PromosyonKodlar").OnceAsync<PromosyonModel>();
+            var proKodVar = promosyonKods.Any(x => x.Object.PromosyonKod == txtPromosyonKod.Text);
+
+            if (txtPromosyonKod.Text == null || !proKodVar)
+            {
+                await DisplayAlert("Promosyon Hata", "Hatalı Promosyon Kodu", "Tamam");
+                return;
+            }
 
             var kayit = new KullaniciModel
             {

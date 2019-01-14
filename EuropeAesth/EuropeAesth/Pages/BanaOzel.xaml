@@ -18,7 +18,7 @@
                            VerticalOptions="Center"
                            ></Image>
                     <custom:ExEntry x:Name="txtKullaniciAdi" Placeholder="Kullanıcı Adı"></custom:ExEntry>
-                    <custom:ExEntry x:Name="txtParola" Placeholder="Parola"></custom:ExEntry>
+                    <custom:ExEntry x:Name="txtParola" Placeholder="Parola" IsPassword="True"></custom:ExEntry>
                     <ImageButton BackgroundColor="Transparent" x:Name="GirisButon" Source="GirisYap.png" Clicked="GirisButon_Clicked"></ImageButton>
                     <Label Text="Kayıt Ol" Margin="10" 
                            FontSize="Medium"
