@@ -4,24 +4,52 @@
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.Pages.UserPage">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout >
-                <custom:ExGrid >
-                    <Image Source="arkplan.png" 
+        <StackLayout>
+            <custom:ExGrid >
+                <Image Source="arkplan.png" 
                        Aspect="AspectFill" 
                        VerticalOptions="FillAndExpand"
                        HorizontalOptions="FillAndExpand"
                        ></Image>
-                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                        <StackLayout x:Name="UstStack" Orientation="Horizontal">
-                            
+                <ScrollView>
+                    <StackLayout VerticalOptions="Start" Margin="0,50">
+                        <custom:ExGrid x:  Margin="5,5" HeightRequest="100" >
+                            <Image Source="SatirPanel.png" Margin="5,5,5,5" HeightRequest="200"></Image>
+                            <Label Text="Hastahane Bigileri"
+                          FontSize="Large"
+                          FontAttributes="Bold"
+                          VerticalTextAlignment="Center"
+                          Margin="30,0"/>
+                        </custom:ExGrid>
+                        <StackLayout x:Name="StackHastane" IsVisible="{Binding}">
+                            <Label Text="Bilgi:"></Label>
+                            <Label Text="Telefon:"></Label>
+                            <Label Text="Adres:"></Label>
+                            <Label></Label>
                         </StackLayout>
-                        <StackLayout x:Name="AltStack" Orientation="Horizontal">
+                        
+                        
+                        
 
-                        </StackLayout>
+                        <custom:ExGrid  Margin="5,5" HeightRequest="100">
+                            <Image Source="SatirPanel.png" Margin="5,5,5,5" HeightRequest="200"></Image>
+                            <Label Text="Otel Bilgileri"
+                          FontSize="Large"
+                          FontAttributes="Bold"
+                          VerticalTextAlignment="Center"
+                          Margin="30,0"/>
+                        </custom:ExGrid>
+                        <custom:ExGrid  Margin="5,5" HeightRequest="100">
+                            <Image Source="SatirPanel.png" Margin="5,5,5,5" HeightRequest="200"></Image>
+                            <Label Text="Transfer Bilgileri"
+                          FontSize="Large"
+                          FontAttributes="Bold"
+                          VerticalTextAlignment="Center"
+                          Margin="30,0"/>
+                        </custom:ExGrid>
                     </StackLayout>
-                </custom:ExGrid>
-            </StackLayout>
-        </ScrollView>
+                </ScrollView>
+            </custom:ExGrid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

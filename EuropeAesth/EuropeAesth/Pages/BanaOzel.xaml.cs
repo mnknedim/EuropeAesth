@@ -30,7 +30,7 @@ namespace EuropeAesth.Pages
                 return;
             }
 
-            if (txtKullaniciAdi.Text.Any(x => x == '@'))
+            if (txtKullaniciAdi.Text.Any(x => x == 'Y'))
             {
                 var kullaniciResult = await firebase.Child("Yoneticiler").OnceAsync<YoneticiModel>();
                 if (kullaniciResult != null)
@@ -69,8 +69,6 @@ namespace EuropeAesth.Pages
                         await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
                 }
             }
-
-
         }
 
         private void Kayit_Tapped(object sender, EventArgs e)
