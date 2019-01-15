@@ -42,18 +42,19 @@ namespace EuropeAesth.ViewPages
                 Ulke = txtUlke.Text,
                 YetkiKod = 3,
                 Şehir = txtSehir.Text,
-                PromosyonKod = txtPromosyonKod.Text
+                PromosyonKod = txtPromosyonKod.Text,
+                HastaKabul = false,
             };
 
             try
             {
                 await firebase.Child("Kullanicilar").PostAsync(kayit);
-                await DisplayAlert("", "Eklendi", "Tamam");
+                await DisplayAlert("Kayıt", "Kayıt Başarılı.Giriş sayfasına yönelendirileceksiniz", "Tamam");
                 await Navigation.PopModalAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                await DisplayAlert("Hata", $"Hata oluştu. ({ex.Data.ToString()})", "Tamam");
+                await DisplayAlert("Hata", "Bilinmedik bir hata oluştu.Lütfen tesmilcinize danışın", "Tamam");
             }
         }
 

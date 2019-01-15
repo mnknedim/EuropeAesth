@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EuropeAesth.Pages.HastaBilgiGir">
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker x:Name="HastahanePicker" Title="Hastahane Seç" ItemsSource="{Binding HastahaneList}" ItemDisplayBinding="{Binding HastahaneAd}"
+                            WidthRequest="300" BackgroundColor="White" ></Picker>
+            <Picker x:Name="OtelPicker" Title="Otel Seç" ItemsSource="{Binding OtelList}" ItemDisplayBinding="{Binding HotelAd}"
+                            WidthRequest="300" BackgroundColor="White" ></Picker>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

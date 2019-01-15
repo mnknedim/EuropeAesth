@@ -30,17 +30,17 @@ namespace EuropeAesth.Pages
         FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
         private async void  Btn_Clicked(object sender, EventArgs e)
         {
-            var kayit = new YoneticiModel()
+            var kayit = new HastahaneModel()
             {
-                AdSoyad = "Ali Kılıç",
-                YoneticiAd = "Adjuvan",
-                Parola = "123456",
-                Telefon = "05426377112",
-                YetkiKod = 1,
-                YoneticiKod = "340102"
+                KısaAd = "İstanbul Estetic",
+                HastahaneAd = "Adjuvan Clinic (Zincirlikuyu)",
+                Adres = "Esentepe Mahallesi, Keskin Kalem Sk. No:1, 34394 Şişli/İstanbul",
+                Telefon = "(0212) 211 34 31",
+                Logation = "41.069188, 29.006477",
+                HastahaneKod = "ZK34",
             };
-
-            await firebase.Child("Yoneticiler").PostAsync(kayit);
+           
+            await firebase.Child("Hastahaneler").PostAsync(kayit);
            
             
         }

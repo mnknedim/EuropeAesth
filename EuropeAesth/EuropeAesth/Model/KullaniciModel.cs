@@ -14,5 +14,6 @@ namespace EuropeAesth.Model
         public string PromosyonKod { get; set; }
         public string Ulke { get; set; }
         public string Şehir { get; set; }
+        public bool HastaKabul { get; set; }
     }
 }
