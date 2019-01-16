@@ -15,11 +15,13 @@ namespace EuropeAesth.Pages
 	public partial class HastaKabul : ContentPage
 	{
         FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
-        List<KullaniciModel> OnayBekleyenlerList = new List<KullaniciModel>();
+        List<FirebaseObject<KullaniciModel>> OnayBekleyenlerList = new List<FirebaseObject<KullaniciModel>>();
         public HastaKabul ()
 		{
             BindingContext = this;
             InitializeComponent();
+            LstOnayBekleyenler.BindingContext = OnayBekleyenlerList;
+
             Load();
         }
 
@@ -29,15 +31,14 @@ namespace EuropeAesth.Pages
             var onayBekleyenler = kullanicilar.Where(x => x.Object.HastaKabul == false);
 
             foreach (var item in onayBekleyenler)
-                OnayBekleyenlerList.Add(item.Object);
+                OnayBekleyenlerList.Add(item);
 
-            LstOnayBekleyenler.BindingContext = OnayBekleyenlerList;
         }
 
         private void LstYeniHastalar_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as KullaniciModel;
-            Navigation.PushModalAsync(new HastaBilgiGir(item));
+            Navigation.PushModalAsync(new HastaBilgiGir() { Kullanici = item});
         }
     }
 }

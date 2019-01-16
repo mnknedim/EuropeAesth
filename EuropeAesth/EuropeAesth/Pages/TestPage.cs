@@ -32,7 +32,7 @@ namespace EuropeAesth.Pages
         {
             var kayit = new HastahaneModel()
             {
-                KısaAd = "İstanbul Estetic",
+                KisaAd = "İstanbul Estetic",
                 HastahaneAd = "Adjuvan Clinic (Zincirlikuyu)",
                 Adres = "Esentepe Mahallesi, Keskin Kalem Sk. No:1, 34394 Şişli/İstanbul",
                 Telefon = "(0212) 211 34 31",

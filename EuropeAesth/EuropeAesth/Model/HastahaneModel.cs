@@ -8,7 +8,7 @@ namespace EuropeAesth.Model
     {
         public string HastahaneKod { get; set; }
         public string HastahaneAd { get; set; }
-        public string KısaAd { get; set; }
+        public string KisaAd { get; set; }
         public string Adres { get; set; }
         public string Telefon { get; set; }
         public string Logation { get; set; }

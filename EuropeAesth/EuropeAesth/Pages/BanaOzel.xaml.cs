@@ -76,8 +76,9 @@ namespace EuropeAesth.Pages
                     await DisplayAlert("Hatalı Bilgi", "Hatalı bilgi girdiniz.Tekrar deneyin", "Tamam");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                var aa = ex.Data;
                 await DisplayAlert("Hata", "Lütfen bilgilerinizi kontrol edin.", "Tamam");
             }
             

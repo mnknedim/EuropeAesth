@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.Pages.HastaBilgiGir">
     <ContentPage.Content>
         <StackLayout>
-            <Picker x:Name="HastahanePicker" Title="Hastahane Seç" ItemsSource="{Binding HastahaneList}" ItemDisplayBinding="{Binding HastahaneAd}"
+            <custom:ExEntry x:Name="KullAdi" Text="{Binding Kullanici.AdSoyad}"></custom:ExEntry>
+            <Picker x:Name="HastahanePicker" Title="Hastahane Seç" ItemsSource="{Binding HastahaneList}" ItemDisplayBinding="{Binding KisaAd}"
                             WidthRequest="300" BackgroundColor="White" ></Picker>
             <Picker x:Name="OtelPicker" Title="Otel Seç" ItemsSource="{Binding OtelList}" ItemDisplayBinding="{Binding HotelAd}"
                             WidthRequest="300" BackgroundColor="White" ></Picker>
+            <Button x:Name="Kayit" Text="Kaydet" Clicked="Kayit_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
