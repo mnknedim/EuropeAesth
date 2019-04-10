@@ -12,7 +12,7 @@
                             <ViewCell>
                                 <StackLayout BackgroundColor="#eee"
                                              Orientation="Vertical">
-                                    <StackLayout Orientation="Horizontal" Margin="5,10">
+                                    <StackLayout Orientation="Horizontal" Margin="5,15">
                                         <Image Source="{Binding ImageUrl}" />
                                         <StackLayout Orientation="Vertical">
                                             <Label Text="{Binding Title}"

@@ -12,12 +12,20 @@ namespace EuropeAesth.Pages
 	{
 		public Anasayfa ()
 		{
-            Content = new StackLayout {
-                Children = {
-                    new CaroselViewPage(),
+            var st = new StackLayout
+            {
+                Children =
+                {
+                     new CaroselViewPage(),
                     new ScrollViewPage(),
-				}
-			};
+                }
+            };
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                st.Margin = new Thickness(0, 20);
+            }
+
+            Content = st;
 		}
 	}
 }

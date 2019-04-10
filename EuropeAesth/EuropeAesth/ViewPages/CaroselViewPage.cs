@@ -23,8 +23,9 @@ namespace EuropeAesth.ViewPages
             Padding = new Thickness(0);
             ObservableCollection<ImageSlider> collection = new ObservableCollection<ImageSlider>{
 
-                new ImageSlider{ ImageUrl= "doktorlar.png" , Detail ="Doktorlarımız yine iş başında"},
-                new ImageSlider{ ImageUrl= "gokyuzu.png", Detail ="Gökyüzü yine iş başında" },
+                new ImageSlider{ ImageUrl= "sacekimi.png" , Detail ="Saç Ekimi"},
+                new ImageSlider{ ImageUrl= "doktorlar.png", Detail ="Doktorlarımız" },
+                new ImageSlider{ ImageUrl= "fueyontemi.png", Detail ="Fue yöntemi nedir?" },
             };
 
             StackLayout body = new StackLayout()

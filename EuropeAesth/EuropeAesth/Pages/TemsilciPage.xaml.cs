@@ -22,7 +22,8 @@ namespace EuropeAesth.Pages
 			InitializeComponent ();
 
             UstStack.Children.Add(new ButtonView { ImageUrl = "ic_kodUret.png", UnderText = "Kod Üret", TappedCommand = CallPages });
-            UstStack.Children.Add(new ButtonView { ImageUrl = "ic_kabulHastalar.png", UnderText = "Hastalar", PageName = new TaburcuEt(), TappedCommand = CallPages });
+            UstStack.Children.Add(new ButtonView { ImageUrl = "ic_hasta_ekle.png", UnderText = "Hasta Ekle", PageName = new HastaEklePage(), TappedCommand = CallPages });
+            AltStack.Children.Add(new ButtonView { ImageUrl = "ic_kabulHastalar.png", UnderText = "Hastalar", PageName = new TaburcuEt(), TappedCommand = CallPages });
         }
 
         public Command CallPages = new Command(async (e) => {

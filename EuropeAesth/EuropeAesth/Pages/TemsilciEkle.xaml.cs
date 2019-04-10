@@ -52,7 +52,7 @@ namespace EuropeAesth.Pages
 
         private void Vazgec_Tapped(object sender, EventArgs e)
         {
-
+            Navigation.PopModalAsync();
         }
 
     }

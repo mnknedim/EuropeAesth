@@ -30,7 +30,7 @@ namespace EuropeAesth.Pages
                 return;
             }
 
-            if (txtKullaniciAdi.Text.Any(x => x == '@'))
+            if (txtKullaniciAdi.Text.Any(x => x == 'Y'))
             {
                 var kullaniciResult = await firebase.Child("Yoneticiler").OnceAsync<YoneticiModel>();
                 if (kullaniciResult != null)
