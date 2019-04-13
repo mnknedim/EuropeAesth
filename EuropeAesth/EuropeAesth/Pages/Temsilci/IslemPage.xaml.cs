@@ -1,13 +1,15 @@
 ﻿using EuropeAesth.Model;
 using Firebase.Database;
+using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,6 +24,13 @@ namespace EuropeAesth.Pages.Temsilci
             set { SetValue(TotalProperty, value); }
         }
         public static readonly BindableProperty TotalProperty = BindableProperty.Create("Total", typeof(string), typeof(IslemPage), default(string));
+
+        public string TotalEuro
+        {
+            get { return (string)GetValue(TotalEuroProperty); }
+            set { SetValue(TotalEuroProperty, value); }
+        }
+        public static readonly BindableProperty TotalEuroProperty = BindableProperty.Create("TotalEuro", typeof(string), typeof(IslemPage), default(string));
 
         public ObservableCollection<HotelModel> Oteller
         {
@@ -44,8 +53,11 @@ namespace EuropeAesth.Pages.Temsilci
         List<MedicalIslem> ListIslem = new List<MedicalIslem>();
         List<HotelModel> ListOteller = new List<HotelModel>();
 
-        public IslemPage ()
+        string HastaTelKod;
+
+        public IslemPage (string hastatel)
 		{
+            HastaTelKod = hastatel;
             BindingContext = this;
 			InitializeComponent ();
             Load();
@@ -58,6 +70,8 @@ namespace EuropeAesth.Pages.Temsilci
             foreach (var item in temsilciResult)
                 ListOteller.Add(item.Object);
 
+            ListOteller.Add(new HotelModel { HotelAd = "Otel istemiyorum", Fiyat = 0 });
+
             var islemResult = await firebase.Child("MedicalIslemler").OnceAsync<MedicalIslem>();
             foreach (var item in islemResult)
                 ListIslem.Add(item.Object);
@@ -65,9 +79,10 @@ namespace EuropeAesth.Pages.Temsilci
             Oteller = new ObservableCollection<HotelModel>(ListOteller);
             Islemler = new ObservableCollection<MedicalIslem>(ListIslem);
 
-            IslemP.SelectedIndexChanged += IslemP_SelectedIndexChanged;
+            IslemP.SelectedIndexChanged += TotalCalculate_AfterChanged;
             HotelP.SelectedIndexChanged += HotelP_SelectedIndexChanged;
-            Transfer.SelectedIndexChanged += Transfer_SelectedIndexChanged;
+            Transfer.SelectedIndexChanged += TotalCalculate_AfterChanged;
+            GunSayisi.SelectedIndexChanged += TotalCalculate_AfterChanged;
         }
 
         private void Transfer_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,11 +97,9 @@ namespace EuropeAesth.Pages.Temsilci
 
         private void HotelP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GunSayisi.IsEnabled = true;
             var hotelSender = ((Picker)sender).SelectedItem as HotelModel;
-            var islem = IslemP.SelectedItem != null ? IslemP.SelectedItem as MedicalIslem : new MedicalIslem { Fiyat = 0 };
-            var transfer = (string)Transfer.SelectedItem == "Var" ? 400 : 0;
-            Total = (hotelSender.Fiyat + islem.Fiyat + transfer).ToString() + " ₺";
+            GunSayisi.IsEnabled = hotelSender.HotelAd == "Otel istemiyorum" ? false : true;
+            TotalCalculate_AfterChanged(sender, e);
         }
 
         private void IslemP_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,21 +111,84 @@ namespace EuropeAesth.Pages.Temsilci
             Total = (islemSender.Fiyat + otel.Fiyat + transfer).ToString() + " ₺";
         }
 
-        private void DevamButon_Clicked(object sender, EventArgs e)
+        private void TotalCalculate_AfterChanged(object sender, EventArgs e)
+        {
+            var secilenHotel = HotelP.SelectedItem as HotelModel;
+            var secilenIslem = IslemP.SelectedItem as MedicalIslem;
+            var secilenTransfer = Transfer.SelectedItem as string;
+            var secilenGunSayisi = GunSayisi.SelectedItem as string;
+            var toplamKar = VerilenFiyat.Text != "" ? VerilenFiyat.Text : "0";
+
+            var hotelFiyat = secilenHotel != null ? secilenHotel.Fiyat : 0;
+            var islemFiyat = secilenIslem != null ? secilenIslem.Fiyat : 0;
+            var transferFiyat= secilenTransfer == "Var" ? 400 : 0;
+            var otelTopFiyat = secilenGunSayisi != null ? Convert.ToInt32(secilenGunSayisi) : 0;
+            var topKarFiyat = Convert.ToInt32(toplamKar);
+            Total = (islemFiyat + transferFiyat + (hotelFiyat * otelTopFiyat) + topKarFiyat).ToString();
+
+            DovizHesapla(Total);
+        }
+
+        XmlDocument xDoc = new XmlDocument(); //global tanınmlayın
+
+        private void DovizHesapla(string totalTL)
+        {
+            string url = "http://www.tcmb.gov.tr/kurlar/today.xml";
+            WebClient wc = new WebClient();
+            wc.Encoding = Encoding.UTF8;
+            string xmlData = wc.DownloadString(url);
+            xDoc.LoadXml(xmlData);
+            XmlNodeList kur = xDoc.DocumentElement.ChildNodes;
+            string euroKur="1";
+
+            List<string> kurlar = new List<string>();
+
+            foreach (XmlNode veri in kur)
+            {
+                kurlar.Add(veri.ChildNodes[3].InnerText);
+            }
+
+            var decimalT = (decimal)(Convert.ToInt32(totalTL) / decimal.Parse(kurlar[3]) * 10000);
+            TotalEuro = Decimal.Round(decimalT, 2).ToString();
+        }
+
+        private async void DevamButon_Clicked(object sender, EventArgs e)
         {
             var islem = IslemP.SelectedItem.ToString();
             var hotel = HotelP.SelectedItem.ToString();
             var transfer = Transfer.SelectedItem.ToString();
-            
+            var teklid = VerilenFiyat.Text;
+
+            var HastaKayit = new KayitliHasta
+            {
+                Hotel = hotel,
+                HastaKod = HastaTelKod,
+                TemsilciKod = App.Uyg.TemsilciKod,
+                Transfer = transfer,
+                VerilenTeklif = VerilenFiyat.Text
+            };
+
+            try
+            {
+                await firebase.Child("KayitliHasta").PostAsync(HastaKayit);
+                await DisplayAlert("", "Eklendi", "Tamam");
+                App.Current.MainPage = new TemsilciPage();
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Hata", $"Hata oluştu. ({ex.Data.ToString()})", "Tamam");
+            }
+
+
         }
 
-        private void GunSayisi_TextChanged(object sender, TextChangedEventArgs e)
+        private void VerilenFiyat_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var otelFiyat = (HotelP.SelectedItem as HotelModel).Fiyat;
-            var GunBirlikte = GunSayisi.Text == "" ? otelFiyat * 1 : Convert.ToInt32(GunSayisi.Text) * otelFiyat;
-            var islem = IslemP.SelectedItem != null ? IslemP.SelectedItem as MedicalIslem : new MedicalIslem { Fiyat = 0 };
-            var transfer = (string)Transfer.SelectedItem == "Var" ? 400 : 0;
-            Total = (GunBirlikte + islem.Fiyat + transfer).ToString() + " ₺";
+            if (VerilenFiyat.Text == "" || VerilenFiyat.Text == null)
+                return;
+
+            TotalCalculate_AfterChanged(sender, e);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EuropeAesth.Model
 {
-    public class Hasta
+    public class KullaniciHasta
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -16,5 +16,15 @@ namespace EuropeAesth.Model
         public string Ulke { get; set; }
         public string Şehir { get; set; }
         public string TemsilciKod { get; set; }
+    }
+
+    public class KayitliHasta
+    {
+        public string HastaKod { get; set; }
+        public string TemsilciKod { get; set; }
+        public string Hastahane { get; set; }
+        public string Hotel { get; set; }
+        public string Transfer { get; set; }
+        public string VerilenTeklif { get; set; }
     }
 }

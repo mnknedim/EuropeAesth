@@ -25,7 +25,7 @@ namespace EuropeAesth.Pages
         {
             FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
 
-            var HastaEkle = new Hasta()
+            var HastaEkle = new KullaniciHasta()
             {
                 AdSoyad = HAdSoyad.Text,
                 Email = HEmail.Text,
@@ -33,14 +33,14 @@ namespace EuropeAesth.Pages
                 Ulke = HUlke.Text,
                 YetkiKod = 3,
                 Şehir = HSehir.Text,
-                TemsilciKod = "TGM01"
+                TemsilciKod = App.Uyg.TemsilciKod
             };
 
             try
             {
                 await firebase.Child("Hastalar").PostAsync(HastaEkle);
                 await DisplayAlert("", "Eklendi", "Tamam");
-                await Navigation.PushModalAsync(new IslemPage());
+                await Navigation.PushModalAsync(new IslemPage(HTelefon.Text));
 
             }
             catch (Exception ex)
