@@ -42,7 +42,9 @@ namespace EuropeAesth.ViewPages
         private async void Lst_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var SelectedItem = (ImageScrollViewModel)e.SelectedItem;
-            await Navigation.PushModalAsync(new ListViewDetail(SelectedItem));
+            var page = new ListViewDetail(SelectedItem);
+            NavigationPage.SetHasBackButton(page,true);
+            await Navigation.PushModalAsync(new NavigationPage(page),true);
         }
     }
 }

@@ -4,15 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EuropeAesth.Pages
 {
     public class ListViewDetail : ContentPage
     {
+        public DisplayInfo _DisplayInfo
+        {
+            get { return (DisplayInfo)GetValue(_DisplayInfoProperty); }
+            set { SetValue(_DisplayInfoProperty, value); }
+        }
+        public static readonly BindableProperty _DisplayInfoProperty = BindableProperty.Create("UnderText", typeof(DisplayInfo), typeof(ListViewDetail), default(DisplayInfo));
+
+        DisplayInfo displayInfo;
         public ListViewDetail(ImageScrollViewModel News)
         {
+            displayInfo = DeviceDisplay.MainDisplayInfo;
             string desc = "Saç ekimi saçların yönlerine dikkat edilerek ve kök ünitelerinin içerdikleri kök sayılarına göre" +
                 " doğal bir saç çizgisi belirlenerek doğadaki durumlarına uygun olarak ekilirse ekimin yapıldığı belli olmaz." +
                 " Ekilecek kökler asker gibi yanyana dizilmemelidir. Saçı dökülmemiş kişilerde de kökler belirli bir ince " +
@@ -59,10 +68,13 @@ namespace EuropeAesth.Pages
             var btnBack = new ImageButton
             {
                 Source = "ic_back.png",
-                VerticalOptions = LayoutOptions.End,
+                Margin = new Thickness(15),
                 HorizontalOptions = LayoutOptions.End,
-                Margin = new Thickness(15)
+                VerticalOptions = LayoutOptions.End,
+               
+
             };
+            
             btnBack.Clicked += (s, e) =>
             {
                 Navigation.PopModalAsync();
@@ -77,7 +89,6 @@ namespace EuropeAesth.Pages
                         Image,
                         Header,
                         Description,
-                        btnBack
                     }
             };
             NewGrid.Children.Add(st);

@@ -11,15 +11,16 @@
 
   <ItemGroup>
     <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
-    <PackageReference Include="FirebaseDatabase.net" Version="3.3.3" />
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.293080" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\TemsilcilerPage.xaml.cs">
+    <Compile Update="Pages\Yonetici\TemsilcilerPage.xaml.cs">
       <DependentUpon>TemsilcilerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\TemsilciView.xaml.cs">
+    <Compile Update="Pages\Yonetici\TemsilciView.xaml.cs">
       <DependentUpon>TemsilciView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -28,34 +29,37 @@
     <EmbeddedResource Update="Pages\BanaOzel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\HastaEklePage.xaml">
+    <EmbeddedResource Update="Pages\Temsilci\HastaEklePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\HastaKabul.xaml">
+    <EmbeddedResource Update="Pages\Temsilci\IslemPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\KabulHastalar.xaml">
+    <EmbeddedResource Update="Pages\Yonetici\HastaKabul.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\TaburcuEt.xaml">
+    <EmbeddedResource Update="Pages\Yonetici\KabulHastalar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\TemsilciEkle.xaml">
+    <EmbeddedResource Update="Pages\Yonetici\TaburcuEt.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\TemsilcilerPage.xaml">
+    <EmbeddedResource Update="Pages\Yonetici\TemsilciEkle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\TemsilciPage.xaml">
+    <EmbeddedResource Update="Pages\Yonetici\TemsilcilerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\TemsilciView.xaml">
+    <EmbeddedResource Update="Pages\Temsilci\TemsilciPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Yonetici\TemsilciView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\UserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\YoneticiPage.xaml">
+    <EmbeddedResource Update="Pages\Yonetici\YoneticiPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ViewPages\RegisterPage.xaml">

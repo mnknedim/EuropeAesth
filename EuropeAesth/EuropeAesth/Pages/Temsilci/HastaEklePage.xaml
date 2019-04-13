@@ -14,14 +14,12 @@
                 <ScrollView>
                     <StackLayout>
 
-                        <custom:RegEntry x:Name="FTemsilciKod" Placeholder="Temsilci Kod" IsEnabled="False"></custom:RegEntry>
-                        <custom:RegEntry x:Name="HParola" Placeholder="Parola" IsPassword="True" IsEnabled="False"></custom:RegEntry>
-                        <custom:RegEntry x:Name="HAd" Placeholder="Temsilci Adı"></custom:RegEntry>
-                        <custom:RegEntry x:Name="HAdSoyad" Placeholder="Ad Soyad"></custom:RegEntry>
-                        <custom:RegEntry x:Name="HUlke" Placeholder="Ülke"></custom:RegEntry>
-                        <custom:RegEntry x:Name="HSehir" Placeholder="Şehir"></custom:RegEntry>
-                        <custom:RegEntry x:Name="HTelefon" Placeholder="Telefon"></custom:RegEntry>
-                        <custom:RegEntry x:Name="HEmail" Placeholder="Email"></custom:RegEntry>
+                        <custom:RegEntry x:Name="FTemsilciKod" Placeholder="Temsilci Kod" IsEnabled="False" ></custom:RegEntry>
+                        <custom:RegEntry x:Name="HAdSoyad" Placeholder="Ad Soyad" Text="Ndm"></custom:RegEntry>
+                        <custom:RegEntry x:Name="HUlke" Placeholder="Ülke" Text="Ndm"></custom:RegEntry>
+                        <custom:RegEntry x:Name="HSehir" Placeholder="Şehir" Text="Ndm"></custom:RegEntry>
+                        <custom:RegEntry x:Name="HTelefon" Placeholder="Telefon" Text="Ndm"></custom:RegEntry>
+                        <custom:RegEntry x:Name="HEmail" Placeholder="Email" Text="Ndm"></custom:RegEntry>
 
                         <ImageButton BackgroundColor="Transparent" x:Name="Kayit" Source="KayitOl.png" Clicked="Kayit_Clicked"></ImageButton>
                         <Label Text="Vazgeç" Margin="10" 

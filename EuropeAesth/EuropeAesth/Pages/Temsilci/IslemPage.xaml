@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EuropeAesth.Custom"
+             x:Class="EuropeAesth.Pages.Temsilci.IslemPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <custom:ExGrid>
+                <Image Source="arkplan.png" 
+                       Aspect="AspectFill" 
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       ></Image>
+                <StackLayout >
+                    <Picker x:Name="IslemP" Margin="20,35" Title="İşlemler" ItemDisplayBinding="{Binding Islem}" ItemsSource="{Binding Islemler}">
+                    </Picker>
+
+                    <StackLayout>
+                        <Picker x:Name="HotelP" Margin="20,35" Title="Oteller" ItemDisplayBinding="{Binding HotelAd}" ItemsSource="{Binding Oteller}">
+                        </Picker>
+                        <Entry Placeholder=" Sayısı: 1" x:Name="GunSayisi" Keyboard="Numeric" TextChanged="GunSayisi_TextChanged" IsEnabled="False"></Entry>
+                    </StackLayout>
+
+
+                    <StackLayout>
+                        <Label Text="Havaalanı Transfer" Margin="20,35"></Label>
+                        <Picker x:Name="Transfer">
+                            <Picker.Items>
+                                <x:String>Var</x:String>
+                                <x:String>Yok</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                    
+                    <StackLayout>
+                        <custom:ExLabel Text= "Toplam"  ></custom:ExLabel>
+                        <custom:ExLabel Text= "{Binding Total}"></custom:ExLabel>
+                    </StackLayout>
+
+
+                    <Button x:Name="DevamButon"
+                            Text="DEVAM"
+                            VerticalOptions="End"
+                            HorizontalOptions="End"
+                            Margin="25"
+                            Clicked="DevamButon_Clicked"
+                            ></Button>
+                </StackLayout>
+            </custom:ExGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

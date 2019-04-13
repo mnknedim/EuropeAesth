@@ -11,6 +11,6 @@ namespace EuropeAesth.Model
         public string Adres { get; set; }
         public string Telefon { get; set; }
         public string Logation { get; set; }
-
+        public int Fiyat { get; set; }
     }
 }

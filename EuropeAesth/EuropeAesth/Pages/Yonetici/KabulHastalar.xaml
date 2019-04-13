@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Custom="clr-namespace:EuropeAesth.Custom"
+             x:Class="EuropeAesth.Pages.KabulHastalar">
+    <ContentPage.Content>
+        <StackLayout>
+            <Custom:ExGrid>
+                <Image Source="arkplan.png" 
+                       Aspect="AspectFill" 
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       ></Image>
+                <ListView x:Name="LstHastalar"  ItemsSource="{Binding}" HeightRequest="50" RowHeight="100" Margin="0,75,0,0"
+                          BackgroundColor="Transparent" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Custom:ExGrid  Margin="5,5,5,5">
+                                    <Image Source="SatirPanel.png" Margin="5,5,5,5" HeightRequest="300"></Image>
+                                    <Label Text="{Binding TemsilciAd}"
+                                       FontSize="Large"
+                                       FontAttributes="Bold"
+                                       VerticalTextAlignment="Center"
+                                       Margin="30,0"
+                                           ></Label>
+                                </Custom:ExGrid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Custom:ExGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
