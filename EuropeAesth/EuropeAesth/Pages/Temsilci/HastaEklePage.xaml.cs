@@ -24,6 +24,16 @@ namespace EuropeAesth.Pages
         private async void Kayit_Clicked(object sender, EventArgs e)
         {
             FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
+            var tumHastalar = await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>();
+            var kayitliVarmi = tumHastalar.Any(x => x.Object.Telefon == HTelefon.Text);
+            if (kayitliVarmi)
+            {
+                var devamEt = await DisplayAlert("Bu Tlf No Kayıtlı", "Bu telefona ait başka bir hasta kayıtlı bulunuyor! Teklife devam etmek istemisiniz?", "Devam","Vageç");
+                if (devamEt)
+                    await Navigation.PushModalAsync(new IslemPage(HTelefon.Text));
+                else
+                    return;
+            }
 
             var HastaEkle = new KullaniciHasta()
             {
@@ -38,8 +48,8 @@ namespace EuropeAesth.Pages
 
             try
             {
-                await firebase.Child("Hastalar").PostAsync(HastaEkle);
-                await DisplayAlert("", "Eklendi", "Tamam");
+                await firebase.Child("KullaniciHastalar").PostAsync(HastaEkle);
+                await DisplayAlert("Başarılı", "Hasta başarılı bir şekilde Eklendi", "Tamam");
                 await Navigation.PushModalAsync(new IslemPage(HTelefon.Text));
 
             }
@@ -51,7 +61,7 @@ namespace EuropeAesth.Pages
 
         private void Vazgec_Tapped(object sender, EventArgs e)
         {
-
+            App.Current.MainPage = new TemsilciPage();
         }
     }
 }

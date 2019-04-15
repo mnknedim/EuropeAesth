@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Custom;
+﻿using EuropeAesth.Component;
+using EuropeAesth.Custom;
 using EuropeAesth.Model;
 using System;
 using System.Collections.Generic;
@@ -18,31 +19,23 @@ namespace EuropeAesth.Pages
         }
         public static readonly BindableProperty _DisplayInfoProperty = BindableProperty.Create("UnderText", typeof(DisplayInfo), typeof(ListViewDetail), default(DisplayInfo));
 
+        public string _Description
+        {
+            get { return (string)GetValue(_DescriptionProperty); }
+            set { SetValue(_DescriptionProperty, value); }
+        }
+        public static readonly BindableProperty _DescriptionProperty = BindableProperty.Create("_Description", typeof(string), typeof(ListViewDetail), default(string));
+
         DisplayInfo displayInfo;
         public ListViewDetail(ImageScrollViewModel News)
         {
+            BindingContext = this;
             displayInfo = DeviceDisplay.MainDisplayInfo;
-            string desc = "Saç ekimi saçların yönlerine dikkat edilerek ve kök ünitelerinin içerdikleri kök sayılarına göre" +
-                " doğal bir saç çizgisi belirlenerek doğadaki durumlarına uygun olarak ekilirse ekimin yapıldığı belli olmaz." +
-                " Ekilecek kökler asker gibi yanyana dizilmemelidir. Saçı dökülmemiş kişilerde de kökler belirli bir ince " +
-                "düzensizlik içinde yerleşmişlerdir.Kısacası doğadaki saçların taklit edildiği takdirde ekim yapıldığı belli olmaz." +
-                " Bunun dışında uygun olmayan cerrahi teknik ve ekipman kullanıldığında saç köklerinde minik çukurluklar gözlenebilir. " +
-                "Bunları daha çok lazer ve bazı kanal açma iğneleri ile uygulama yapıldığında gözlemlediğimizden 6 yıldır lazer kullanımını " +
-                "bıraktık ve saç köklerinin yerleştirilmesinde kullandığımız aletleri de geliştirerek saç köklerinin boyutlarına uygun " +
-                "delik açma aletleri geliştirdik. Bu sayede bu tip bir komplikasyona artık rastlamamaktayız. FUE ile normal ekim arasındaki " +
-                "fark  FUE yani köklerin tek tek alınma tekniği ile şerit yöntemi arasında sadece köklerin alınma yöntemleri arasında fark vardır. " +
-                "Ekimde bir farklılık yoktur. Yani sonuç olarak FUE yönteminin şerit yöntemine üstünlüğü ense bölgesinde iz ve ilk günlerdeki " +
-                " gerginliğin olmamasıdır.Saç ekimi saçların yönlerine dikkat edilerek ve kök ünitelerinin içerdikleri kök sayılarına göre" +
-                " doğal bir saç çizgisi belirlenerek doğadaki durumlarına uygun olarak ekilirse ekimin yapıldığı belli olmaz." +
-                " Ekilecek kökler asker gibi yanyana dizilmemelidir. Saçı dökülmemiş kişilerde de kökler belirli bir ince " +
-                "düzensizlik içinde yerleşmişlerdir.Kısacası doğadaki saçların taklit edildiği takdirde ekim yapıldığı belli olmaz." +
-                " Bunun dışında uygun olmayan cerrahi teknik ve ekipman kullanıldığında saç köklerinde minik çukurluklar gözlenebilir. " +
-                "Bunları daha çok lazer ve bazı kanal açma iğneleri ile uygulama yapıldığında gözlemlediğimizden 6 yıldır lazer kullanımını " +
-                "bıraktık ve saç köklerinin yerleştirilmesinde kullandığımız aletleri de geliştirerek saç köklerinin boyutlarına uygun " +
-                "delik açma aletleri geliştirdik. Bu sayede bu tip bir komplikasyona artık rastlamamaktayız. FUE ile normal ekim arasındaki " +
-                "fark  FUE yani köklerin tek tek alınma tekniği ile şerit yöntemi arasında sadece köklerin alınma yöntemleri arasında fark vardır. " +
-                "Ekimde bir farklılık yoktur. Yani sonuç olarak FUE yönteminin şerit yöntemine üstünlüğü ense bölgesinde iz ve ilk günlerdeki " +
-                " gerginliğin olmamasıdır.";
+            var Y = new Yazilar();
+            var aa = News.ImageUrl.IndexOf('.');
+            var yazi = News.ImageUrl.Substring(0, aa);
+            string desc = Y.DYazilar[yazi];
+            _Description = desc;
 
             var Image = new Image
             {
@@ -60,9 +53,10 @@ namespace EuropeAesth.Pages
             };
             var Description = new Label
             {
-                Text = desc,
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 Margin = new Thickness(5)
             };
+            Description.SetBinding(Label.TextProperty, new Binding("_Description"));
 
             var NewGrid = new ExGrid();
             var btnBack = new ImageButton
@@ -77,7 +71,8 @@ namespace EuropeAesth.Pages
             
             btnBack.Clicked += (s, e) =>
             {
-                Navigation.PopModalAsync();
+                App.Current.MainPage = new TabbedMainPage();
+
             };
 
             var st = new StackLayout
@@ -89,6 +84,7 @@ namespace EuropeAesth.Pages
                         Image,
                         Header,
                         Description,
+                        btnBack
                     }
             };
             NewGrid.Children.Add(st);

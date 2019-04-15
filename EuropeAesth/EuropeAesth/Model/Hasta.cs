@@ -26,5 +26,7 @@ namespace EuropeAesth.Model
         public string Hotel { get; set; }
         public string Transfer { get; set; }
         public string VerilenTeklif { get; set; }
+        public int OnayDurumu { get; set; }
+        public string SonDurum { get; set; }
     }
 }

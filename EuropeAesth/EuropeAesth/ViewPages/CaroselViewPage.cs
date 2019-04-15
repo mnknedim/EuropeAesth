@@ -20,13 +20,12 @@ namespace EuropeAesth.ViewPages
         }
         public CaroselViewPage ()
 		{
-            Padding = new Thickness(0);
-            ObservableCollection<ImageSlider> collection = new ObservableCollection<ImageSlider>{
+            ObservableCollection<ImageSlider> collection = new ObservableCollection<ImageSlider>{};
 
-                new ImageSlider{ ImageUrl= "sacekimi.png" , Detail ="Saç Ekimi"},
-                new ImageSlider{ ImageUrl= "doktorlar.png", Detail ="Doktorlarımız" },
-                new ImageSlider{ ImageUrl= "fueyontemi.png", Detail ="Fue yöntemi nedir?" },
-            };
+            for (int i = 1; i < 11; i++)
+            {
+                collection.Add(new ImageSlider { ImageUrl = $"slayt{i}.png", Detail = "Tanıtım" });
+            }
 
             StackLayout body = new StackLayout()
             {
@@ -40,7 +39,7 @@ namespace EuropeAesth.ViewPages
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-
+                HeightRequest = 220
             };
 
             DataTemplate template = new DataTemplate(() =>
@@ -60,9 +59,9 @@ namespace EuropeAesth.ViewPages
                 var SliderGrid = new ExGrid() { VerticalOptions = LayoutOptions.EndAndExpand };
 
                 var image = new Image() {
-                    HeightRequest = 200,
+                    HeightRequest = 220,
                     WidthRequest = 120,
-                    VerticalOptions = LayoutOptions.EndAndExpand
+                    VerticalOptions = LayoutOptions.FillAndExpand
                 };
                 image.SetBinding(Image.SourceProperty, "ImageUrl");
 

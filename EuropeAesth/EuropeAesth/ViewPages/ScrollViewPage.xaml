@@ -4,22 +4,23 @@
              xmlns:ex="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.ViewPages.ScrollViewPage">
     <ContentView.Content>
-        <StackLayout>
+        <StackLayout Margin="0,30,0,0">
             <ScrollView>
-                <ListView x:Name="Lst" ItemsSource="{Binding}"  RowHeight="100" Margin="0,10,0,0" BackgroundColor="Transparent" SeparatorVisibility="None" >
+                <ListView x:Name="Lst" ItemsSource="{Binding}"  RowHeight="120" Margin="0,30,0,0" BackgroundColor="Transparent"
+                          SeparatorVisibility="None" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout BackgroundColor="#eee"
                                              Orientation="Vertical">
                                     <StackLayout Orientation="Horizontal" Margin="5,15">
-                                        <Image Source="{Binding ImageUrl}" />
+                                        <Image Source="{Binding ImageUrl}" WidthRequest="200" Aspect="AspectFit" />
                                         <StackLayout Orientation="Vertical">
                                             <Label Text="{Binding Title}"
                                                TextColor="#f35e20" />
                                             <Label Text="{Binding SubTitle}"
                                                HorizontalOptions="EndAndExpand"
-                                               TextColor="#503026" />
+                                               TextColor="#503026" FontSize="Small"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

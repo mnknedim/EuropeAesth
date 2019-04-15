@@ -165,13 +165,15 @@ namespace EuropeAesth.Pages.Temsilci
                 HastaKod = HastaTelKod,
                 TemsilciKod = App.Uyg.TemsilciKod,
                 Transfer = transfer,
-                VerilenTeklif = VerilenFiyat.Text
+                VerilenTeklif = VerilenFiyat.Text,
+                OnayDurumu = 0,
+                SonDurum = "Beklemede"
             };
 
             try
             {
                 await firebase.Child("KayitliHasta").PostAsync(HastaKayit);
-                await DisplayAlert("", "Eklendi", "Tamam");
+                await DisplayAlert("Eklendi", "Hasta başarılı bir şekilde eklendi", "Tamam");
                 App.Current.MainPage = new TemsilciPage();
 
             }
@@ -189,6 +191,11 @@ namespace EuropeAesth.Pages.Temsilci
                 return;
 
             TotalCalculate_AfterChanged(sender, e);
+        }
+
+        private void VazgecButon_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new TemsilciPage();
         }
     }
 }

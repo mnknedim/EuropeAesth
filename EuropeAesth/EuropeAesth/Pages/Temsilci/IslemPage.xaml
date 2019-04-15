@@ -4,79 +4,85 @@
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.Pages.Temsilci.IslemPage">
     <ContentPage.Content>
-        <StackLayout>
-            <custom:ExGrid>
-                <Image Source="arkplan.png" 
+        <ScrollView>
+            <StackLayout>
+                <custom:ExGrid>
+                    <Image Source="arkplan.png" 
                        Aspect="AspectFill" 
                        VerticalOptions="FillAndExpand"
                        HorizontalOptions="FillAndExpand"
                        ></Image>
-                <StackLayout >
-                    <Label Text="İşlem" VerticalTextAlignment="End" HorizontalTextAlignment="Start"></Label>
-                    <Picker x:Name="IslemP" Margin="20,35" Title="İşlemler" 
+                    <StackLayout >
+                        <Picker x:Name="IslemP" Margin="20,35" Title="İşlemler" 
                             ItemDisplayBinding="{Binding Islem}" 
                             ItemsSource="{Binding Islemler}"
                             BackgroundColor="White"
                             >
-                    </Picker>
+                        </Picker>
 
-                    <StackLayout Orientation="Horizontal"
+                        <StackLayout Orientation="Horizontal"
                                  Margin="20,35">
-                        <Label Text="Hotel" VerticalTextAlignment="End" HorizontalTextAlignment="Start"></Label>
-                        <Picker x:Name="HotelP" Title="Oteller" 
+                            <Picker x:Name="HotelP" Title="Oteller" 
                             ItemDisplayBinding="{Binding HotelAd}"
                             ItemsSource="{Binding Oteller}"
                             BackgroundColor="White"
                             HorizontalOptions="FillAndExpand">
-                        </Picker>
+                            </Picker>
 
-                        <Picker x:Name="GunSayisi" Title="Gün Sayisi" BackgroundColor="White" WidthRequest="50" HeightRequest="50">
-                            <Picker.Items>
-                                <x:String>1</x:String>
-                                <x:String>2</x:String>
-                                <x:String>3</x:String>
-                                <x:String>4</x:String>
-                                <x:String>5</x:String>
-                                <x:String>6</x:String>
-                                <x:String>7</x:String>
-                                <x:String>8</x:String>
-                                <x:String>9</x:String>
-                                <x:String>10</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </StackLayout>
+                            <Picker x:Name="GunSayisi" Title="Gün Sayisi" BackgroundColor="White" WidthRequest="50" HeightRequest="50">
+                                <Picker.Items>
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                    <x:String>6</x:String>
+                                    <x:String>7</x:String>
+                                    <x:String>8</x:String>
+                                    <x:String>9</x:String>
+                                    <x:String>10</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
 
-                    <Label Text="İşlem" VerticalTextAlignment="End" HorizontalTextAlignment="Start"></Label>
-                    <Picker x:Name="Transfer" ItemDisplayBinding="Havaalanı Transfer"
+                        <Picker x:Name="Transfer" ItemDisplayBinding="Havaalanı Transfer"
                             BackgroundColor="White"
                             Margin="20,35">
-                        <Picker.Items>
-                            <x:String>Var</x:String>
-                            <x:String>Yok</x:String>
-                        </Picker.Items>
-                    </Picker>
+                            <Picker.Items>
+                                <x:String>Var</x:String>
+                                <x:String>Yok</x:String>
+                            </Picker.Items>
+                        </Picker>
 
-                    <Label Text="Hastaya verilen Fiyat" VerticalTextAlignment="End" HorizontalTextAlignment="Start"></Label>
-                    <custom:ExEntry x:Name="VerilenFiyat" TextChanged="VerilenFiyat_TextChanged"></custom:ExEntry>
+                        <custom:ExEntry x:Name="VerilenFiyat" TextChanged="VerilenFiyat_TextChanged"></custom:ExEntry>
 
-                    <StackLayout>
-                        <custom:ExLabel Text= "Toplam(₺)"  ></custom:ExLabel>
-                        <custom:ExLabel Text= "{Binding Total}" VerticalTextAlignment="Start"></custom:ExLabel>
+                        <StackLayout>
+                            <custom:ExLabel Text= "Toplam(₺)"  ></custom:ExLabel>
+                            <custom:ExLabel Text= "{Binding Total}" VerticalTextAlignment="Start"></custom:ExLabel>
 
-                        <custom:ExLabel Text= "Toplam(€)"  ></custom:ExLabel>
-                        <custom:ExLabel Text= "{Binding TotalEuro}" VerticalTextAlignment="Start"></custom:ExLabel>
-                    </StackLayout>
+                            <custom:ExLabel Text= "Toplam(€)"  ></custom:ExLabel>
+                            <custom:ExLabel Text= "{Binding TotalEuro}" VerticalTextAlignment="Start"></custom:ExLabel>
+                        </StackLayout>
 
-
-                    <Button x:Name="DevamButon"
+                        <StackLayout VerticalOptions="End" Orientation="Horizontal">
+                            <Button x:Name="DevamButon"
                             Text="DEVAM"
-                            VerticalOptions="End"
+                            
                             HorizontalOptions="End"
                             Margin="25"
                             Clicked="DevamButon_Clicked"
                             ></Button>
-                </StackLayout>
-            </custom:ExGrid>
-        </StackLayout>
+                            <Button x:Name="VazgecButon"
+                            Text="Vazgeç"
+                            HorizontalOptions="Start"
+                            Margin="25"
+                            Clicked="VazgecButon_Clicked"
+                            ></Button>
+                        </StackLayout>
+
+                    </StackLayout>
+                </custom:ExGrid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
