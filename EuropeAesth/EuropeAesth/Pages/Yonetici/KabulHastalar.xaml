@@ -11,7 +11,7 @@
                        VerticalOptions="FillAndExpand"
                        HorizontalOptions="FillAndExpand"
                        ></Image>
-                <ListView x:Name="LstHastalar"  ItemsSource="{Binding}" HeightRequest="50" RowHeight="100" Margin="0,75,0,0"
+                <ListView x:Name="LstKabulHastalar"  ItemsSource="{Binding}" HeightRequest="50" RowHeight="100" Margin="0,75,0,0"
                           BackgroundColor="Transparent" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>

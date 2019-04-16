@@ -27,7 +27,7 @@ namespace EuropeAesth.Pages
 			};
 		}
 
-        FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         private async void  Btn_Clicked(object sender, EventArgs e)
         {
             //var kayit = new YoneticiModel()

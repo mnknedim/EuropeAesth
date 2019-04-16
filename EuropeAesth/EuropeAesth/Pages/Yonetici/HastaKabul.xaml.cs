@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EuropeAesth.Model;
+using Firebase.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +13,23 @@ namespace EuropeAesth.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HastaKabul : ContentPage
-	{
-		public HastaKabul ()
+    {
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
+        List<KullaniciHasta> bekleyenHastalar = new List<KullaniciHasta>();
+        public HastaKabul ()
 		{
-			InitializeComponent ();
-		}
-	}
+            BindingContext = this;
+            InitializeComponent();
+            Load();
+        }
+
+        private async void Load()
+        {
+            var bekleyenResult = await firebase.Child("KayitliHastalar").OnceAsync<KullaniciHasta>();
+            foreach (var item in bekleyenResult)
+                bekleyenHastalar.Add(item.Object);
+
+            LstTBekleyenHastalar.BindingContext = bekleyenHastalar;
+        }
+    }
 }

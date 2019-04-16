@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Model;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Model;
 using EuropeAesth.ViewPages;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -16,7 +17,7 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BanaOzel : ContentPage
     {
-        FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public BanaOzel ()
 		{
 			InitializeComponent ();
@@ -24,12 +25,14 @@ namespace EuropeAesth.Pages
 
         private async void GirisButon_Clicked(object sender, EventArgs e)
         {
+
             if (txtKullaniciAdi.Text == null || txtParola.Text == null)
             {
                 await DisplayAlert("Giriş Kontrol", "Lütfen gerekli alanları doldurun", "Tamam");
                 return;
             }
 
+            UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz..", MaskType.Black);
             if (txtKullaniciAdi.Text.Any(x => x == 'Y'))
             {
                 var kullaniciResult = await firebase.Child("Yoneticiler").OnceAsync<YoneticiModel>();
@@ -41,6 +44,7 @@ namespace EuropeAesth.Pages
                     else
                         await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
                 }
+                
             }
             else if (txtKullaniciAdi.Text.Any(x => x == 'T'))
             {
@@ -70,7 +74,7 @@ namespace EuropeAesth.Pages
                 }
             }
 
-
+            UserDialogs.Instance.HideLoading();
         }
 
         private void Kayit_Tapped(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace EuropeAesth.ViewPages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RegisterPage : ContentPage
 	{
-        FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
 
         public RegisterPage ()
 		{

@@ -8100,26 +8100,26 @@ namespace EuropeAesth.Droid
 			// aapt resource value: 0x7f020055
 			public const int avd_hide_password = 2130837589;
 			
-			// aapt resource value: 0x7f020170
-			public const int avd_hide_password_1 = 2130837872;
-			
 			// aapt resource value: 0x7f020171
-			public const int avd_hide_password_2 = 2130837873;
+			public const int avd_hide_password_1 = 2130837873;
 			
 			// aapt resource value: 0x7f020172
-			public const int avd_hide_password_3 = 2130837874;
+			public const int avd_hide_password_2 = 2130837874;
+			
+			// aapt resource value: 0x7f020173
+			public const int avd_hide_password_3 = 2130837875;
 			
 			// aapt resource value: 0x7f020056
 			public const int avd_show_password = 2130837590;
 			
-			// aapt resource value: 0x7f020173
-			public const int avd_show_password_1 = 2130837875;
-			
 			// aapt resource value: 0x7f020174
-			public const int avd_show_password_2 = 2130837876;
+			public const int avd_show_password_1 = 2130837876;
 			
 			// aapt resource value: 0x7f020175
-			public const int avd_show_password_3 = 2130837877;
+			public const int avd_show_password_2 = 2130837877;
+			
+			// aapt resource value: 0x7f020176
+			public const int avd_show_password_3 = 2130837878;
 			
 			// aapt resource value: 0x7f020057
 			public const int bilinmesigerekenler = 2130837591;
@@ -8880,11 +8880,11 @@ namespace EuropeAesth.Droid
 			// aapt resource value: 0x7f020153
 			public const int notification_icon_background = 2130837843;
 			
-			// aapt resource value: 0x7f02016e
-			public const int notification_template_icon_bg = 2130837870;
-			
 			// aapt resource value: 0x7f02016f
-			public const int notification_template_icon_low_bg = 2130837871;
+			public const int notification_template_icon_bg = 2130837871;
+			
+			// aapt resource value: 0x7f020170
+			public const int notification_template_icon_low_bg = 2130837872;
 			
 			// aapt resource value: 0x7f020154
 			public const int notification_tile_bg = 2130837844;
@@ -8944,25 +8944,28 @@ namespace EuropeAesth.Droid
 			public const int slayt9 = 2130837862;
 			
 			// aapt resource value: 0x7f020167
-			public const int temelasamalar = 2130837863;
+			public const int splashScreen = 2130837863;
 			
 			// aapt resource value: 0x7f020168
-			public const int tooltip_frame_dark = 2130837864;
+			public const int temelasamalar = 2130837864;
 			
 			// aapt resource value: 0x7f020169
-			public const int tooltip_frame_light = 2130837865;
+			public const int tooltip_frame_dark = 2130837865;
 			
 			// aapt resource value: 0x7f02016a
-			public const int trassizsacekimi = 2130837866;
+			public const int tooltip_frame_light = 2130837866;
 			
 			// aapt resource value: 0x7f02016b
-			public const int turkiyesacekimi = 2130837867;
+			public const int trassizsacekimi = 2130837867;
 			
 			// aapt resource value: 0x7f02016c
-			public const int Up = 2130837868;
+			public const int turkiyesacekimi = 2130837868;
 			
 			// aapt resource value: 0x7f02016d
-			public const int Ustlogo = 2130837869;
+			public const int Up = 2130837869;
+			
+			// aapt resource value: 0x7f02016e
+			public const int Ustlogo = 2130837870;
 			
 			static Drawable()
 			{
@@ -11562,6 +11565,9 @@ namespace EuropeAesth.Droid
 			
 			// aapt resource value: 0x7f0d01ff
 			public const int Theme_PageIndicatorDefaults = 2131558911;
+			
+			// aapt resource value: 0x7f0d0205
+			public const int Theme_Splash = 2131558917;
 			
 			// aapt resource value: 0x7f0d0112
 			public const int ThemeOverlay_AppCompat = 2131558674;
