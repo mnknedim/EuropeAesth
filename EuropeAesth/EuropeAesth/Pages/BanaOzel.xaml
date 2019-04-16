@@ -12,12 +12,12 @@
                        HorizontalOptions="FillAndExpand"
                        ></Image>
                 <StackLayout>
-                    <Image Source="Ustlogo.png" 
+                    <Image Source="logoandroid.png" 
                            Margin="15"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                            ></Image>
-                    <custom:ExEntry x:Name="txtKullaniciAdi" Placeholder="Kullanıcı Adı" Text="TGM01"></custom:ExEntry>
+                    <custom:ExEntry x:Name="txtKullaniciAdi" Placeholder="Kullanıcı Adı" Text="Y340102"></custom:ExEntry>
                     <custom:ExEntry x:Name="txtParola" Placeholder="Parola" IsPassword="True" Text="123456"></custom:ExEntry>
                     <ImageButton BackgroundColor="Transparent" x:Name="GirisButon" Source="GirisYap.png" Clicked="GirisButon_Clicked"></ImageButton>
                     <Label Text="Kayıt Ol" Margin="10" 

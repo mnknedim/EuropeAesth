@@ -11,11 +11,12 @@ namespace EuropeAesth.Pages
 	{
 		public Iletisim ()
 		{
-			Content = new StackLayout {
-				Children = {
-					new Label { Text = "İletişim" }
-				}
-			};
+
+            var browser = new WebView();
+            browser.Source = "https://adjuvanclinic.com/i%CC%87leti%C5%9Fim";
+
+
+            Content = browser;
 		}
 	}
 }
