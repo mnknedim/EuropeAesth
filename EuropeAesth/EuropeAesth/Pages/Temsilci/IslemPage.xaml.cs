@@ -48,7 +48,7 @@ namespace EuropeAesth.Pages.Temsilci
         public static readonly BindableProperty IslemlerProperty = BindableProperty.Create("Islemler", typeof(ObservableCollection<MedicalIslem>),
             typeof(IslemPage), default(ObservableCollection<MedicalIslem>));
 
-        FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
 
         List<MedicalIslem> ListIslem = new List<MedicalIslem>();
         List<HotelModel> ListOteller = new List<HotelModel>();
@@ -167,7 +167,8 @@ namespace EuropeAesth.Pages.Temsilci
                 Transfer = transfer,
                 VerilenTeklif = VerilenFiyat.Text,
                 OnayDurumu = 0,
-                SonDurum = "Beklemede"
+                SonDurum = "Beklemede",
+                ToplamFiyat = Total
             };
 
             try

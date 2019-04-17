@@ -16,7 +16,7 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TemsilciPage : ContentPage
 	{
-        public static FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
+        public static FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public TemsilciPage ()
 		{
 			InitializeComponent ();

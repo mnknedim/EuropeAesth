@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Model;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Model;
 using EuropeAesth.ViewPages;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -16,7 +17,7 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BanaOzel : ContentPage
     {
-        FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public BanaOzel ()
 		{
 			InitializeComponent ();
@@ -24,53 +25,64 @@ namespace EuropeAesth.Pages
 
         private async void GirisButon_Clicked(object sender, EventArgs e)
         {
-            if (txtKullaniciAdi.Text == null || txtParola.Text == null)
+            try
             {
-                await DisplayAlert("Giriş Kontrol", "Lütfen gerekli alanları doldurun", "Tamam");
-                return;
-            }
-
-            if (txtKullaniciAdi.Text.Any(x => x == 'Y'))
-            {
-                var kullaniciResult = await firebase.Child("Yoneticiler").OnceAsync<YoneticiModel>();
-                if (kullaniciResult != null)
+                if (txtKullaniciAdi.Text == null || txtParola.Text == null)
                 {
-                    var kullaniciParola = kullaniciResult.Where(x => x.Object.YoneticiKod == txtKullaniciAdi.Text).FirstOrDefault().Object.Parola;
-                    if (kullaniciParola == txtParola.Text)
-                        await Navigation.PushModalAsync(new YoneticiPage());
-                    else
-                        await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+                    await DisplayAlert("Giriş Kontrol", "Lütfen gerekli alanları doldurun", "Tamam");
+                    return;
                 }
-            }
-            else if (txtKullaniciAdi.Text.Any(x => x == 'T'))
-            {
-                var kullaniciResult = await firebase.Child("Temsilciler").OnceAsync<TemsilciModel>();
-                if (kullaniciResult != null)
+
+                UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz..", MaskType.Black);
+                if (txtKullaniciAdi.Text.Any(x => x == 'Y'))
                 {
-                    var kullanici = kullaniciResult.Where(x => x.Object.TemsilciKod == txtKullaniciAdi.Text).FirstOrDefault().Object;
-                    if (kullanici.Parola == txtParola.Text)
+                    var kullaniciResult = await firebase.Child("Yoneticiler").OnceAsync<YoneticiModel>();
+                    if (kullaniciResult != null)
                     {
-                        await Navigation.PushModalAsync(new TemsilciPage());
-                        App.Uyg.TemsilciKod = kullanici.TemsilciKod;
+                        var kullaniciParola = kullaniciResult.Where(x => x.Object.YoneticiKod == txtKullaniciAdi.Text).FirstOrDefault().Object.Parola;
+                        if (kullaniciParola == txtParola.Text)
+                            await Navigation.PushModalAsync(new YoneticiPage());
+                        else
+                            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
                     }
-                    else
-                        await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+
                 }
-            }
-            else
-            {
-                var kullaniciResult = await firebase.Child("Kullanicilar").OnceAsync<KullaniciModel>();
-                if (kullaniciResult != null)
+                else if (txtKullaniciAdi.Text.Any(x => x == 'T'))
                 {
-                    var kullaniciParola = kullaniciResult.Where(x => x.Object.Email == txtKullaniciAdi.Text).FirstOrDefault().Object.Parola;
-                    if (kullaniciParola == txtParola.Text)
-                        await Navigation.PushModalAsync(new UserPage());
-                    else
-                        await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+                    var kullaniciResult = await firebase.Child("Temsilciler").OnceAsync<TemsilciModel>();
+                    if (kullaniciResult != null)
+                    {
+                        var kullanici = kullaniciResult.Where(x => x.Object.TemsilciKod == txtKullaniciAdi.Text).FirstOrDefault().Object;
+                        if (kullanici.Parola == txtParola.Text)
+                        {
+                            await Navigation.PushModalAsync(new TemsilciPage());
+                            App.Uyg.TemsilciKod = kullanici.TemsilciKod;
+                        }
+                        else
+                            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+                    }
                 }
+                else
+                {
+                    var kullaniciResult = await firebase.Child("Kullanicilar").OnceAsync<KullaniciModel>();
+                    if (kullaniciResult != null)
+                    {
+                        var kullaniciParola = kullaniciResult.Where(x => x.Object.Email == txtKullaniciAdi.Text).FirstOrDefault().Object.Parola;
+                        if (kullaniciParola == txtParola.Text)
+                            await Navigation.PushModalAsync(new UserPage());
+                        else
+                            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                await DisplayAlert("Hata", "Lütfen bilgileirnizi kontrol edin ve tekrar deneyin", "Tamam");
             }
 
 
+            UserDialogs.Instance.HideLoading();
         }
 
         private void Kayit_Tapped(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TemsilcilerPage : ContentPage
 	{
-        FirebaseClient firebase = new FirebaseClient("https://adjuvan-9b15c.firebaseio.com/");
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         List<TemsilciModel> temsilciler = new List<TemsilciModel>();
         public TemsilcilerPage()
 		{
