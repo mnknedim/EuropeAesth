@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace EuropeAesth.Droid
 {
-    [Activity(Theme = "@style/Theme.Splash", MainLauncher = true, Label = "EuropeAesth", Icon = "@drawable/logoandroid")]
+    [Activity(Theme = "@style/Theme.Splash", MainLauncher = true, Label = "Adjuvan Clinic", Icon = "@drawable/logoandroid")]
     public class SplashScreen : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
