@@ -24,7 +24,7 @@ namespace EuropeAesth.ViewPages
 
             for (int i = 1; i < 11; i++)
             {
-                collection.Add(new ImageSlider { ImageUrl = $"slayt{i}.png", Detail = "Tanıtım" });
+                collection.Add(new ImageSlider { ImageUrl = $"slayt{i}.png", Detail = "" });
             }
 
             StackLayout body = new StackLayout()
