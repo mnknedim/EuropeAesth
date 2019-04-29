@@ -82,7 +82,6 @@ namespace EuropeAesth.Pages.Temsilci
             IslemP.SelectedIndexChanged += TotalCalculate_AfterChanged;
             HotelP.SelectedIndexChanged += HotelP_SelectedIndexChanged;
             Transfer.SelectedIndexChanged += TotalCalculate_AfterChanged;
-            GunSayisi.SelectedIndexChanged += TotalCalculate_AfterChanged;
         }
 
         private void Transfer_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,7 +97,6 @@ namespace EuropeAesth.Pages.Temsilci
         private void HotelP_SelectedIndexChanged(object sender, EventArgs e)
         {
             var hotelSender = ((Picker)sender).SelectedItem as HotelModel;
-            GunSayisi.IsEnabled = hotelSender.HotelAd == "Otel istemiyorum" ? false : true;
             TotalCalculate_AfterChanged(sender, e);
         }
 
@@ -116,15 +114,12 @@ namespace EuropeAesth.Pages.Temsilci
             var secilenHotel = HotelP.SelectedItem as HotelModel;
             var secilenIslem = IslemP.SelectedItem as MedicalIslem;
             var secilenTransfer = Transfer.SelectedItem as string;
-            var secilenGunSayisi = GunSayisi.SelectedItem as string;
             var toplamKar = VerilenFiyat.Text != "" ? VerilenFiyat.Text : "0";
 
             var hotelFiyat = secilenHotel != null ? secilenHotel.Fiyat : 0;
             var islemFiyat = secilenIslem != null ? secilenIslem.Fiyat : 0;
             var transferFiyat= secilenTransfer == "Var" ? 400 : 0;
-            var otelTopFiyat = secilenGunSayisi != null ? Convert.ToInt32(secilenGunSayisi) : 0;
             var topKarFiyat = Convert.ToInt32(toplamKar);
-            Total = (islemFiyat + transferFiyat + (hotelFiyat * otelTopFiyat) + topKarFiyat).ToString();
 
             DovizHesapla(Total);
         }
@@ -163,7 +158,7 @@ namespace EuropeAesth.Pages.Temsilci
             {
                 Hotel = hotel,
                 HastaKod = HastaTelKod,
-                TemsilciKod = App.Uyg.TemsilciKod,
+                TemsilciKod = App.Uyg.LoginTemsilci.TemsilciKod,
                 Transfer = transfer,
                 VerilenTeklif = VerilenFiyat.Text,
                 OnayDurumu = 0,
@@ -197,6 +192,11 @@ namespace EuropeAesth.Pages.Temsilci
         private void VazgecButon_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new TemsilciPage();
+        }
+
+        private void CalenderBox_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EuropeAesth.Component;
 using EuropeAesth.Model;
+using EuropeAesth.Pages.Temsilci;
 using Firebase.Database;
 using Firebase.Database.Query;
 using System;
@@ -21,8 +22,6 @@ namespace EuropeAesth.Pages
 		{
 			InitializeComponent ();
 
-            UstStack.Children.Add(new ButtonView { ImageUrl = "ic_hasta_ekle.png", UnderText = "Hasta Ekle", PageName = new HastaEklePage(), TappedCommand = CallPages });
-            AltStack.Children.Add(new ButtonView { ImageUrl = "ic_kabulHastalar.png", UnderText = "Hastalar", PageName = new TaburcuEt(), TappedCommand = CallPages });
         }
 
         public Command CallPages = new Command(async (e) => {
@@ -42,8 +41,8 @@ namespace EuropeAesth.Pages
                        var aa = await firebase.Child("PromosyonKodlar").PostAsync(new PromosyonModel
                         {
                             PromosyonKod = _PromosyonKod,
-                            TemsilciKod = App.Uyg.TemsilciKod
-                        });
+                            TemsilciKod = App.Uyg.LoginTemsilci.TemsilciKod,
+                       });
                         await App.Current.MainPage.DisplayAlert("Başarılı", $"Kod : {_PromosyonKod}", "Tamam");
 
                     }
@@ -69,6 +68,11 @@ namespace EuropeAesth.Pages
                 return CreateKod(allKods);
 
             return pKod;
+        }
+
+        private async void BtnHastaEkle_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new HastaEklePage());
         }
     }
 }

@@ -5,32 +5,54 @@
              x:Class="EuropeAesth.Pages.BanaOzel">
     <ContentPage.Content>
         <StackLayout>
-            <custom:ExGrid>
-                <Image Source="arkplan.png" 
-                       Aspect="AspectFill" 
-                       VerticalOptions="FillAndExpand"
-                       HorizontalOptions="FillAndExpand"
-                       ></Image>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="#02b294"/>
+
                 <StackLayout>
-                    <Image Source="logoandroid.png" 
-                           Margin="15"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           ></Image>
-                    <custom:ExEntry x:Name="txtKullaniciAdi" Placeholder="Kullanıcı Adı" ></custom:ExEntry>
-                    <custom:ExEntry x:Name="txtParola" Placeholder="Parola" IsPassword="True"></custom:ExEntry>
-                    <ImageButton BackgroundColor="Transparent" x:Name="GirisButon" Source="GirisYap.png" Clicked="GirisButon_Clicked"></ImageButton>
-                    <Label Text="Kayıt Ol" Margin="10" 
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           HorizontalTextAlignment="Center"
-                           >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Kayit_Tapped"></TapGestureRecognizer>
-                        </Label.GestureRecognizers>
+                    <Image Source="Ustlogo.png"
+                       VerticalOptions="Start"
+                           HorizontalOptions="Fill"
+                       Margin="0,100,0,0"
+                       HeightRequest="100"/>
+                    
+                    <Label Text="Adjuvan Clinic"
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       HorizontalTextAlignment="Center"
+                       Margin="0">
+                        
                     </Label>
                 </StackLayout>
-            </custom:ExGrid>
+                
+
+                <Grid VerticalOptions="CenterAndExpand" Margin="15,100,15,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <BoxView BackgroundColor="DimGray" Opacity="0.5" Margin="20,0" CornerRadius="20"></BoxView>
+                    <StackLayout  Margin="25,30" Padding="10,20">
+                        <Frame Margin="10,15" CornerRadius="10"  BackgroundColor="White" >
+                            <custom:ImageEntry Text="ABT02" x:Name="UserName" HeightRequest="40" Placeholder="Kullanıcı Adı" BackgroundColor="White" Margin="-15" Image="ic_user_login" />
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry Text="123456" x:Name="Password" HeightRequest="40" Placeholder="Parola" BackgroundColor="White" Margin="-15" Image="ic_password" IsPassword="True"/>
+                        </Frame>
+
+                        <Button x:Name="BtnGiris" Text="Giriş" TextColor="#0a5e6b" BackgroundColor="#ddfad8" VerticalOptions="EndAndExpand"  Margin="55,30,55,0" CornerRadius="10" Clicked="GirisButon_Clicked"/>
+                    </StackLayout>
+
+                </Grid>
+
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,4 +1,6 @@
-﻿using EuropeAesth.Pages;
+﻿using EuropeAesth.Model;
+using EuropeAesth.Pages;
+using Syncfusion.Licensing;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,12 +12,12 @@ namespace EuropeAesth
     {
         public static App Uyg => Current as App;
 
-        public string TemsilciKod;
+        public TemsilciModel LoginTemsilci;
         public string GirenMail;
         public App()
         {
             InitializeComponent();
-
+            SyncfusionLicenseProvider.RegisterLicense("OTQwNjVAMzEzNzJlMzEyZTMwV0c2ODdyQU1jeDBuTUozM3lVZE1uNnpQTEI0Rkc3WGJxRU5RMXBwOHczND0=");
             MainPage = new TabbedMainPage();
         }
 

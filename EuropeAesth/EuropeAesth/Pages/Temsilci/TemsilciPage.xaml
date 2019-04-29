@@ -5,27 +5,27 @@
              x:Class="EuropeAesth.Pages.TemsilciPage">
     <ContentPage.Content>
         <StackLayout >
-            <custom:ExGrid >
-                <Image Source="arkplan.png" 
-                       Aspect="AspectFill" 
-                       VerticalOptions="FillAndExpand"
-                       HorizontalOptions="FillAndExpand"
-                       ></Image>
-                <ScrollView>
-                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                        <StackLayout x:Name="UstStack" Orientation="Horizontal">
-
-                        </StackLayout>
-                        <StackLayout x:Name="AltStack" Orientation="Horizontal">
-
-                        </StackLayout>
-                        <StackLayout x:Name="Alt2Stack" Orientation="Horizontal">
-
-                        </StackLayout>
-
-                    </StackLayout>
-                </ScrollView>
-            </custom:ExGrid>
+                <Grid VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <BoxView BackgroundColor="#02b294"/>
+                <StackLayout>
+                    <Button x:Name="BtnHastaEkle" Text="Hasta Ekle" 
+                            FontSize="Medium" FontAttributes="Bold"
+                            TextColor="#0a5e6b" BackgroundColor="#6ef68e"
+                            VerticalOptions="CenterAndExpand"  Margin="55,50,55,0" 
+                            CornerRadius="10" Clicked="BtnHastaEkle_Clicked" HeightRequest="100"/>
+                    <Button x:Name="BtnHastalarim" Text="Hastalarım" 
+                            FontSize="Medium" FontAttributes="Bold"
+                            TextColor="#0a5e6b" BackgroundColor="#ddfad8"
+                            VerticalOptions="CenterAndExpand"  Margin="55,0,55,50" 
+                            CornerRadius="10" HeightRequest="100"/>
+                </StackLayout>
+                </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

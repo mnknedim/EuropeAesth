@@ -47,7 +47,7 @@ namespace EuropeAesth.Pages
                     Ulke = HUlke.Text,
                     YetkiKod = 3,
                     Şehir = HSehir.Text,
-                    TemsilciKod = App.Uyg.TemsilciKod,
+                    TemsilciKod = App.Uyg.LoginTemsilci.TemsilciKod,
                     
                 };
 

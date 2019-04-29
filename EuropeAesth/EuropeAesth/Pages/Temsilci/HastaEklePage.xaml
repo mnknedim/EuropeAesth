@@ -5,23 +5,40 @@
              x:Class="EuropeAesth.Pages.HastaEklePage">
     <ContentPage.Content>
         <StackLayout>
-            <custom:ExGrid>
-                <Image Source="arkplan.png" 
-                       Aspect="AspectFill" 
-                       VerticalOptions="FillAndExpand"
-                       HorizontalOptions="FillAndExpand"
-                       ></Image>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="#02b294"/>
                 <ScrollView>
-                    <StackLayout>
+                    <StackLayout Margin="20,55">
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="FTemsilciKod" HeightRequest="45" Margin="-15" Placeholder="Temsilci Kod" IsEnabled="False" ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry  x:Name="HAdSoyad" HeightRequest="45" Margin="-15" Placeholder="Ad Soyad" ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="HUlke" HeightRequest="45" Margin="-15" Placeholder="Ülke" ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="HSehir" HeightRequest="45" Margin="-15" Placeholder="Şehir"  ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="HTelefon" HeightRequest="45" Margin="-15" Placeholder="Telefon" ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="HEmail" HeightRequest="45" Margin="-15" Placeholder="Email" ></custom:ImageEntry>
+                        </Frame>
 
-                        <custom:RegEntry x:Name="FTemsilciKod" Placeholder="Temsilci Kod" IsEnabled="False" ></custom:RegEntry>
-                        <custom:RegEntry x:Name="HAdSoyad" Placeholder="Ad Soyad" ></custom:RegEntry>
-                        <custom:RegEntry x:Name="HUlke" Placeholder="Ülke" ></custom:RegEntry>
-                        <custom:RegEntry x:Name="HSehir" Placeholder="Şehir" ></custom:RegEntry>
-                        <custom:RegEntry x:Name="HTelefon" Placeholder="Telefon" ></custom:RegEntry>
-                        <custom:RegEntry x:Name="HEmail" Placeholder="Email" ></custom:RegEntry>
+                        <Button x:Name="BtnKayit" Text="KAYIT" 
+                                TextColor="#0a5e6b" BackgroundColor="#ddfad8" 
+                                VerticalOptions="EndAndExpand"  Margin="55,30,55,0"
+                                CornerRadius="10" Clicked="Kayit_Clicked"/>
 
-                        <ImageButton BackgroundColor="Transparent" x:Name="Kayit" Source="KayitOl.png" Clicked="Kayit_Clicked"></ImageButton>
                         <Label Text="Vazgeç" Margin="10" 
                            FontSize="Medium"
                            FontAttributes="Bold"
@@ -32,7 +49,7 @@
                         </Label>
                     </StackLayout>
                 </ScrollView>
-            </custom:ExGrid>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
