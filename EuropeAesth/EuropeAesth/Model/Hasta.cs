@@ -6,7 +6,7 @@ namespace EuropeAesth.Model
 {
     public class KullaniciHasta
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Email { get; set; }
         public string AdSoyad { get; set; }
         public string Parola { get; set; }
@@ -25,8 +25,9 @@ namespace EuropeAesth.Model
         public string Hastahane { get; set; }
         public string Hotel { get; set; }
         public string Transfer { get; set; }
-        public string VerilenTeklif { get; set; }
-        public string ToplamFiyat { get; set; }
+        public string VerilenTeklifEuro { get; set; }
+        public string ToplamFiyatTl { get; set; }
+        public string ToplamFiyatEuro { get; set; }
         public int OnayDurumu { get; set; }
         public string SonDurum { get; set; }
     }

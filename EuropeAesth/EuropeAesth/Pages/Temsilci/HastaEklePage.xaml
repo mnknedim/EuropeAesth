@@ -14,12 +14,14 @@
                 </Grid.ColumnDefinitions>
                 <BoxView BackgroundColor="#02b294"/>
                 <ScrollView>
-                    <StackLayout Margin="20,55">
+                    <StackLayout Margin="20,70">
+                        <Label Text="HASTA EKLE"
+                               FontAttributes="Bold"
+                               FontSize="Large"
+                               HorizontalTextAlignment="Center"
+                               TextColor="White"></Label>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="FTemsilciKod" HeightRequest="45" Margin="-15" Placeholder="Temsilci Kod" IsEnabled="False" ></custom:ImageEntry>
-                        </Frame>
-                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry  x:Name="HAdSoyad" HeightRequest="45" Margin="-15" Placeholder="Ad Soyad" ></custom:ImageEntry>
+                            <custom:ImageEntry  x:Name="HAdSoyad" HeightRequest="45" Margin="-15" Placeholder="Ad Soyad"  ></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
                             <custom:ImageEntry x:Name="HUlke" HeightRequest="45" Margin="-15" Placeholder="Ülke" ></custom:ImageEntry>
@@ -28,10 +30,10 @@
                             <custom:ImageEntry x:Name="HSehir" HeightRequest="45" Margin="-15" Placeholder="Şehir"  ></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="HTelefon" HeightRequest="45" Margin="-15" Placeholder="Telefon" ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="HTelefon" HeightRequest="45" Margin="-15" Placeholder="Telefon" Keyboard="Telephone" ></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="HEmail" HeightRequest="45" Margin="-15" Placeholder="Email" ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="HEmail" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" ></custom:ImageEntry>
                         </Frame>
 
                         <Button x:Name="BtnKayit" Text="KAYIT" 

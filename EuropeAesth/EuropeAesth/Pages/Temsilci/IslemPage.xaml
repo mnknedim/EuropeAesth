@@ -16,13 +16,18 @@
             <BoxView BackgroundColor="#02b294"/>
             <ScrollView>
                 <StackLayout>
-                    <StackLayout Margin="25,35" Padding="10,20">
+                    <StackLayout Margin="25,70" Padding="10,20">
+                        <Label Text="YAPILACAK İŞLEM"
+                               FontAttributes="Bold"
+                               FontSize="Large"
+                               HorizontalTextAlignment="Center"
+                               TextColor="White"></Label>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
                             <custom1:ImagePicker x:Name="IslemP" Title="İşlemler" 
                             ItemDisplayBinding="{Binding Islem}" 
                             ItemsSource="{Binding Islemler}"
                             BackgroundColor="White"
-                            Image="ic_dropdown" HeightRequest="35" Margin="-15" >
+                            Image="ic_dropdown" HeightRequest="40" Margin="-15" >
                             </custom1:ImagePicker>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
@@ -30,16 +35,19 @@
                             ItemDisplayBinding="{Binding HotelAd}"
                             ItemsSource="{Binding Oteller}"
                             BackgroundColor="White"
-                            Image="ic_dropdown" HeightRequest="35" Margin="-15" >
+                            Image="ic_dropdown" HeightRequest="40" Margin="-15" >
                             </custom1:ImagePicker>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="Tarih" HeightRequest="35" Placeholder="Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
+                            <custom:ImageEntry x:Name="GirisTarih" HeightRequest="40" Placeholder="Giriş Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="CikisTarih" HeightRequest="40" Placeholder="Çıkış Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
                             <custom1:ImagePicker x:Name="Transfer" ItemDisplayBinding="Havaalanı Transfer"
                             BackgroundColor="White"
-                           HeightRequest="35" Margin="-15"
+                           HeightRequest="40" Margin="-15"
                             Image="ic_dropdown" >
                                 <Picker.Items>
                                     <x:String>Var</x:String>
@@ -48,20 +56,20 @@
                             </custom1:ImagePicker>
                         </Frame>
 
-                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="VerilenFiyat" HeightRequest="35" Placeholder="Verilen Teklif" BackgroundColor="White" Margin="-15" Image="ic_tl" KeyboardIsHide="True"/>
-                        </Frame>
+                        
                         <StackLayout>
                             <custom:ExLabel Text= "Toplam(₺)"  ></custom:ExLabel>
-                            <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                                <custom:ImageEntry HeightRequest="35" Margin="-15" Text= "{Binding Total}" ></custom:ImageEntry>
-                            </Frame>
+                            <custom:ExLabel Text= "{Binding Total}" Margin="20,-20,20,20"></custom:ExLabel>
+                        </StackLayout>
+                        <StackLayout>
                             <custom:ExLabel Text= "Toplam(€)"  ></custom:ExLabel>
-                            <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                                <custom:ExLabel HeightRequest="35" Margin="-15" Text= "{Binding TotalEuro}" VerticalTextAlignment="Start"></custom:ExLabel>
-                            </Frame>
+                            <custom:ExLabel Text= "{Binding TotalEuro}" Margin="20,-20,20,20"></custom:ExLabel>
                         </StackLayout>
 
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="VerilenFiyat" HeightRequest="40" Placeholder="Verilen Teklif" BackgroundColor="White" Margin="-15" Image="ic_tl" KeyboardIsHide="True"/>
+                        </Frame>
+                        
                         <Button x:Name="BtnGonder" Text="Devam" TextColor="White" 
                                 BackgroundColor="#ffb900" VerticalOptions="EndAndExpand"  
                                 Margin="55,30,55,60" CornerRadius="10" Clicked="DevamButon_Clicked"/>

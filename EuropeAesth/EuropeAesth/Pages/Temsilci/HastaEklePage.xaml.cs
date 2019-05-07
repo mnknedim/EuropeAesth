@@ -19,10 +19,22 @@ namespace EuropeAesth.Pages
         public HastaEklePage()
         {
             InitializeComponent();
+            HTelefon.TextChanged += HTelefon_TextChanged;
+        }
+
+        private void HTelefon_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ((e.OldTextValue == "" || e.OldTextValue == null) && e.NewTextValue == "0")
+                HTelefon.Text = "";
+            if (HTelefon.Text.Length > 10)
+                HTelefon.Text = e.OldTextValue;
         }
 
         private async void Kayit_Clicked(object sender, EventArgs e)
         {
+
+
+
             FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
             var tumHastalar = await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>();
             var kayitliVarmi = tumHastalar.Any(x => x.Object.Telefon == HTelefon.Text);
@@ -41,6 +53,7 @@ namespace EuropeAesth.Pages
             {
                 var HastaEkle = new KullaniciHasta()
                 {
+                    Id = new Guid(),
                     AdSoyad = HAdSoyad.Text,
                     Email = HEmail.Text,
                     Telefon = HTelefon.Text,

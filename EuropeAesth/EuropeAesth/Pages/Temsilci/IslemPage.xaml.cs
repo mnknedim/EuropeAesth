@@ -1,6 +1,8 @@
-﻿using EuropeAesth.Model;
+﻿using EuropeAesth.Custom;
+using EuropeAesth.Model;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Syncfusion.SfCalendar.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -52,7 +54,10 @@ namespace EuropeAesth.Pages.Temsilci
 
         List<MedicalIslem> ListIslem = new List<MedicalIslem>();
         List<HotelModel> ListOteller = new List<HotelModel>();
-
+        DateTime GirisTime;
+        DateTime CikisTime;
+        
+        string secTarih = "";
         string HastaTelKod;
 
         public IslemPage (string hastatel)
@@ -60,8 +65,56 @@ namespace EuropeAesth.Pages.Temsilci
             HastaTelKod = hastatel;
             BindingContext = this;
 			InitializeComponent ();
+            GirisTarih.Focused += GirisTarih_Focused;
+            CikisTarih.Focused += CikisTarih_Focused;
+            calendar.SelectionChanged += Calendar_SelectionChanged;
             Load();
         }
+
+        private void CikisTarih_Focused(object sender, FocusEventArgs e)
+        {
+            secTarih = "Çıkış";
+            CalenderGrid.IsVisible = true;
+            var aa = calendar.SelectedDate;
+        }
+
+        private void GirisTarih_Focused(object sender, FocusEventArgs e)
+        {
+            secTarih = "Giriş";
+            CalenderGrid.IsVisible = true;
+            var aa = calendar.SelectedDate;
+        }
+
+        int days = 1;
+        private void Calendar_SelectionChanged(object sender, Syncfusion.SfCalendar.XForms.SelectionChangedEventArgs e)
+        {
+            
+            var sfcalender = sender as SfCalendar;
+            var dateString = sfcalender.SelectedDate.Value.ToString();
+            var showDate = dateString.Substring(0, dateString.IndexOf(' '));
+            if (secTarih == "Giriş")
+            {
+                GirisTarih.Text = showDate;
+                GirisTime = sfcalender.SelectedDate.Value;
+            }
+            else
+            {
+                CikisTarih.Text = showDate;
+                CikisTime = sfcalender.SelectedDate.Value;
+            }
+
+            if (GirisTime.Year != 0001 && CikisTime.Year != 0001)
+            {
+                var TotalTime = CikisTime.Subtract(GirisTime);
+                days = TotalTime.Days;
+
+            }
+            TotalCalculate_AfterChanged(sender, e);
+            CalenderGrid.IsVisible = false;
+            
+        }
+
+      
 
         private async void Load()
         {
@@ -104,7 +157,7 @@ namespace EuropeAesth.Pages.Temsilci
         {
 
             var islemSender =((Picker)sender).SelectedItem as MedicalIslem;
-            var otel = HotelP.SelectedItem != null ? HotelP.SelectedItem as HotelModel : new HotelModel { Fiyat = 0};
+            var otel = HotelP.SelectedItem != null ? HotelP.SelectedItem as HotelModel : new HotelModel { Fiyat = 0 };
             var transfer = (string)Transfer.SelectedItem == "Var" ? 400 : 0;
             Total = (islemSender.Fiyat + otel.Fiyat + transfer).ToString() + " ₺";
         }
@@ -114,12 +167,14 @@ namespace EuropeAesth.Pages.Temsilci
             var secilenHotel = HotelP.SelectedItem as HotelModel;
             var secilenIslem = IslemP.SelectedItem as MedicalIslem;
             var secilenTransfer = Transfer.SelectedItem as string;
-            var toplamKar = VerilenFiyat.Text != "" ? VerilenFiyat.Text : "0";
+            var verilenFiyat = VerilenFiyat.Text != "" ? VerilenFiyat.Text : "0";
 
             var hotelFiyat = secilenHotel != null ? secilenHotel.Fiyat : 0;
             var islemFiyat = secilenIslem != null ? secilenIslem.Fiyat : 0;
             var transferFiyat= secilenTransfer == "Var" ? 400 : 0;
-            var topKarFiyat = Convert.ToInt32(toplamKar);
+            var topKarFiyat = Convert.ToInt32(verilenFiyat);
+
+            Total = ((hotelFiyat * days) + islemFiyat + transferFiyat + topKarFiyat ).ToString(); 
 
             DovizHesapla(Total);
         }
@@ -160,10 +215,11 @@ namespace EuropeAesth.Pages.Temsilci
                 HastaKod = HastaTelKod,
                 TemsilciKod = App.Uyg.LoginTemsilci.TemsilciKod,
                 Transfer = transfer,
-                VerilenTeklif = VerilenFiyat.Text,
+                VerilenTeklifEuro = VerilenFiyat.Text,
                 OnayDurumu = 0,
                 SonDurum = "Beklemede",
-                ToplamFiyat = Total
+                ToplamFiyatTl = Total,
+                ToplamFiyatEuro = TotalEuro
             };
 
             try
@@ -196,7 +252,7 @@ namespace EuropeAesth.Pages.Temsilci
 
         private void CalenderBox_Tapped(object sender, EventArgs e)
         {
-
+            CalenderGrid.IsVisible = false;
         }
     }
 }

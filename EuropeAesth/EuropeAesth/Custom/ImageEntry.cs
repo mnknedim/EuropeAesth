@@ -9,7 +9,8 @@ namespace EuropeAesth.Custom
     {
         public ImageEntry()
         {
-            this.HeightRequest = 45;
+            this.HeightRequest = 50;
+            
         }
         public static readonly BindableProperty KeyboardIsHideProperty =
           BindableProperty.Create(nameof(KeyboardIsHide), typeof(bool), typeof(ImageEntry), false);

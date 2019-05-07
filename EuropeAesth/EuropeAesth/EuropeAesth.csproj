@@ -34,7 +34,7 @@
     <EmbeddedResource Update="Pages\Temsilci\HastaEklePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Temsilci\Hastalarim.xaml">
+    <EmbeddedResource Update="Pages\Temsilci\Hastalarim\Hastalarim.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Temsilci\IslemPage.xaml">
