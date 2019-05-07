@@ -58,11 +58,11 @@ namespace EuropeAesth.Pages.Temsilci
         DateTime CikisTime;
         
         string secTarih = "";
-        string HastaTelKod;
+        Guid _HastaId;
 
-        public IslemPage (string hastatel)
+        public IslemPage (Guid hastaId)
 		{
-            HastaTelKod = hastatel;
+            _HastaId = hastaId;
             BindingContext = this;
 			InitializeComponent ();
             GirisTarih.Focused += GirisTarih_Focused;
@@ -109,12 +109,11 @@ namespace EuropeAesth.Pages.Temsilci
                 days = TotalTime.Days;
 
             }
-            TotalCalculate_AfterChanged(sender, e);
             CalenderGrid.IsVisible = false;
+
+            TotalCalculate_AfterChanged(sender, e);
             
         }
-
-      
 
         private async void Load()
         {
@@ -205,14 +204,14 @@ namespace EuropeAesth.Pages.Temsilci
         private async void DevamButon_Clicked(object sender, EventArgs e)
         {
             var islem = IslemP.SelectedItem.ToString();
-            var hotel = HotelP.SelectedItem.ToString();
+            var hotel = HotelP.SelectedItem as HotelModel;
             var transfer = Transfer.SelectedItem.ToString();
             var teklid = VerilenFiyat.Text;
 
             var HastaKayit = new KayitliHasta
             {
-                Hotel = hotel,
-                HastaKod = HastaTelKod,
+                Hotel = hotel.HotelAd,
+                HastaId = _HastaId,
                 TemsilciKod = App.Uyg.LoginTemsilci.TemsilciKod,
                 Transfer = transfer,
                 VerilenTeklifEuro = VerilenFiyat.Text,

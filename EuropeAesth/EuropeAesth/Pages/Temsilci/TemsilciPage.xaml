@@ -23,7 +23,7 @@
                             FontSize="Medium" FontAttributes="Bold"
                             TextColor="#0a5e6b" BackgroundColor="#ddfad8"
                             VerticalOptions="CenterAndExpand"  Margin="55,0,55,50" 
-                            CornerRadius="10" HeightRequest="100"/>
+                            CornerRadius="10" HeightRequest="100" Clicked="BtnHastalarim_Clicked"/>
                 </StackLayout>
                 </Grid>
         </StackLayout>

@@ -41,10 +41,10 @@
                     <BoxView BackgroundColor="DimGray" Opacity="0.5" Margin="20,0" CornerRadius="20"></BoxView>
                     <StackLayout  Margin="25,30" Padding="10,20">
                         <Frame Margin="10,15" CornerRadius="10"  BackgroundColor="White" >
-                            <custom:ImageEntry Text="ABT02" x:Name="UserName" HeightRequest="40" Placeholder="Kullanıcı Adı" BackgroundColor="White" Margin="-15" Image="ic_user_login" />
+                            <custom:ImageEntry Text="ABT01" x:Name="UserName" HeightRequest="45" Placeholder="Kullanıcı Adı" BackgroundColor="White" Margin="-15" Image="ic_user_login" />
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry Text="123456" x:Name="Password" HeightRequest="40" Placeholder="Parola" BackgroundColor="White" Margin="-15" Image="ic_password" IsPassword="True"/>
+                            <custom:ImageEntry Text="123456" x:Name="Password" HeightRequest="45" Placeholder="Parola" BackgroundColor="White" Margin="-15" Image="ic_password" IsPassword="True"/>
                         </Frame>
 
                         <Button x:Name="BtnGiris" Text="Giriş" TextColor="#0a5e6b" BackgroundColor="#ddfad8" VerticalOptions="EndAndExpand"  Margin="55,30,55,0" CornerRadius="10" Clicked="GirisButon_Clicked"/>

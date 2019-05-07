@@ -20,7 +20,7 @@ namespace EuropeAesth.Model
 
     public class KayitliHasta
     {
-        public string HastaKod { get; set; }
+        public Guid HastaId { get; set; }
         public string TemsilciKod { get; set; }
         public string Hastahane { get; set; }
         public string Hotel { get; set; }

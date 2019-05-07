@@ -39,21 +39,24 @@ namespace EuropeAesth.Pages
             var tumHastalar = await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>();
             var kayitliVarmi = tumHastalar.Any(x => x.Object.Telefon == HTelefon.Text);
 
-
             if (kayitliVarmi)
             {
                 var devamEt = await DisplayAlert("Bu Tlf No Kayıtlı", "Bu telefona ait başka bir hasta kayıtlı bulunuyor! Teklife devam etmek istemisiniz?", "Devam", "Vageç");
                 if (devamEt)
-                    await Navigation.PushModalAsync(new IslemPage(HTelefon.Text));
+                {
+                    var hastaId = tumHastalar.FirstOrDefault(x => x.Object.Telefon == HTelefon.Text).Object.Id;
+                    await Navigation.PushModalAsync(new IslemPage(hastaId));
+
+                }
                 else
                     return;
             }
             
-            if (kayitliVarmi != true)
+            if (!kayitliVarmi)
             {
                 var HastaEkle = new KullaniciHasta()
                 {
-                    Id = new Guid(),
+                    Id = Guid.NewGuid(),
                     AdSoyad = HAdSoyad.Text,
                     Email = HEmail.Text,
                     Telefon = HTelefon.Text,
@@ -68,7 +71,7 @@ namespace EuropeAesth.Pages
                 {
                     await firebase.Child("KullaniciHastalar").PostAsync(HastaEkle);
                     await DisplayAlert("Başarılı", "Hasta başarılı bir şekilde Eklendi", "Tamam");
-                    await Navigation.PushModalAsync(new IslemPage(HTelefon.Text));
+                    await Navigation.PushModalAsync(new IslemPage(HastaEkle.Id));
 
                 }
                 catch (Exception ex)

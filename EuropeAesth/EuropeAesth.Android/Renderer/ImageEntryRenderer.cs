@@ -10,6 +10,7 @@ using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.Content;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 using EuropeAesth.Custom;
@@ -55,6 +56,9 @@ namespace EuropeAesth.Droid.Renderer
             Control.Background.SetColorFilter(element.LineColor.ToAndroid(), PorterDuff.Mode.SrcAtop);
             if (element.KeyboardIsHide == true)
                 Control.ShowSoftInputOnFocus = false;
+
+            if (element.IsUpperKeyboard)
+                Control.SetRawInputType(InputTypes.ClassText | InputTypes.TextFlagCapCharacters);
 
 
         }

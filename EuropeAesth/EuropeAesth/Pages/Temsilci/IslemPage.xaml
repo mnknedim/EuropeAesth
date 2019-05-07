@@ -27,7 +27,7 @@
                             ItemDisplayBinding="{Binding Islem}" 
                             ItemsSource="{Binding Islemler}"
                             BackgroundColor="White"
-                            Image="ic_dropdown" HeightRequest="40" Margin="-15" >
+                            Image="ic_dropdown" HeightRequest="45" Margin="-15" >
                             </custom1:ImagePicker>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
@@ -35,19 +35,19 @@
                             ItemDisplayBinding="{Binding HotelAd}"
                             ItemsSource="{Binding Oteller}"
                             BackgroundColor="White"
-                            Image="ic_dropdown" HeightRequest="40" Margin="-15" >
+                            Image="ic_dropdown" HeightRequest="45" Margin="-15" >
                             </custom1:ImagePicker>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="GirisTarih" HeightRequest="40" Placeholder="Giriş Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
+                            <custom:ImageEntry x:Name="GirisTarih" HeightRequest="45" Placeholder="Giriş Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="CikisTarih" HeightRequest="40" Placeholder="Çıkış Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
+                            <custom:ImageEntry x:Name="CikisTarih" HeightRequest="45" Placeholder="Çıkış Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom1:ImagePicker x:Name="Transfer" ItemDisplayBinding="Havaalanı Transfer"
+                            <custom1:ImagePicker x:Name="Transfer" Title = "Havaalanı Transfer"
                             BackgroundColor="White"
-                           HeightRequest="40" Margin="-15"
+                           HeightRequest="45" Margin="-15"
                             Image="ic_dropdown" >
                                 <Picker.Items>
                                     <x:String>Var</x:String>
@@ -67,7 +67,7 @@
                         </StackLayout>
 
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="VerilenFiyat" HeightRequest="40" Placeholder="Verilen Teklif" BackgroundColor="White" Margin="-15" Image="ic_tl" KeyboardIsHide="True"/>
+                            <custom:ImageEntry x:Name="VerilenFiyat" HeightRequest="45" Placeholder="Verilen Teklif (€)" BackgroundColor="White" Margin="-15" />
                         </Frame>
                         
                         <Button x:Name="BtnGonder" Text="Devam" TextColor="White" 

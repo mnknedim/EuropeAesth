@@ -74,5 +74,10 @@ namespace EuropeAesth.Pages
         {
             await Navigation.PushModalAsync(new HastaEklePage());
         }
+
+        private async void BtnHastalarim_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new Hastalarim());
+        }
     }
 }

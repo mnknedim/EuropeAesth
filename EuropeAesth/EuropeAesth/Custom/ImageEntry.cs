@@ -15,6 +15,9 @@ namespace EuropeAesth.Custom
         public static readonly BindableProperty KeyboardIsHideProperty =
           BindableProperty.Create(nameof(KeyboardIsHide), typeof(bool), typeof(ImageEntry), false);
 
+        public static readonly BindableProperty IsUpperKeyboardProperty =
+         BindableProperty.Create(nameof(IsUpperKeyboard), typeof(bool), typeof(ImageEntry), true);
+
         public static readonly BindableProperty ImageProperty =
             BindableProperty.Create(nameof(Image), typeof(string), typeof(ImageEntry), string.Empty);
 
@@ -30,7 +33,11 @@ namespace EuropeAesth.Custom
         public static readonly BindableProperty ImageAlignmentProperty =
             BindableProperty.Create(nameof(ImageAlignment), typeof(ImageAlignment), typeof(ImageEntry), ImageAlignment.Left);
 
-
+        public bool IsUpperKeyboard
+        {
+            get { return (bool)GetValue(IsUpperKeyboardProperty); }
+            set { SetValue(IsUpperKeyboardProperty, false); }
+        }
         public bool KeyboardIsHide
         {
             get { return (bool)GetValue(KeyboardIsHideProperty); }

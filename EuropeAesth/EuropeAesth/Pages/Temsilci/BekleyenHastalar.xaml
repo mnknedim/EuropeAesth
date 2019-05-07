@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Custom="clr-namespace:EuropeAesth.Custom"
+             x:Class="EuropeAesth.Pages.Temsilci.BekleyenHastalar">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#02b294">
+            <Custom:ExGrid>
+                <ListView x:Name="LstBekleyen" ItemTapped="LstBekleyen_ItemTapped" ItemsSource="{Binding}" HeightRequest="50" RowHeight="100" Margin="0,75,0,0"
+                          BackgroundColor="Transparent" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Custom:ExGrid  Margin="5,5,5,5">
+                                    <BoxView BackgroundColor="IndianRed" Margin="5,5,5,5" HeightRequest="300"></BoxView>
+                                    <Label Text="{Binding AdSoyad}"
+                                       FontSize="Large"
+                                       FontAttributes="Bold"
+                                       VerticalTextAlignment="Center"
+                                       Margin="30,0"
+                                           ></Label>
+                                </Custom:ExGrid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Custom:ExGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

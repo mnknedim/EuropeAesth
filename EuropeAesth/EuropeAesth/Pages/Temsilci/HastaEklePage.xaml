@@ -30,10 +30,10 @@
                             <custom:ImageEntry x:Name="HSehir" HeightRequest="45" Margin="-15" Placeholder="Şehir"  ></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="HTelefon" HeightRequest="45" Margin="-15" Placeholder="Telefon" Keyboard="Telephone" ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="HTelefon" HeightRequest="45" Margin="-15" Placeholder="Telefon" Keyboard="Telephone" IsUpperKeyboard="False" ></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="HEmail" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="HEmail" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" IsUpperKeyboard="False" ></custom:ImageEntry>
                         </Frame>
 
                         <Button x:Name="BtnKayit" Text="KAYIT" 

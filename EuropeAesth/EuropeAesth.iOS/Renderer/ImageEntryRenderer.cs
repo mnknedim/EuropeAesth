@@ -49,6 +49,12 @@ namespace EuropeAesth.iOS.Renderer
                 BorderColor = element.LineColor.ToCGColor()
             };
 
+            if (element.IsUpperKeyboard)
+            {
+                var blah = KeyboardFlags.All;
+                var flagNone = blah |= KeyboardFlags.CapitalizeCharacter;
+                Control.AutocapitalizationType = UITextAutocapitalizationType.AllCharacters;
+            }
             textField.Layer.AddSublayer(bottomBorder);
             textField.Layer.MasksToBounds = true;
         }
