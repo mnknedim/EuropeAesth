@@ -122,7 +122,7 @@ namespace EuropeAesth.Pages.Temsilci
             foreach (var item in temsilciResult)
                 ListOteller.Add(item.Object);
 
-            ListOteller.Add(new HotelModel { HotelAd = "Otel istemiyorum", Fiyat = 0 });
+            ListOteller.Add(new HotelModel { HotelAd = "Otel istemiyorum", Fiyat = 0, HotelKod = "0" });
 
             var islemResult = await firebase.Child("MedicalIslemler").OnceAsync<MedicalIslem>();
             foreach (var item in islemResult)
@@ -149,7 +149,18 @@ namespace EuropeAesth.Pages.Temsilci
         private void HotelP_SelectedIndexChanged(object sender, EventArgs e)
         {
             var hotelSender = ((Picker)sender).SelectedItem as HotelModel;
+            if (hotelSender.HotelKod == "0")
+            {
+                GirisTarih.IsVisible = false;
+                CikisTarih.IsVisible = false;
+            }
+            else
+            {
+                GirisTarih.IsVisible = true;
+                CikisTarih.IsVisible = true;
+            }
             TotalCalculate_AfterChanged(sender, e);
+           
         }
 
         private void IslemP_SelectedIndexChanged(object sender, EventArgs e)
@@ -218,7 +229,10 @@ namespace EuropeAesth.Pages.Temsilci
                 OnayDurumu = 0,
                 SonDurum = "Beklemede",
                 ToplamFiyatTl = Total,
-                ToplamFiyatEuro = TotalEuro
+                ToplamFiyatEuro = TotalEuro,
+                GirisTarih = new DateTime(GirisTime.Year,GirisTime.Month,GirisTime.Day),
+                CikisTarih = new DateTime(CikisTime.Year, CikisTime.Month, CikisTime.Day),
+                GunSayisi = days
             };
 
             try

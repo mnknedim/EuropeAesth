@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EuropeAesth.Custom"
+             x:Class="EuropeAesth.Pages.HastaDetail">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#02b294">
+            <custom:ExGrid>
+                <BoxView BackgroundColor="White" Opacity="0.8" CornerRadius="15" Margin="35,55"></BoxView>
+                <StackLayout x:Name="st_Hasta" HorizontalOptions="Center" VerticalOptions="Center" Margin="30">
+
+                </StackLayout>
+            </custom:ExGrid>
+            
+               
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -23,6 +23,9 @@ namespace EuropeAesth.Model
         public Guid HastaId { get; set; }
         public string TemsilciKod { get; set; }
         public string Hastahane { get; set; }
+        public DateTime GirisTarih { get; set; }
+        public DateTime CikisTarih { get; set; }
+        public int GunSayisi { get; set; }
         public string Hotel { get; set; }
         public string Transfer { get; set; }
         public string VerilenTeklifEuro { get; set; }

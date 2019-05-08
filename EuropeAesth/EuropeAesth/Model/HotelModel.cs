@@ -6,7 +6,7 @@ namespace EuropeAesth.Model
 {
     public class HotelModel
     {
-        public int HotelKod { get; set; }
+        public string HotelKod { get; set; }
         public string HotelAd { get; set; }
         public string Adres { get; set; }
         public string Telefon { get; set; }

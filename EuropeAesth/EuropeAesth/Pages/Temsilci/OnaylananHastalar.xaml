@@ -12,13 +12,18 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Custom:ExGrid  Margin="5,5,5,5">
-                                    <BoxView BackgroundColor="Aqua" Margin="5,5,5,5" HeightRequest="300"></BoxView>
-                                    <Label Text="{Binding AdSoyad}"
-                                       FontSize="Large"
-                                       FontAttributes="Bold"
-                                       VerticalTextAlignment="Center"
-                                       Margin="30,0"
+                                    <BoxView BackgroundColor="Aqua" Margin="5,5,5,5" HeightRequest="250"></BoxView>
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Image Source="ic_userLogo.png"  Margin="10" HeightRequest="75"></Image>
+                                        <Label Text="{Binding AdSoyad}"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           VerticalTextAlignment="Center"
+                                           Margin="30,0"
                                            ></Label>
+                                        <StackLayout x:Name="HastaDetay" Margin="10" IsVisible="False"></StackLayout>
+                                    </StackLayout>
+                                   
                                 </Custom:ExGrid>
                             </ViewCell>
                         </DataTemplate>

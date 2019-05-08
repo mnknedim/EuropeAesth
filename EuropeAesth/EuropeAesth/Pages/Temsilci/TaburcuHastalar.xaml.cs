@@ -1,5 +1,8 @@
-﻿using System;
+﻿using EuropeAesth.Model;
+using Firebase.Database;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +15,29 @@ namespace EuropeAesth.Pages.Temsilci
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TaburcuHastalar : ContentPage
 	{
-		public TaburcuHastalar ()
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
+        ObservableCollection<KullaniciHasta> obsTaburcular= new ObservableCollection<KullaniciHasta>();
+        public TaburcuHastalar (IEnumerable<FirebaseObject<KayitliHasta>> taburcuHastalar)
 		{
 			InitializeComponent ();
+            Load(taburcuHastalar);
 		}
-	}
+
+        private async void Load(IEnumerable<FirebaseObject<KayitliHasta>> taburcuHastalar)
+        {
+            var allKullaniciHasta = await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>();
+            foreach (var item in taburcuHastalar)
+            {
+                var hasta = allKullaniciHasta.FirstOrDefault(x => x.Object.Id == item.Object.HastaId).Object;
+                obsTaburcular.Add(hasta);
+            }
+
+            LstTaburcu.BindingContext = obsTaburcular;
+        }
+
+        private void LstTaburcu_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+    }
 }

@@ -33,8 +33,6 @@ namespace EuropeAesth.Pages
         private async void Kayit_Clicked(object sender, EventArgs e)
         {
 
-
-
             FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
             var tumHastalar = await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>();
             var kayitliVarmi = tumHastalar.Any(x => x.Object.Telefon == HTelefon.Text);

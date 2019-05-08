@@ -35,9 +35,10 @@ namespace EuropeAesth.Pages.Temsilci
             LstOnaylanan.BindingContext = obsOnaylananlar;
         }
 
-        private void LstOnaylanan_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void LstOnaylanan_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            var hasta = (KullaniciHasta)e.Item;
+           await Navigation.PushModalAsync(new HastaDetail(hasta));
         }
     }
 }
