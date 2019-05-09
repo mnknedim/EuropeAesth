@@ -30,6 +30,7 @@ namespace EuropeAesth.Pages
             st_Hasta.Children.Add(new HDLabel ("Şehir : " , Hasta.KullaniciHasta.Şehir));
 
             var KHasta = Hasta.KayitliHasta;
+            st_HastaIslem.Children.Add(new HDLabel ( "İşlem : " , KHasta.Islem));
             st_HastaIslem.Children.Add(new HDLabel ( "Hotel : " , KHasta.Hotel));
             st_HastaIslem.Children.Add(new HDLabel ( "Son Durum : " , KHasta.SonDurum));
             st_HastaIslem.Children.Add(new HDLabel ( "GirisTarih : " , KHasta.GirisTarih.ToString().Substring(0, KHasta.GirisTarih.ToString().IndexOf(" "))));
