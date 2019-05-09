@@ -16,7 +16,7 @@ namespace EuropeAesth.Pages.Temsilci
 	public partial class BekleyenHastalar : ContentPage
 	{
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
-        ObservableCollection<KullaniciHasta> obsBekleyen = new ObservableCollection<KullaniciHasta>();
+        ObservableCollection<Hasta> obsBekleyen = new ObservableCollection<Hasta>();
         public BekleyenHastalar (IEnumerable<FirebaseObject<KayitliHasta>> bekleyenHastalar)
 		{
 			InitializeComponent ();
@@ -29,15 +29,16 @@ namespace EuropeAesth.Pages.Temsilci
             foreach (var item in bekleyenHastalar)
             {
                 var hasta = allKullaniciHasta.FirstOrDefault(x => x.Object.Id == item.Object.HastaId).Object;
-                obsBekleyen.Add(hasta);
+                obsBekleyen.Add(new Hasta { KayitliHasta = item.Object, KullaniciHasta = hasta });
             }
 
             LstBekleyen.BindingContext = obsBekleyen;
         }
 
-        private void LstBekleyen_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void LstBekleyen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            var hasta = (Hasta)e.Item;
+            await Navigation.PushModalAsync(new HastaDetail(hasta));
         }
     }
 }

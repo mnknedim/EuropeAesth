@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Custom;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Custom;
 using EuropeAesth.Model;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -62,6 +63,7 @@ namespace EuropeAesth.Pages.Temsilci
 
         public IslemPage (Guid hastaId)
 		{
+            UserDialogs.Instance.HideLoading();
             _HastaId = hastaId;
             BindingContext = this;
 			InitializeComponent ();
@@ -214,13 +216,17 @@ namespace EuropeAesth.Pages.Temsilci
 
         private async void DevamButon_Clicked(object sender, EventArgs e)
         {
-            var islem = IslemP.SelectedItem.ToString();
+            UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz...", MaskType.None);
+
+            var islemSender = IslemP.SelectedItem as MedicalIslem;
+            var islem = islemSender.Islem;
             var hotel = HotelP.SelectedItem as HotelModel;
             var transfer = Transfer.SelectedItem.ToString();
             var teklid = VerilenFiyat.Text;
 
             var HastaKayit = new KayitliHasta
             {
+                Islem = islem,
                 Hotel = hotel.HotelAd,
                 HastaId = _HastaId,
                 TemsilciKod = App.Uyg.LoginTemsilci.TemsilciKod,
@@ -244,6 +250,8 @@ namespace EuropeAesth.Pages.Temsilci
             }
             catch (Exception ex)
             {
+                UserDialogs.Instance.HideLoading();
+
                 await DisplayAlert("Hata", $"Hata oluştu. ({ex.Data.ToString()})", "Tamam");
             }
 

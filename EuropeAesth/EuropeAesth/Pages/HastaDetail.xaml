@@ -7,9 +7,22 @@
         <StackLayout BackgroundColor="#02b294">
             <custom:ExGrid>
                 <BoxView BackgroundColor="White" Opacity="0.8" CornerRadius="15" Margin="35,55"></BoxView>
-                <StackLayout x:Name="st_Hasta" HorizontalOptions="Center" VerticalOptions="Center" Margin="30">
+                <ScrollView Margin="35,55">
+                    <StackLayout Margin="10,55">
+                        <Label Text="Hasta Bilgileri"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium" FontAttributes="Bold"></Label>
+                        <StackLayout x:Name="st_Hasta">
 
-                </StackLayout>
+                        </StackLayout>
+                        <Label Text="İşlem Bilgileri"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium" FontAttributes="Bold"></Label>
+                        <StackLayout x:Name="st_HastaIslem">
+
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
             </custom:ExGrid>
             
                

@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Component;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Component;
 using EuropeAesth.Model;
 using EuropeAesth.Pages.Temsilci;
 using Firebase.Database;
@@ -21,6 +22,7 @@ namespace EuropeAesth.Pages
         public TemsilciPage ()
 		{
 			InitializeComponent ();
+            UserDialogs.Instance.HideLoading();
 
         }
 

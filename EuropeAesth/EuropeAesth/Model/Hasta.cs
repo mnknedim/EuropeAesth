@@ -4,6 +4,11 @@ using System.Text;
 
 namespace EuropeAesth.Model
 {
+    public class Hasta
+    {
+        public KullaniciHasta KullaniciHasta { get; set; }
+        public KayitliHasta KayitliHasta { get; set; }
+    }
     public class KullaniciHasta
     {
         public Guid Id { get; set; }
@@ -22,6 +27,7 @@ namespace EuropeAesth.Model
     {
         public Guid HastaId { get; set; }
         public string TemsilciKod { get; set; }
+        public string Islem { get; set; }
         public string Hastahane { get; set; }
         public DateTime GirisTarih { get; set; }
         public DateTime CikisTarih { get; set; }

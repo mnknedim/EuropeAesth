@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Model;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Model;
 using EuropeAesth.Pages.Temsilci;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -32,7 +33,7 @@ namespace EuropeAesth.Pages
 
         private async void Kayit_Clicked(object sender, EventArgs e)
         {
-
+            UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz...", MaskType.None);
             FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
             var tumHastalar = await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>();
             var kayitliVarmi = tumHastalar.Any(x => x.Object.Telefon == HTelefon.Text);
