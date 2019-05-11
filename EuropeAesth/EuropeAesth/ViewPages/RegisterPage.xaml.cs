@@ -25,16 +25,14 @@ namespace EuropeAesth.ViewPages
         private async void KayitOl_Clicked(object sender, EventArgs e)
         {
 
-            var kayit = new KullaniciModel
+            var kayit = new AllUser
             {
                 Email = txtEmail.Text,
                 AdSoyad = txtAdSoyad.Text,
                 Parola = txtParola.Text,
                 Telefon = txtTelefon.Text,
                 Ulke = txtUlke.Text,
-                YetkiKod = 3,
-                Şehir = txtSehir.Text,
-                PromosyonKod = txtPromosyonKod.Text
+                YetkiKod = 1,
             };
 
             try

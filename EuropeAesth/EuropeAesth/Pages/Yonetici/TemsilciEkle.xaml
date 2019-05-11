@@ -5,7 +5,60 @@
              x:Class="EuropeAesth.Pages.TemsilciEkle">
     <ContentPage.Content>
         <StackLayout>
-            <custom:ExGrid>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="#02b294"/>
+                <ScrollView>
+                    <StackLayout Margin="20,70">
+                        <Label Text="TEMSİLCİ EKLE"
+                               FontAttributes="Bold"
+                               FontSize="Large"
+                               HorizontalTextAlignment="Center"
+                               TextColor="White"></Label>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry  x:Name="TemsilciKod" HeightRequest="45" Margin="-15" Placeholder="Ad Soyad"  ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="Email" HeightRequest="45" Margin="-15" Placeholder="Ülke" ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="Parola" HeightRequest="45" Margin="-15" Placeholder="Şehir"  ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="AdSoyad" HeightRequest="45" Margin="-15" Placeholder="Telefon" Keyboard="Telephone" IsUpperKeyboard="False" ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="Ulke" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" IsUpperKeyboard="False" ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="Sehir" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" IsUpperKeyboard="False" ></custom:ImageEntry>
+                        </Frame>
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="Telefon" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" IsUpperKeyboard="False" ></custom:ImageEntry>
+                        </Frame>
+
+                        <Button x:Name="BtnKayit" Text="KAYIT" 
+                                TextColor="#0a5e6b" BackgroundColor="#ddfad8" 
+                                VerticalOptions="EndAndExpand"  Margin="55,30,55,0"
+                                CornerRadius="10" Clicked="Kayit_Clicked"/>
+
+                        <Label Text="Vazgeç" Margin="10" 
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Vazgec_Tapped"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <!--<custom:ExGrid>
                 <Image Source="arkplan.png" 
                        Aspect="AspectFill" 
                        VerticalOptions="FillAndExpand"
@@ -33,7 +86,7 @@
                         </Label>
                     </StackLayout>
                 </ScrollView>
-            </custom:ExGrid>
+            </custom:ExGrid>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -17,7 +17,5 @@ namespace EuropeAesth.Model
         public int UstTemsilci { get; set; }
         public List<int> AltTemsilci { get; set; }
 
-
-
     }
 }

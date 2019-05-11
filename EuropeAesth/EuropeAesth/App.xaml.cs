@@ -13,6 +13,7 @@ namespace EuropeAesth
         public static App Uyg => Current as App;
 
         public TemsilciModel LoginTemsilci;
+        public AllUser LoginUser;
         public string GirenMail;
         public App()
         {

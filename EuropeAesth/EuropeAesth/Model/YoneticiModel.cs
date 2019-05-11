@@ -14,4 +14,16 @@ namespace EuropeAesth.Model
         public string Telefon { get; set; }
 
     }
+
+    public class AllUser
+    {
+        public string UserKod { get; set; }
+        public int YetkiKod { get; set; }
+        public string Email { get; set; }
+        public string Parola { get; set; }
+        public string AdSoyad { get; set; }
+        public string Ulke { get; set; }
+        public string Sehir { get; set; }
+        public string Telefon { get; set; }
+    }
 }

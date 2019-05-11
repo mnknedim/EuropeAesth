@@ -25,6 +25,8 @@ namespace EuropeAesth.Pages
 
         private async void GirisButon_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushModalAsync(new TestPage());
+            return;
             try
             {
                 if (UserName.Text == null || Password.Text == null)
@@ -34,46 +36,68 @@ namespace EuropeAesth.Pages
                 }
 
                 UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz..", MaskType.Black);
-                if (UserName.Text.Any(x => x == 'Y'))
+
+                var userResult = await firebase.Child("AllUser").OnceAsync<AllUser>();
+                if (userResult != null)
                 {
-                    var kullaniciResult = await firebase.Child("Yoneticiler").OnceAsync<YoneticiModel>();
-                    if (kullaniciResult != null)
+                    var user = userResult.FirstOrDefault(x => x.Object.UserKod == UserName.Text && x.Object.Parola == Password.Text).Object;
+                    if (user == null)
                     {
-                        var kullaniciParola = kullaniciResult.Where(x => x.Object.YoneticiKod == UserName.Text).FirstOrDefault().Object.Parola;
-                        if (kullaniciParola == Password.Text)
-                            await Navigation.PushModalAsync(new YoneticiPage());
-                        else
-                            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+                        await DisplayAlert("Hatalı Giriş", "Lütfen bilgileri kontrol edin", "Tamam");
+                        return;
                     }
 
+                    App.Uyg.LoginUser = user;
+
+                    if (user.YetkiKod == 1)
+                        await Navigation.PushModalAsync(new YoneticiPage());
+
+                    if (user.YetkiKod == 2)
+                        await Navigation.PushModalAsync(new TemsilciPage());
+
                 }
-                else if (UserName.Text.Any(x => x == 'T'))
-                {
-                    var kullaniciResult = await firebase.Child("Temsilciler").OnceAsync<TemsilciModel>();
-                    if (kullaniciResult != null)
-                    {
-                        var kullanici = kullaniciResult.Where(x => x.Object.TemsilciKod == UserName.Text).FirstOrDefault().Object;
-                        if (kullanici.Parola == Password.Text)
-                        {
-                            await Navigation.PushModalAsync(new TemsilciPage());
-                            App.Uyg.LoginTemsilci = kullanici;
-                        }
-                        else
-                            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
-                    }
-                }
-                else
-                {
-                    var kullaniciResult = await firebase.Child("Kullanicilar").OnceAsync<KullaniciModel>();
-                    if (kullaniciResult != null)
-                    {
-                        var kullaniciParola = kullaniciResult.Where(x => x.Object.Email == UserName.Text).FirstOrDefault().Object.Parola;
-                        if (kullaniciParola == Password.Text)
-                            await Navigation.PushModalAsync(new UserPage());
-                        else
-                            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
-                    }
-                }
+                    
+
+                //if (UserName.Text.Any(x => x == 'Y'))
+                //{
+                //    var kullaniciResult = await firebase.Child("Yoneticiler").OnceAsync<YoneticiModel>();
+                //    if (kullaniciResult != null)
+                //    {
+                //        var kullaniciParola = kullaniciResult.Where(x => x.Object.YoneticiKod == UserName.Text).FirstOrDefault().Object.Parola;
+                //        if (kullaniciParola == Password.Text)
+                //            await Navigation.PushModalAsync(new YoneticiPage());
+                //        else
+                //            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+                //    }
+
+                //}
+                //else if (UserName.Text.Any(x => x == 'T'))
+                //{
+                //    var kullaniciResult = await firebase.Child("Temsilciler").OnceAsync<TemsilciModel>();
+                //    if (kullaniciResult != null)
+                //    {
+                //        var kullanici = kullaniciResult.Where(x => x.Object.TemsilciKod == UserName.Text).FirstOrDefault().Object;
+                //        if (kullanici.Parola == Password.Text)
+                //        {
+                //            await Navigation.PushModalAsync(new TemsilciPage());
+                //            App.Uyg.LoginTemsilci = kullanici;
+                //        }
+                //        else
+                //            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+                //    }
+                //}
+                //else
+                //{
+                //    var kullaniciResult = await firebase.Child("Kullanicilar").OnceAsync<KullaniciModel>();
+                //    if (kullaniciResult != null)
+                //    {
+                //        var kullaniciParola = kullaniciResult.Where(x => x.Object.Email == UserName.Text).FirstOrDefault().Object.Parola;
+                //        if (kullaniciParola == Password.Text)
+                //            await Navigation.PushModalAsync(new UserPage());
+                //        else
+                //            await DisplayAlert("Hatalı Bilgi", "Lütfen bilgileirnizi kontrol edin", "Tamam");
+                //    }
+                //}
             }
             catch (Exception)
             {
@@ -87,8 +111,8 @@ namespace EuropeAesth.Pages
 
         private void Kayit_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new RegisterPage());
-            //Navigation.PushModalAsync(new TestPage());
+            //Navigation.PushModalAsync(new RegisterPage());
+            Navigation.PushModalAsync(new TestPage());
         }
     }
 }

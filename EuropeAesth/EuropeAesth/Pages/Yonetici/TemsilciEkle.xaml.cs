@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Model;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Model;
 using Firebase.Database;
 using Firebase.Database.Query;
 using System;
@@ -25,28 +26,42 @@ namespace EuropeAesth.Pages
 
         private async void Kayit_Clicked(object sender, EventArgs e)
         {
-            var Temsilci = new TemsilciModel()
+            UserDialogs.Instance.ShowLoading("Kayıt ediliyor", MaskType.Gradient);
+            var kayitKontrol = await firebase.Child("AllUser").OnceAsync<AllUser>();
+            if (kayitKontrol == null)
+                return;
+            else
             {
-                TemsilciKod = FTemsilciKod.Text,
+                if (kayitKontrol.Any(x=>x.Object.UserKod == TemsilciKod.Text))
+                {
+                    await DisplayAlert("Kayıt Başarısız","Bu Temsilci kodunda kayıt bulunuyor. Farklı deneyiniz","");
+                    return;
+                }
+            }
+
+            var Temsilci = new AllUser()
+            {
+                UserKod = TemsilciKod.Text,
                 YetkiKod = 2,
-                AdSoyad = FTAdSoyad.Text,
-                Parola = FParola.Text,
-                TemsilciAd = FTemsilciAd.Text,
-                Telefon = FTelefon.Text,
-                Sehir = FSehir.Text,
-                Ulke = FUlke.Text,
+                Email = Email.Text,
+                AdSoyad = AdSoyad.Text,
+                Parola = Parola.Text,
+                Telefon = Telefon.Text,
+                Sehir = Sehir.Text,
+                Ulke = Ulke.Text,
             };
 
             try
             {
-                await firebase.Child("Temsilciler").PostAsync(Temsilci);
-                await DisplayAlert("", "Eklendi", "Tamam");
+                await firebase.Child("AllUser").PostAsync(Temsilci);
+                await DisplayAlert("Kayıt", "Başarılı", "Tamam");
                 
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Hata", $"Hata oluştu. ({ex.Data.ToString()})", "Tamam");
             }
+            UserDialogs.Instance.HideLoading();
 
         }
 

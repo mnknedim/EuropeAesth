@@ -30,15 +30,19 @@ namespace EuropeAesth.Pages
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         private async void  Btn_Clicked(object sender, EventArgs e)
         {
-            //var kayit = new YoneticiModel()
-            //{
-            //    AdSoyad = "Ali Kılıç",
-            //    YoneticiAd = "Adjuvan",
-            //    Parola = "123456",
-            //    Telefon = "05426377112",
-            //    YetkiKod = 1,
-            //    YoneticiKod = "340102"
-            //};
+            var kayit = new AllUser()
+            {
+                UserKod = "ali.kilic",
+                AdSoyad = "ALİ KILIÇ",
+                Parola = "123456",
+                Telefon = "5333042986",
+                YetkiKod = 1,
+                Email = "drkilicali@gmail.com",
+                Sehir = "İSTANBUL",
+                Ulke = "TÜRKİYE"
+            };
+            await firebase.Child("AllUser").PostAsync(kayit);
+            return;
 
             var hotelekle = new MedicalIslem
             {
