@@ -229,7 +229,7 @@ namespace EuropeAesth.Pages.Temsilci
                 Islem = islem,
                 Hotel = hotel.HotelAd,
                 HastaId = _HastaId,
-                TemsilciKod = App.Uyg.LoginTemsilci.TemsilciKod,
+                TemsilciKod = App.Uyg.LoginUser.UserKod,
                 Transfer = transfer,
                 VerilenTeklifEuro = VerilenFiyat.Text,
                 OnayDurumu = 0,

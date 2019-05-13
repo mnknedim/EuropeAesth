@@ -1,5 +1,8 @@
-﻿using EuropeAesth.Custom;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Custom;
 using EuropeAesth.Model;
+using Firebase.Database;
+using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +23,23 @@ namespace EuropeAesth.Pages
         //    set { SetValue(KullaniciHastaProperty, value); }
         //}
         //public static readonly BindableProperty KullaniciHastaProperty = BindableProperty.Create("KullaniciHasta", typeof(KullaniciHasta), typeof(HastaDetail), default(KullaniciHasta));
+        Hasta _hasta;
         public HastaDetail (Hasta Hasta)
 		{
 			InitializeComponent ();
+            if (App.Uyg.LoginUser.YetkiKod == 1)
+            {
+                HastaSil.IsVisible = true;
+
+                if (Hasta.KayitliHasta.OnayDurumu == 0)
+                    Onayla.IsVisible = true;
+
+                if (Hasta.KayitliHasta.OnayDurumu == 1)
+                    TaburcuEt.IsVisible = true;
+
+            }
+
+            _hasta = Hasta;
             st_Hasta.Children.Add(new HDLabel ("Ad Soyad : ", Hasta.KullaniciHasta.AdSoyad));
             st_Hasta.Children.Add(new HDLabel ("Email : ", Hasta.KullaniciHasta.Email));
             st_Hasta.Children.Add(new HDLabel ("Telefon : ", Hasta.KullaniciHasta.Telefon));
@@ -42,6 +59,43 @@ namespace EuropeAesth.Pages
             st_HastaIslem.Children.Add(new HDLabel ("Teklif € : " , KHasta.VerilenTeklifEuro + "€"));
 
 
+        }
+
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
+
+        private async void Onayla_Clicked(object sender, EventArgs e)
+        {
+            UserDialogs.Instance.ShowLoading("Onaylanıyor..",MaskType.Clear);
+            var hasta = (await firebase.Child("KayitliHasta").OnceAsync<KayitliHasta>()).FirstOrDefault(x => x.Object.HastaId == _hasta.KayitliHasta.HastaId);
+            hasta.Object.OnayDurumu = 1;
+            await firebase.Child("KayitliHasta").Child(hasta.Key).PutAsync(hasta.Object);
+            UserDialogs.Instance.HideLoading();
+            await DisplayAlert("Onaylandı", "Hasta onaylandı", "Tamam");
+            App.Current.MainPage = new YoneticiPage();
+        }
+
+        private async void TaburcuEt_Clicked(object sender, EventArgs e)
+        {
+            UserDialogs.Instance.ShowLoading("Taburcu ediliyor..", MaskType.Clear);
+            var hasta = (await firebase.Child("KayitliHasta").OnceAsync<KayitliHasta>()).FirstOrDefault(x => x.Object.HastaId == _hasta.KayitliHasta.HastaId);
+            hasta.Object.OnayDurumu = 2;
+            await firebase.Child("KayitliHasta").Child(hasta.Key).PutAsync(hasta.Object);
+            UserDialogs.Instance.HideLoading();
+            await DisplayAlert("Taburcu", "Hasta taburcu edildi", "Tamam");
+            App.Current.MainPage = new YoneticiPage();
+        }
+
+        private async void HastaSil_Clicked(object sender, EventArgs e)
+        {
+            UserDialogs.Instance.ShowLoading("Taburcu ediliyor..", MaskType.Clear);
+            var Kayitlihasta = (await firebase.Child("KayitliHasta").OnceAsync<KayitliHasta>()).FirstOrDefault(x => x.Object.HastaId == _hasta.KayitliHasta.HastaId);
+            var Kullancihasta = (await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>()).FirstOrDefault(x => x.Object.Id == _hasta.KullaniciHasta.Id);
+            
+            await firebase.Child("KayitliHasta").Child(Kayitlihasta.Key).DeleteAsync();
+            await firebase.Child("KullaniciHastalar").Child(Kullancihasta.Key).DeleteAsync();
+            UserDialogs.Instance.HideLoading();
+            await DisplayAlert("Silme", "Hasta silindi", "Tamam");
+            App.Current.MainPage = new YoneticiPage();
         }
     }
 }

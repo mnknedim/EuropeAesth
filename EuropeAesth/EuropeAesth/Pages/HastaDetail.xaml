@@ -19,8 +19,25 @@
                            HorizontalTextAlignment="Center"
                            FontSize="Medium" FontAttributes="Bold"></Label>
                         <StackLayout x:Name="st_HastaIslem">
-
                         </StackLayout>
+                        <Button x:Name="Onayla" Text="Onayla"
+                                    BackgroundColor="LawnGreen"
+                                    Margin="100,20"
+                                Clicked="Onayla_Clicked"
+                                IsVisible="False"
+                                    />
+                        <Button x:Name="TaburcuEt" Text="Taburcu Et"
+                                    BackgroundColor="Chocolate"
+                                    Margin="100,20"
+                                Clicked="TaburcuEt_Clicked"
+                                IsVisible="False"
+                                    />
+                        <Button x:Name="HastaSil" Text="Hastayı sil"
+                                    BackgroundColor="Red"
+                                    Margin="100,20"
+                                Clicked="HastaSil_Clicked"
+                                IsVisible="False"
+                                    />
                     </StackLayout>
                 </ScrollView>
             </custom:ExGrid>

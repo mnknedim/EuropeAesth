@@ -22,6 +22,18 @@
     <Compile Update="Pages\Temsilci\OnaylananHastalar.xaml.cs">
       <DependentUpon>OnaylananHastalar.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\Yonetici\BekleyenHastalar.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Yonetici\Hastalarim.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Yonetici\OnaylananHastalar.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Yonetici\TaburcuHastalar.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
     <Compile Update="Pages\Yonetici\TemsilcilerPage.xaml.cs">
       <DependentUpon>TemsilcilerPage.xaml</DependentUpon>
     </Compile>
@@ -53,15 +65,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Temsilci\TaburcuHastalar.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Yonetici\HastaKabul.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Yonetici\KabulHastalar.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Yonetici\TaburcuEt.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Yonetici\TemsilciEkle.xaml">

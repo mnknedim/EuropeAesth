@@ -25,33 +25,54 @@ namespace EuropeAesth.Pages
 
         private void HTelefon_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if ((e.OldTextValue == "" || e.OldTextValue == null) && e.NewTextValue == "0")
-                HTelefon.Text = "";
-            if (HTelefon.Text.Length > 10)
-                HTelefon.Text = e.OldTextValue;
+            
+            //if ((e.OldTextValue == "" || e.OldTextValue == null) && e.NewTextValue == "0")
+            //    HTelefon.Text = "";
+            //if (HTelefon.Text.Length > 10)
+            //    HTelefon.Text = e.OldTextValue;
         }
 
         private async void Kayit_Clicked(object sender, EventArgs e)
         {
             UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz...", MaskType.None);
             FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
-            var tumHastalar = await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>();
-            var kayitliVarmi = tumHastalar.Any(x => x.Object.Telefon == HTelefon.Text);
 
-            if (kayitliVarmi)
+            var kullaniciHastalar = await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>();
+            var KayitliHastalar = await firebase.Child("KayitliHasta").OnceAsync<KullaniciHasta>();
+
+            bool kullaniciMi = false;
+            bool kayitliMi = false;
+
+            if (kullaniciHastalar != null && KayitliHastalar != null)
+            {
+                kullaniciMi = kullaniciHastalar.FirstOrDefault(x => x.Object.Telefon == HTelefon.Text).Object.Id;
+
+                kayitliMi = KayitliHastalar.FirstOrDefault(x => x.Object.Id == HTelefon.Text).Object.Telefon; 
+
+
+            }
+
+
+            if (kullaniciMi && !kayitliMi)
             {
                 var devamEt = await DisplayAlert("Bu Tlf No Kayıtlı", "Bu telefona ait başka bir hasta kayıtlı bulunuyor! Teklife devam etmek istemisiniz?", "Devam", "Vageç");
                 if (devamEt)
                 {
-                    var hastaId = tumHastalar.FirstOrDefault(x => x.Object.Telefon == HTelefon.Text).Object.Id;
+                    var hastaId = kullaniciHastalar.FirstOrDefault(x => x.Object.Telefon == HTelefon.Text).Object.Id;
                     await Navigation.PushModalAsync(new IslemPage(hastaId));
 
                 }
                 else
                     return;
             }
-            
-            if (!kayitliVarmi)
+
+            if (kullaniciMi && kayitliMi)
+            {
+                await DisplayAlert("Kayitli","Bu numarada kayitli hasta var başka no deneyin","Tamam");
+                return;
+            }
+
+            if (!kullaniciMi && !kayitliMi)
             {
                 var HastaEkle = new KullaniciHasta()
                 {
@@ -62,7 +83,7 @@ namespace EuropeAesth.Pages
                     Ulke = HUlke.Text,
                     YetkiKod = 3,
                     Şehir = HSehir.Text,
-                    TemsilciKod = App.Uyg.LoginTemsilci.TemsilciKod,
+                    TemsilciKod = App.Uyg.LoginUser.UserKod,
                     
                 };
 
@@ -84,6 +105,15 @@ namespace EuropeAesth.Pages
         private void Vazgec_Tapped(object sender, EventArgs e)
         {
             App.Current.MainPage = new TemsilciPage();
+        }
+
+        private void HTelefon_Focused(object sender, FocusEventArgs e)
+        {
+            if (HTelefon.Text == "" || HTelefon.Text == null)
+            {
+                HTelefon.Text = "+";
+
+            }
         }
     }
 }

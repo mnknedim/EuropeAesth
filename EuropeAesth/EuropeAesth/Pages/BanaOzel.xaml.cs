@@ -25,8 +25,8 @@ namespace EuropeAesth.Pages
 
         private async void GirisButon_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new TestPage());
-            return;
+            //await Navigation.PushModalAsync(new TestPage());
+            //return;
             try
             {
                 if (UserName.Text == null || Password.Text == null)
