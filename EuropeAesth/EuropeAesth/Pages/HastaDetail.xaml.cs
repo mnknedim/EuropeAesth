@@ -6,6 +6,7 @@ using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,7 +26,7 @@ namespace EuropeAesth.Pages
         public static readonly BindableProperty TemsilciNameProperty = BindableProperty.Create("TemsilciName", typeof(string), typeof(HastaDetail), default(string));
 
         Hasta _hasta;
-        
+        HDLabel temsilci;
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public HastaDetail (Hasta _Hasta)
 		{
@@ -50,7 +51,7 @@ namespace EuropeAesth.Pages
             st_Hasta.Children.Add(new HDLabel ("Telefon : ", _Hasta.KullaniciHasta.Telefon));
             st_Hasta.Children.Add(new HDLabel ("Ülke : " , _Hasta.KullaniciHasta.Ulke));
             st_Hasta.Children.Add(new HDLabel ("Şehir : " , _Hasta.KullaniciHasta.Şehir));
-            st_Hasta.Children.Add(new HDLabel ("Temsilci : " , TemsilciName));
+            
 
             var KHasta = _Hasta.KayitliHasta;
             st_HastaIslem.Children.Add(new HDLabel ( "İşlem : " , KHasta.Islem));
@@ -107,6 +108,15 @@ namespace EuropeAesth.Pages
             UserDialogs.Instance.HideLoading();
             await DisplayAlert("Silme", "Hasta silindi", "Tamam");
             App.Current.MainPage = new YoneticiPage();
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == TemsilciNameProperty.PropertyName)
+            {
+                st_Hasta.Children.Add(new HDLabel("Temsilci : ", TemsilciName));
+            }
         }
     }
 }
