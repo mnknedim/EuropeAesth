@@ -16,7 +16,7 @@ namespace EuropeAesth.Pages
 	public partial class TemsilcilerPage : ContentPage
 	{
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
-        List<TemsilciModel> temsilciler = new List<TemsilciModel>();
+        List<AllUser> temsilciler = new List<AllUser>();
         public TemsilcilerPage()
 		{
             BindingContext = this;
@@ -26,18 +26,21 @@ namespace EuropeAesth.Pages
 
         private async void Load()
         {
-            var temsilciResult = await firebase.Child("Temsilciler").OnceAsync<TemsilciModel>();
+            var temsilciResult = await firebase.Child("AllUser").OnceAsync<AllUser>();
             foreach (var item in temsilciResult)
-                temsilciler.Add(item.Object);
+                if (item.Object.YetkiKod == 2)
+                {
+                    temsilciler.Add(item.Object);
+                }
 
             LstTemsilci.BindingContext = temsilciler;
         }
 
         private async void LstTemsilci_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var tmslc = (TemsilciModel)e.Item;
+            var tmslc = (AllUser)e.Item;
 
-            await Navigation.PushModalAsync(new TemsilciView() { Temsilci = tmslc });
+            await Navigation.PushModalAsync(new TemsilciDetail(tmslc));
         }
     }
 }

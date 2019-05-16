@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EuropeAesth.Custom"
+             x:Class="EuropeAesth.Pages.TemsilciDetail">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#02b294">
+            <custom:ExGrid>
+                <BoxView BackgroundColor="White" Opacity="0.8" CornerRadius="15" Margin="35,55"></BoxView>
+                <ScrollView Margin="35,55">
+                    <StackLayout Margin="10,55">
+                        <Label Text="Temsilci Bilgileri"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium" FontAttributes="Bold"></Label>
+                        <StackLayout x:Name="st_Temsilci">
+                        </StackLayout>
+                       
+                        <Button x:Name="bilgiDuzenle" Text="Bilgileri düzenle"
+                                    BackgroundColor="GhostWhite"
+                                    Margin="100,20"
+                                    IsVisible="False"
+                                    />
+                        <Button x:Name="TemsilciSil" Text="Temsilciyi sil"
+                                    BackgroundColor="Red"
+                                    Margin="100,20"
+                                Clicked="TemsilciSil_Clicked"
+                                IsVisible="False"
+                                    />
+                    </StackLayout>
+                </ScrollView>
+            </custom:ExGrid>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
