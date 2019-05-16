@@ -1,0 +1,78 @@
+{
+  "KullaniciHastalar" : {
+    "-LcYClRQvGuKapID0avr" : {
+      "AdSoyad" : "Ndm",
+      "Email" : "Ndm",
+      "Id" : 0,
+      "Telefon" : "Ndm",
+      "TemsilciKod" : "TGM01",
+      "Ulke" : "Ndm",
+      "YetkiKod" : 3,
+      "Şehir" : "Ndm"
+    },
+    "-LcYDLlUfnNtxJNkn93y" : {
+      "AdSoyad" : "Ndm",
+      "Email" : "Ndm",
+      "Id" : 0,
+      "Telefon" : "Ndm",
+      "TemsilciKod" : "TGM01",
+      "Ulke" : "Ndm",
+      "YetkiKod" : 3,
+      "Şehir" : "Ndm"
+    }
+  },
+  "MedicalIslemler" : {
+    "-LcItDeR3txtaGePdnDG" : {
+      "Fiyat" : 3500,
+      "Islem" : "Saç Ekimi"
+    },
+    "-LcItDjieIKAOOEWOavr" : {
+      "Fiyat" : 1500,
+      "Islem" : "Kaş Ekimi"
+    },
+    "-LcItDnn9Sh_O4mYD2YT" : {
+      "Fiyat" : 2500,
+      "Islem" : "Sakal Ekimi"
+    }
+  },
+  "Oteller" : {
+    "-LcIqLpThPxutAt7vybW" : {
+      "Fiyat" : 200,
+      "HotelAd" : "Quenn Hotel SPA(****)",
+      "HotelKod" : 0
+    },
+    "-LcIqLuPVtWuphJiCsuO" : {
+      "Fiyat" : 350,
+      "HotelAd" : "Holiday Inn Express Altunizade (*****)",
+      "HotelKod" : 0
+    },
+    "-LcIqLxylN4Z3Wikxs0f" : {
+      "Fiyat" : 350,
+      "HotelAd" : "Hilton Garden Inn Istanbul (*****)",
+      "HotelKod" : 0
+    }
+  },
+  "Temsilciler" : {
+    "-LcImpFj2297rC_Ynzbq" : {
+      "AdSoyad" : "Kadir Dölçek",
+      "Parola" : "123456",
+      "Sehir" : "Münih",
+      "Telefon" : "004915145848000",
+      "TemsilciAd" : "Komiser Kadir",
+      "TemsilciKod" : "TGM01",
+      "Ulke" : "Almanya",
+      "UstTemsilci" : 0,
+      "YetkiKod" : 2
+    }
+  },
+  "Yoneticiler" : {
+    "-LW7XfGsyUZJy9pLTsLZ" : {
+      "AdSoyad" : "Ali Kılıç",
+      "Parola" : "123456",
+      "Telefon" : "05426377112",
+      "YetkiKod" : 1,
+      "YoneticiAd" : "Adjuvan",
+      "YoneticiKod" : "Y340102"
+    }
+  }
+}

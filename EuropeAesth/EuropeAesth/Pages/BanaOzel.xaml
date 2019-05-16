@@ -41,7 +41,7 @@
                     <BoxView BackgroundColor="DimGray" Opacity="0.5" Margin="20,0" CornerRadius="20"></BoxView>
                     <StackLayout  Margin="25,30" Padding="10,20">
                         <Frame Margin="10,15" CornerRadius="10"  BackgroundColor="White" >
-                            <custom:ImageEntry Text="ali.kilic"
+                            <custom:ImageEntry Text="nedim.kupeli"
                                                x:Name="UserName" 
                                                HeightRequest="45" 
                                                Placeholder="Kullanıcı Adı"

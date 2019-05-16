@@ -17,36 +17,42 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HastaDetail : ContentPage
 	{
-        //public KullaniciHasta KullaniciHasta
-        //{
-        //    get { return (KullaniciHasta)GetValue(KullaniciHastaProperty); }
-        //    set { SetValue(KullaniciHastaProperty, value); }
-        //}
-        //public static readonly BindableProperty KullaniciHastaProperty = BindableProperty.Create("KullaniciHasta", typeof(KullaniciHasta), typeof(HastaDetail), default(KullaniciHasta));
+        public string TemsilciName
+        {
+            get { return (string)GetValue(TemsilciNameProperty); }
+            set { SetValue(TemsilciNameProperty, value); }
+        }
+        public static readonly BindableProperty TemsilciNameProperty = BindableProperty.Create("TemsilciName", typeof(string), typeof(HastaDetail), default(string));
+
         Hasta _hasta;
-        public HastaDetail (Hasta Hasta)
+        
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
+        public HastaDetail (Hasta _Hasta)
 		{
 			InitializeComponent ();
             if (App.Uyg.LoginUser.YetkiKod == 1)
             {
                 HastaSil.IsVisible = true;
 
-                if (Hasta.KayitliHasta.OnayDurumu == 0)
+                if (_Hasta.KayitliHasta.OnayDurumu == 0)
                     Onayla.IsVisible = true;
 
-                if (Hasta.KayitliHasta.OnayDurumu == 1)
+                if (_Hasta.KayitliHasta.OnayDurumu == 1)
                     TaburcuEt.IsVisible = true;
 
             }
 
-            _hasta = Hasta;
-            st_Hasta.Children.Add(new HDLabel ("Ad Soyad : ", Hasta.KullaniciHasta.AdSoyad));
-            st_Hasta.Children.Add(new HDLabel ("Email : ", Hasta.KullaniciHasta.Email));
-            st_Hasta.Children.Add(new HDLabel ("Telefon : ", Hasta.KullaniciHasta.Telefon));
-            st_Hasta.Children.Add(new HDLabel ("Ülke : " , Hasta.KullaniciHasta.Ulke));
-            st_Hasta.Children.Add(new HDLabel ("Şehir : " , Hasta.KullaniciHasta.Şehir));
+            LoadTemsilci();
 
-            var KHasta = Hasta.KayitliHasta;
+            _hasta = _Hasta;
+            st_Hasta.Children.Add(new HDLabel ("Ad Soyad : ", _Hasta.KullaniciHasta.AdSoyad));
+            st_Hasta.Children.Add(new HDLabel ("Email : ", _Hasta.KullaniciHasta.Email));
+            st_Hasta.Children.Add(new HDLabel ("Telefon : ", _Hasta.KullaniciHasta.Telefon));
+            st_Hasta.Children.Add(new HDLabel ("Ülke : " , _Hasta.KullaniciHasta.Ulke));
+            st_Hasta.Children.Add(new HDLabel ("Şehir : " , _Hasta.KullaniciHasta.Şehir));
+            st_Hasta.Children.Add(new HDLabel ("Temsilci : " , TemsilciName));
+
+            var KHasta = _Hasta.KayitliHasta;
             st_HastaIslem.Children.Add(new HDLabel ( "İşlem : " , KHasta.Islem));
             st_HastaIslem.Children.Add(new HDLabel ( "Hotel : " , KHasta.Hotel));
             st_HastaIslem.Children.Add(new HDLabel ( "Son Durum : " , KHasta.SonDurum));
@@ -61,7 +67,12 @@ namespace EuropeAesth.Pages
 
         }
 
-        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
+        private async void LoadTemsilci()
+        {
+            var temsilciler = await firebase.Child("AllUser").OnceAsync<AllUser>();
+            TemsilciName = temsilciler.FirstOrDefault(x => x.Object.UserKod == _hasta.KullaniciHasta.TemsilciKod).Object.AdSoyad;
+        }
+
 
         private async void Onayla_Clicked(object sender, EventArgs e)
         {

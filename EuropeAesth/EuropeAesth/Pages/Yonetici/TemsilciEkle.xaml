@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
+             xmlns:custom1="clr-namespace:PMSPirelli.Custom"
              x:Class="EuropeAesth.Pages.TemsilciEkle">
     <ContentPage.Content>
         <StackLayout>
@@ -21,25 +22,36 @@
                                HorizontalTextAlignment="Center"
                                TextColor="White"></Label>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry  x:Name="TemsilciKod" HeightRequest="45" Margin="-15" Placeholder="Ad Soyad"  ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="AdSoyad" Placeholder="Ad Soyad" IsUpperKeyboard="True" ></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="Email" HeightRequest="45" Margin="-15" Placeholder="Ülke" ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="UserKod"  Placeholder="Kullanıcı Adı" IsUpperKeyboard="False"></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="Parola" HeightRequest="45" Margin="-15" Placeholder="Şehir"  ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="Parola"  Placeholder="Parola" IsPassword="True" IsUpperKeyboard="False"  ></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="AdSoyad" HeightRequest="45" Margin="-15" Placeholder="Telefon" Keyboard="Telephone" IsUpperKeyboard="False" ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="Telefon"  Placeholder="Telefon" Keyboard="Telephone" IsUpperKeyboard="False" ></custom:ImageEntry>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="Ulke" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" IsUpperKeyboard="False" ></custom:ImageEntry>
+                            <custom1:ImagePicker x:Name="UlkeP" Title="Ulke" 
+                            ItemDisplayBinding="{Binding name}" 
+                            ItemsSource="{Binding Ulkeler}"
+                            BackgroundColor="White"
+                            Image="ic_dropdown" HeightRequest="45" Margin="-15">
+                            </custom1:ImagePicker>
+                        </Frame>
+
+                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom1:ImagePicker x:Name="SehirP" Title="Şehir" 
+                            ItemDisplayBinding="{Binding name}" 
+                            ItemsSource="{Binding Sehirler}"
+                            BackgroundColor="White"
+                            Image="ic_dropdown" HeightRequest="45" Margin="-15">
+                            </custom1:ImagePicker>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="Sehir" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" IsUpperKeyboard="False" ></custom:ImageEntry>
-                        </Frame>
-                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="Telefon" Keyboard="Email" HeightRequest="45" Margin="-15" Placeholder="Email" IsUpperKeyboard="False" ></custom:ImageEntry>
+                            <custom:ImageEntry x:Name="Email" Keyboard="Email" Placeholder="Email" IsUpperKeyboard="False" ></custom:ImageEntry>
                         </Frame>
 
                         <Button x:Name="BtnKayit" Text="KAYIT" 
