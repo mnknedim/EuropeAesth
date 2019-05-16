@@ -25,7 +25,7 @@ namespace EuropeAesth.Pages
             if (App.Uyg.LoginUser.YetkiKod == 1)
             {
                 TemsilciSil.IsVisible = true;
-                BlokEt.IsVisible = true;
+                bilgiDuzenle.IsVisible = true;
             }
 
             st_Temsilci.Children.Add(new HDLabel("Ad Soyad : ", temsilci.AdSoyad));
