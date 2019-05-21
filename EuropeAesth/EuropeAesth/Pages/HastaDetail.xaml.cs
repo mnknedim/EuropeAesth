@@ -118,5 +118,10 @@ namespace EuropeAesth.Pages
                 st_Hasta.Children.Add(new HDLabel("Temsilci : ", TemsilciName));
             }
         }
+
+        private async void BtnGeri_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
     }
 }

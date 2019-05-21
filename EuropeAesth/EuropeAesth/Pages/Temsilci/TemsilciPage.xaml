@@ -24,6 +24,12 @@
                             TextColor="#0a5e6b" BackgroundColor="#ddfad8"
                             VerticalOptions="CenterAndExpand"  Margin="55,0,55,50" 
                             CornerRadius="10" HeightRequest="100" Clicked="BtnHastalarim_Clicked"/>
+                    
+                    <Button x:Name="BtnGeri" Text="Geri" 
+                            FontSize="Small" FontAttributes="Bold"
+                            TextColor="#0a5e6b" BackgroundColor="Chocolate"
+                            VerticalOptions="End" HorizontalOptions="End"  Margin="30" 
+                            CornerRadius="35" HeightRequest="60" WidthRequest="60" Clicked="BtnGeri_Clicked"/>
                 </StackLayout>
                 </Grid>
         </StackLayout>

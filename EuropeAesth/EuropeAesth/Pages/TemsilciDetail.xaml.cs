@@ -65,5 +65,10 @@ namespace EuropeAesth.Pages
             }
 
         }
+
+        private async void BtnGeri_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
     }
 }

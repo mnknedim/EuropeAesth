@@ -33,5 +33,10 @@ namespace EuropeAesth.Pages
             var item = (ButtonView)e;
             Navigation.PushModalAsync((item.PageName));
         });
-	}
+
+        private async void BtnGeri_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+    }
 }

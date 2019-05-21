@@ -41,8 +41,7 @@
                     <BoxView BackgroundColor="DimGray" Opacity="0.5" Margin="20,0" CornerRadius="20"></BoxView>
                     <StackLayout  Margin="25,30" Padding="10,20">
                         <Frame Margin="10,15" CornerRadius="10"  BackgroundColor="White" >
-                            <custom:ImageEntry Text="nedim.kupeli"
-                                               x:Name="UserName" 
+                            <custom:ImageEntry x:Name="UserName" 
                                                HeightRequest="45" 
                                                Placeholder="Kullanıcı Adı"
                                                BackgroundColor="White" 
@@ -51,8 +50,7 @@
                                                IsUpperKeyboard="False"/>
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry Text="123456"
-                                               x:Name="Password"
+                            <custom:ImageEntry x:Name="Password"
                                                HeightRequest="45" 
                                                Placeholder="Parola"
                                                BackgroundColor="White" 

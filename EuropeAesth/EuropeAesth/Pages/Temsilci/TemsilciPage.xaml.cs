@@ -81,5 +81,10 @@ namespace EuropeAesth.Pages
         {
             await Navigation.PushModalAsync(new Hastalarim());
         }
+
+        private void BtnGeri_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new TabbedMainPage();
+        }
     }
 }

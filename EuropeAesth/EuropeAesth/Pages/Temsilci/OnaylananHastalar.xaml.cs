@@ -41,5 +41,10 @@ namespace EuropeAesth.Pages.Temsilci
             var hasta = (Hasta)e.Item;
            await Navigation.PushModalAsync(new HastaDetail(hasta));
         }
+
+        private async void BtnGeri_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
     }
 }

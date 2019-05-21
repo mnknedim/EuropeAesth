@@ -42,5 +42,10 @@ namespace EuropeAesth.Pages
 
             await Navigation.PushModalAsync(new TemsilciDetail(tmslc));
         }
+
+        private async void BtnGeri_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
     }
 }
