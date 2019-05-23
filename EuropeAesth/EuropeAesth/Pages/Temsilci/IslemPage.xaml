@@ -38,11 +38,11 @@
                             Image="ic_dropdown" HeightRequest="45" Margin="-15" >
                             </custom1:ImagePicker>
                         </Frame>
-                        <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="GirisTarih" HeightRequest="45" Placeholder="Giriş Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
+                        <Frame x:Name="GirisdateFrame" Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
+                            <custom:ImageEntry x:Name="GirisTarih" HeightRequest="45" Placeholder="Giriş Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True" />
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
-                            <custom:ImageEntry x:Name="CikisTarih" HeightRequest="45" Placeholder="Çıkış Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True"/>
+                            <custom:ImageEntry x:Name="CikisTarih" HeightRequest="45" Placeholder="Çıkış Tarih" BackgroundColor="White" Margin="-15" Image="ic_calender" KeyboardIsHide="True" />
                         </Frame>
                         <Frame Margin="10,15" CornerRadius="10" IsClippedToBounds="False" BackgroundColor="White">
                             <custom1:ImagePicker x:Name="Transfer" Title = "Havaalanı Transfer"

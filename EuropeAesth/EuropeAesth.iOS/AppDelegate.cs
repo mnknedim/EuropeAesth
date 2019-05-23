@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CarouselView.FormsPlugin.iOS;
 using Foundation;
+using Syncfusion.SfCalendar.XForms.iOS;
 using UIKit;
 
 namespace EuropeAesth.iOS
@@ -23,6 +24,7 @@ namespace EuropeAesth.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             CarouselViewRenderer.Init();
+            SfCalendarRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
