@@ -65,9 +65,9 @@
                             </StackLayout>
                         </Custom:ExGrid>
                         <StackLayout Orientation="Horizontal"  >
-                            <Image Source="ic_TemsilciSil.png" VerticalOptions="Start" 
+                            <ImageButton Source="ic_TemsilciSil.png" VerticalOptions="Start" 
                                    HorizontalOptions="Center" HeightRequest="60" 
-                                   WidthRequest="60" Margin="5"></Image>
+                                   WidthRequest="60" Margin="5"  ></ImageButton>
                             <Label Text="Temsilci Sil" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center"></Label>
                         </StackLayout>
 

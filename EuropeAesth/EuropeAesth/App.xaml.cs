@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Model;
+﻿using EuropeAesth.MasDetPage;
+using EuropeAesth.Model;
 using EuropeAesth.Pages;
 using Syncfusion.Licensing;
 using System;
@@ -19,7 +20,7 @@ namespace EuropeAesth
         {
             InitializeComponent();
             SyncfusionLicenseProvider.RegisterLicense("OTQwNjVAMzEzNzJlMzEyZTMwV0c2ODdyQU1jeDBuTUozM3lVZE1uNnpQTEI0Rkc3WGJxRU5RMXBwOHczND0=");
-            MainPage = new TabbedMainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

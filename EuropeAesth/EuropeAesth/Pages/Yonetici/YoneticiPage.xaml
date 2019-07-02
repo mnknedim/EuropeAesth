@@ -5,32 +5,42 @@
              x:Class="EuropeAesth.Pages.YoneticiPage">
     <ContentPage.Content>
         <StackLayout >
-            <custom:ExGrid >
-                <Image Source="arkplan.png" 
-                       Aspect="AspectFill" 
-                       VerticalOptions="FillAndExpand"
-                       HorizontalOptions="FillAndExpand"
-                       ></Image>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <BoxView BackgroundColor="#02b294"/>
+
                 <ScrollView>
-                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                        <StackLayout x:Name="UstStack" Orientation="Horizontal">
+                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                        <Button Text="Temsilciler" x:Name="Temsilciler"
+                                BackgroundColor="AliceBlue"
+                                Margin="50,30" CornerRadius="20"
+                                HeightRequest="75"
+                                VerticalOptions="CenterAndExpand" Clicked="Temsilciler_Clicked"></Button>
 
-                        </StackLayout>
-                        <StackLayout x:Name="AltStack" Orientation="Horizontal">
-
-                        </StackLayout>
-                        <StackLayout x:Name="Alt2Stack" Orientation="Horizontal">
-
-                        </StackLayout>
-
+                        <Button Text="Hastalar" x:Name="Hastalar"
+                                 BackgroundColor="AliceBlue"
+                                Margin="50,30" CornerRadius="20"
+                                HeightRequest="75"
+                                VerticalOptions="CenterAndExpand" Clicked="Hastalar_Clicked"></Button>
+                        <Button Text="Yazılar" x:Name="Yazılar"
+                                 BackgroundColor="AliceBlue"
+                                Margin="50,30" CornerRadius="20"
+                                HeightRequest="75"
+                                VerticalOptions="CenterAndExpand" Clicked="Yazılar_Clicked"></Button>
+                        <Button Text="Multimedia" x:Name="Multimedia"
+                                 BackgroundColor="AliceBlue"
+                                Margin="50,30" CornerRadius="20"
+                                HeightRequest="75"
+                                VerticalOptions="CenterAndExpand" Clicked="Multimedia_Clicked"></Button>
                     </StackLayout>
                 </ScrollView>
-                <Button x:Name="BtnGeri" Text="Geri" 
-                            FontSize="Small" FontAttributes="Bold"
-                            TextColor="#0a5e6b" BackgroundColor="Chocolate"
-                            VerticalOptions="End" HorizontalOptions="End"  Margin="30" 
-                            CornerRadius="35" HeightRequest="60" WidthRequest="60" Clicked="BtnGeri_Clicked"/>
-            </custom:ExGrid>
+                
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

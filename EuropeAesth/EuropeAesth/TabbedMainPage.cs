@@ -14,9 +14,10 @@ namespace EuropeAesth
         public TabbedMainPage ()
 		{
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            NavigationPage.SetHasNavigationBar(this, false);
 
             Children.Add(new Anasayfa() { Title = "Anasayfa", Icon = "ic_anasayfa.png" });
-            Children.Add(new BanaOzel() { Title = "Bana Özel", Icon = "ic_user.png" });
+            Children.Add(new NavigationPage( new BanaOzel() { Title = "Bana Özel", Icon = "ic_user.png" }));
             Children.Add(new Iletisim() { Title = "İletişim", Icon = "ic_iletisim.png" });
         }
 	}

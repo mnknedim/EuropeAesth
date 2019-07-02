@@ -21,10 +21,7 @@ namespace EuropeAesth.Pages
 
           
             //UstStack.Children.Add(new ButtonView { ImageUrl = "ic_hastaKabul.png", UnderText = "Hasta Kabul", PageName = new TestPage(), TappedCommand = CallPages });
-            UstStack.Children.Add(new ButtonView { ImageUrl = "ic_hastaKabul.png", UnderText = "Hasta Kabul", PageName = new Hastalarim(), TappedCommand = CallPages });
-            UstStack.Children.Add(new ButtonView { ImageUrl = "ic_TemsilciEkle.png", UnderText = "TemsilciEkle", PageName = new TemsilciEkle(), TappedCommand = CallPages });
-
-            Alt2Stack.Children.Add(new ButtonView { ImageUrl = "ic_Temsilciler.png", UnderText = "Temsilciler", PageName = new TemsilcilerPage(), TappedCommand = CallPages });
+           
         }
 
         public Command CallPages = new Command((e) => {
@@ -37,6 +34,26 @@ namespace EuropeAesth.Pages
         private async void BtnGeri_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+        private void Temsilciler_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Hastalar_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Yazılar_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Multimedia_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

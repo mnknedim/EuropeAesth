@@ -31,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="MasDetPage\MainPageMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\Temsilci\OnaylananHastalar.xaml.cs">
       <DependentUpon>OnaylananHastalar.xaml</DependentUpon>
     </Compile>
@@ -55,10 +58,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="MasDetPage\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MasDetPage\MainPageDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MasDetPage\MainPageMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\BanaOzel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\HastaDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Interface\Yazilar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\TemsilciDetail.xaml">

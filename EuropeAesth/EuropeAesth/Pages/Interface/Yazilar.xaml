@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EuropeAesth.Pages.Interface.Yazilar">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Margin="10,50">
+                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="sacekimi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Saç Ekimi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="fueyontemi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Fue Yöntemi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="temelasamalar.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Temel Aşamalar"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="turkiyesacekimi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Türkiye'de saç Ekimi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="trassizsacekimi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Tıraşsız Saç Ekimi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="ekimoperasyon.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Ekim Operasyon"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
