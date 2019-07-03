@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuropeAesth.Android", "Euro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuropeAesth.iOS", "EuropeAesth\EuropeAesth.iOS\EuropeAesth.iOS.csproj", "{622701F6-C776-4759-8DE9-94C91E9F90FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuropeAesth", "EuropeAesth\EuropeAesth\EuropeAesth.csproj", "{4B2F9A7D-DB73-46F1-BD68-9304792AE0D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EuropeAesth", "EuropeAesth\EuropeAesth\EuropeAesth.csproj", "{4B2F9A7D-DB73-46F1-BD68-9304792AE0D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -48,7 +48,7 @@ namespace EuropeAesth.Pages
 
         private void Yazılar_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new Interface.Yazilar());
         }
 
         private void Multimedia_Clicked(object sender, EventArgs e)

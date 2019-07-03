@@ -6,6 +6,7 @@
         <StackLayout>
             <ScrollView>
                 <StackLayout Margin="10,50">
+                    <ImageButton Source="add.png" HorizontalOptions="EndAndExpand" Clicked="ImageButton_Clicked"/>
                     <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
                         <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
@@ -34,6 +35,38 @@
                             </Grid.RowDefinitions>
                             <Image Source="fueyontemi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
                             <Label Text="Fue Yöntemi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="temelasamalar.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Temel Aşamalar"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="turkiyesacekimi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Türkiye'de saç Ekimi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
                             <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
                         </Grid>
                     </Frame>

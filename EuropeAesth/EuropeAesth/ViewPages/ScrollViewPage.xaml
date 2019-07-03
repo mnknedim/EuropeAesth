@@ -5,7 +5,6 @@
              x:Class="EuropeAesth.ViewPages.ScrollViewPage">
     <ContentView.Content>
         <StackLayout Margin="0,30,0,0">
-            <ScrollView>
                 <ListView x:Name="Lst" ItemsSource="{Binding}"  RowHeight="120" Margin="0,30,0,0" BackgroundColor="Transparent"
                           SeparatorVisibility="None" >
                     <ListView.ItemTemplate>
@@ -28,8 +27,6 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
-            </ScrollView>
 
         </StackLayout>
     </ContentView.Content>
