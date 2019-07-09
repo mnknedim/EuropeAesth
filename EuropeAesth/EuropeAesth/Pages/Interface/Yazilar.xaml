@@ -6,134 +6,40 @@
         <StackLayout>
             <ScrollView>
                 <StackLayout Margin="10,50">
-                    <ImageButton Source="add.png" HorizontalOptions="EndAndExpand" Clicked="ImageButton_Clicked"/>
-                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="sacekimi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Saç Ekimi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
-                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
-                        </Grid>
-                    </Frame>
+                    <ImageButton Source="add.png" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Clicked="ImageButton_Clicked"/>
+                    <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
+                        <ListView x:Name="YaziList"  HasUnevenRows="True" SeparatorVisibility="None">
+                            <ListView.ItemTemplate >
+                                <DataTemplate >
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
+                                                <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="100"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Image Source="{Binding ImageUrl}" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"                                HorizontalOptions="FillAndExpand"/>
+                                                    <Label Text="{Binding Baslik}"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
+                                                    <Label VerticalTextAlignment="Center" Margin="0,0,0,10"  FontSize="Small" HorizontalTextAlignment="Start" TextColor="Black" Text="{Binding Tarih, StringFormat='{0:dd:MM:yyyy}'}"  Grid.Row="1" Grid.Column="1" />
+                                                    <StackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
 
-                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="fueyontemi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Fue Yöntemi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
-                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
-                        </Grid>
-                    </Frame>
+                                                        <Button Text="Sil" FontSize="Micro"  BackgroundColor="#de1818" TextColor="White"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </Frame>
 
-                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="temelasamalar.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Temel Aşamalar"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
-                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
-                        </Grid>
-                    </Frame>
-
-                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="turkiyesacekimi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Türkiye'de saç Ekimi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
-                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
-                        </Grid>
-                    </Frame>
-
-                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="temelasamalar.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Temel Aşamalar"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
-                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
-                        </Grid>
-                    </Frame>
-
-                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="turkiyesacekimi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Türkiye'de saç Ekimi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
-                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
-                        </Grid>
-                    </Frame>
-
-                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="trassizsacekimi.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Tıraşsız Saç Ekimi"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
-                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
-                        </Grid>
-                    </Frame>
-
-                    <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                        <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="ekimoperasyon.png" Aspect="Fill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Ekim Operasyon"  Grid.Row="0" Grid.Column="1" FontSize="Medium" FontAttributes="Bold"/>
-                            <Label Text="05.06.2019"  Grid.Row="1" Grid.Column="1" FontSize="Medium" />
-                        </Grid>
-                    </Frame>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

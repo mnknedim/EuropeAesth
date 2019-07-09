@@ -47,6 +47,7 @@
                                                Placeholder="Kullanıcı Adı"
                                                BackgroundColor="White" 
                                                Margin="-15" 
+                                               Text="ali.kilic"
                                                Image="ic_user_login"
                                                IsUpperKeyboard="False"/>
                         </Frame>
@@ -58,6 +59,7 @@
                                                Margin="-15" 
                                                Image="ic_password"
                                                IsPassword="True"
+                                               Text="123456"
                                                IsUpperKeyboard="False"/>
                         </Frame>
 

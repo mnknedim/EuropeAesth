@@ -1,26 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:EuropeAesth.Custom"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
              x:Class="EuropeAesth.Pages.Interface.YaziEkle">
-    <ContentPage.Content>
-        <StackLayout>
-            <Frame CornerRadius="15" HasShadow="True" BorderColor="Black" Margin="25" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout>
-                    <Frame HasShadow="True" BorderColor="Black">
-                        <Image x:Name="YaziResmi" Source="defaultImage.png" Aspect="Fill" HeightRequest="185"/>
-                    </Frame>
-                    <Frame  HasShadow="True" BorderColor="Black" CornerRadius="15">
-                        <Entry x:Name="YaziBaslik" Margin="-15"  Placeholder="Başlık"/>
-                    </Frame>
-                    <Frame HasShadow="True" BorderColor="Black" CornerRadius="15">
-                        <Editor x:Name="YaziAciklama" Margin="-15"  Placeholder="Başlık" HeightRequest="350"/>
-                    </Frame>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                        <Button Text="Temizle" HorizontalOptions="EndAndExpand" BackgroundColor="Bisque" CornerRadius="15"/>
-                        <Button x:Name="Yayinla" Text="Yayınla" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Green" CornerRadius="15" Clicked="Yayinla_Clicked"/>
+    <ContentPage.Content >
+        <Grid BackgroundColor="#ebfcec">
+            <StackLayout>
+                <Frame CornerRadius="15" HasShadow="True"  Margin="25" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand">
+                        <Frame HasShadow="True" >
+                            <Image x:Name="YaziResmi" Source="{Binding Obs_Yazi.ImageUrl}" Aspect="Fill" HeightRequest="185"/>
+                        </Frame>
+                        <Frame  HasShadow="True"  CornerRadius="15">
+                            <custom:ImageEntry x:Name="YaziBaslik" Text="{Binding Obs_Yazi.Baslik}" Margin="-15"  Placeholder="Başlık"/>
+                        </Frame>
+                        <Frame HasShadow="True"  CornerRadius="15">
+                            <Editor x:Name="YaziAciklama" Text="{Binding Obs_Yazi.Aciklama}" Margin="-15"  Placeholder="Başlık" HeightRequest="350"/>
+                        </Frame>
+                        <Frame CornerRadius="10" HeightRequest="40" Margin="0,5" IsClippedToBounds="False" HasShadow="True" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                            <Grid  Margin="-15">
+                                <custom:ImageEntry HeightRequest="40" BackgroundColor="White" Image="ic_calender"  HorizontalOptions="FillAndExpand" IsEnabled="False" VerticalOptions="CenterAndExpand"/>
+                                <Label x:Name="LblYayinTarih"  FontSize="Small" Text="{Binding Obs_Yazi.Tarih, StringFormat='{0:dd:MM:yyyy}'}" TextColor="Black" HorizontalTextAlignment="Start" VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BasTarih_Tapped"></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </Frame>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Button Text="Temizle" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Bisque" CornerRadius="15"/>
+                            <Button x:Name="Vazgec" Text="Vazgeç" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Brown" CornerRadius="15" Clicked="Vazgec_Clicked"/>
+                            <Button x:Name="Yayinla" Text="Yayınla" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Green" CornerRadius="15" Clicked="Yayinla_Clicked"/>
+                        </StackLayout>
+
                     </StackLayout>
-                </StackLayout>
-            </Frame>
-        </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Grid x:Name="CalenderGrid" IsVisible="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <BoxView BackgroundColor="Black" Opacity="0.6">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="CalenderBox" Tapped="CalenderBox_Tapped"/>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+
+                <syncfusion:SfCalendar Margin="45,200" x:Name="calendar" SelectionChanged="Calendar_SelectionChanged" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Grid>
+        </Grid>
+       
     </ContentPage.Content>
 </ContentPage>
