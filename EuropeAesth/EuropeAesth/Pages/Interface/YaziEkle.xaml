@@ -6,37 +6,44 @@
              x:Class="EuropeAesth.Pages.Interface.YaziEkle">
     <ContentPage.Content >
         <Grid BackgroundColor="#ebfcec">
-            <StackLayout>
-                <Frame CornerRadius="15" HasShadow="True"  Margin="25" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <StackLayout VerticalOptions="FillAndExpand">
-                        <Frame HasShadow="True" >
-                            <Image x:Name="YaziResmi" Source="{Binding Obs_Yazi.ImageUrl}" Aspect="Fill" HeightRequest="185"/>
-                        </Frame>
-                        <Frame  HasShadow="True"  CornerRadius="15">
-                            <custom:ImageEntry x:Name="YaziBaslik" Text="{Binding Obs_Yazi.Baslik}" Margin="-15"  Placeholder="Başlık"/>
-                        </Frame>
-                        <Frame HasShadow="True"  CornerRadius="15">
-                            <Editor x:Name="YaziAciklama" Text="{Binding Obs_Yazi.Aciklama}" Margin="-15"  Placeholder="Başlık" HeightRequest="350"/>
-                        </Frame>
-                        <Frame CornerRadius="10" HeightRequest="40" Margin="0,5" IsClippedToBounds="False" HasShadow="True" BackgroundColor="White" HorizontalOptions="FillAndExpand">
-                            <Grid  Margin="-15">
-                                <custom:ImageEntry HeightRequest="40" BackgroundColor="White" Image="ic_calender"  HorizontalOptions="FillAndExpand" IsEnabled="False" VerticalOptions="CenterAndExpand"/>
-                                <Label x:Name="LblYayinTarih"  FontSize="Small" Text="{Binding Obs_Yazi.Tarih, StringFormat='{0:dd:MM:yyyy}'}" TextColor="Black" HorizontalTextAlignment="Start" VerticalTextAlignment="Center">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="BasTarih_Tapped"></TapGestureRecognizer>
-                                    </Label.GestureRecognizers>
-                                </Label>
-                            </Grid>
-                        </Frame>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                            <Button Text="Temizle" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Bisque" CornerRadius="15"/>
-                            <Button x:Name="Vazgec" Text="Vazgeç" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Brown" CornerRadius="15" Clicked="Vazgec_Clicked"/>
-                            <Button x:Name="Yayinla" Text="Yayınla" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Green" CornerRadius="15" Clicked="Yayinla_Clicked"/>
-                        </StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <Frame CornerRadius="15" HasShadow="True"  Margin="25" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout VerticalOptions="FillAndExpand">
+                            <Frame HasShadow="True" >
+                                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
+                                    <Image x:Name="DefaultResim" Source="ic_addImage.png"  HeightRequest="75"/>
+                                    <Image x:Name="YaziResmi" IsVisible="{Binding Duzenle}" Source="{Binding Obs_Yazi.ImageUrl}" Aspect="Fill" HeightRequest="185"/>
+                                </Grid>
+                            </Frame>
+                            <Frame  HasShadow="True"  CornerRadius="15" BackgroundColor="White">
+                                <custom:ImageEntry x:Name="YaziBaslik" Text="{Binding Obs_Yazi.Baslik}" Margin="-15"  Placeholder="Başlık"/>
+                            </Frame>
+                            <Frame HasShadow="True"  CornerRadius="15" BackgroundColor="White">
+                                <Editor x:Name="YaziAciklama" Text="{Binding Obs_Yazi.Aciklama}" Margin="-15"  Placeholder="Açıklama" HeightRequest="300"/>
+                            </Frame>
+                            <Frame CornerRadius="10"  HorizontalOptions="StartAndExpand" HeightRequest="10" Margin="0,5" IsClippedToBounds="False" HasShadow="True" BackgroundColor="White" >
+                                <Grid  Margin="-15" >
+                                  
+                                    <custom:ImageEntry HeightRequest="40" BackgroundColor="White" Margin="10,0" Image="ic_calender"  HorizontalOptions="FillAndExpand" IsEnabled="False" VerticalOptions="CenterAndExpand"/>
+                                    <Label x:Name="LblYayinTarih" Margin="45,0,5,0" FontSize="Small" Text="09.07.2019" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="BasTarih_Tapped"></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                            </Frame>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Button Text="Temizle" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Bisque" CornerRadius="15"/>
+                                <Button x:Name="Vazgec" Text="Vazgeç" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Brown" CornerRadius="15" Clicked="Vazgec_Clicked"/>
+                                <Button x:Name="Yayinla" Text="Yayınla" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Green" CornerRadius="15" Clicked="Yayinla_Clicked"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
             <Grid x:Name="CalenderGrid" IsVisible="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <BoxView BackgroundColor="Black" Opacity="0.6">
                     <BoxView.GestureRecognizers>

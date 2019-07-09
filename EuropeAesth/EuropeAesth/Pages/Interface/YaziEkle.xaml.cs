@@ -41,13 +41,11 @@ namespace EuropeAesth.Pages.Interface
 		{
 			InitializeComponent ();
             BindingContext = this;
-            if (Duzenle == false)
-            {
-                YaziResmi.Source = "ic_addImage.png";
-            }
             var tabGest = new TapGestureRecognizer();
             tabGest.Tapped += ResimYukle_Tabbed;
             YaziResmi.GestureRecognizers.Add(tabGest);
+            DefaultResim.GestureRecognizers.Add(tabGest);
+            LblYayinTarih.Text = DateTime.Now.ToString("dd.MM.yyyy");
 		}
 
         private void BasTarih_Tapped(object sender, EventArgs e)
@@ -89,7 +87,7 @@ namespace EuropeAesth.Pages.Interface
                     var imageStram = file.GetStream();
                     return imageStram;
                 });
-                
+                YaziResmi.IsVisible = true;
             }
             catch (Exception ex)
             {

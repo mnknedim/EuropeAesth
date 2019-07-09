@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EuropeAesth.Pages.MenuPages;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -34,7 +35,7 @@ namespace EuropeAesth.MasDetPage
                 MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
                 {
                     new MainPageMenuItem { Id = 0, Title = "Anasayfa", TargetType= typeof(TabbedMainPage) },
-                    new MainPageMenuItem { Id = 1, Title = "Yazilar" },
+                    new MainPageMenuItem { Id = 1, Title = "Yazilar", TargetType= typeof(MenuYazilar) },
                     new MainPageMenuItem { Id = 2, Title = "Videolar" },
                     new MainPageMenuItem { Id = 3, Title = "Resimler" },
                     new MainPageMenuItem { Id = 4, Title = "Hakkımızda" },
