@@ -1,6 +1,7 @@
 ﻿using EuropeAesth.Component;
 using EuropeAesth.Model;
 using EuropeAesth.Pages;
+using Firebase.Database;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,26 +17,36 @@ namespace EuropeAesth.ViewPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScrollViewPage : ContentView
     {
-
+        public ObservableCollection<YaziModel> Obs_Yazi
+        {
+            get { return (ObservableCollection<YaziModel>)GetValue(Obs_YaziProperty); }
+            set { SetValue(Obs_YaziProperty, value); }
+        }
+        public static readonly BindableProperty Obs_YaziProperty = BindableProperty.Create("Obs_Yazi", typeof(ObservableCollection<YaziModel>),
+            typeof(ScrollViewPage), default(ObservableCollection<YaziModel>));
 
         ObservableCollection<ImageScrollViewModel> ScrollImages = new ObservableCollection<ImageScrollViewModel>();
-
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public ScrollViewPage()
         {
-            var Y = new Yazilar();
-            ScrollImages.Add(new ImageScrollViewModel { ImageUrl = "sacekimi.png", Title = "Saç Ekimi", SubTitle = Y.DYazilar["sacekimi"].Substring(0,100) });
-            ScrollImages.Add(new ImageScrollViewModel { ImageUrl = "fueyontemi.png", Title = "Fue Yöntemi", SubTitle = Y.DYazilar["fueyontemi"].Substring(0, 100) });
-            ScrollImages.Add(new ImageScrollViewModel { ImageUrl = "temelasamalar.png", Title = "Temel Aşamalar", SubTitle = Y.DYazilar["temelasamalar"].Substring(0, 100) });
-            ScrollImages.Add(new ImageScrollViewModel { ImageUrl = "turkiyesacekimi.png", Title = "Türkiyede Saç Ekimi", SubTitle = Y.DYazilar["turkiyesacekimi"].Substring(0, 100) });
-            ScrollImages.Add(new ImageScrollViewModel { ImageUrl = "trassizsacekimi.png", Title = "Tıraşsız Saç Ekimi", SubTitle = Y.DYazilar["trassizsacekimi"].Substring(0, 100) });
-            ScrollImages.Add(new ImageScrollViewModel { ImageUrl = "ekimoperasyon.png", Title = "Ekim Operasyonu", SubTitle = Y.DYazilar["ekimoperasyon"].Substring(0, 100) });
-
-
             InitializeComponent();
+            YazilarYukle();
+        }
 
-            Lst.BindingContext = ScrollImages;
-            Lst.ItemSelected += Lst_ItemSelected;
-
+        private async void YazilarYukle()
+        {
+            var tumYazilar = await firebase.Child("Yazilar").OnceAsync<YaziModel>();
+            var orderedYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).ToList();
+            Obs_Yazi = new ObservableCollection<YaziModel>();
+            if (tumYazilar != null)
+            {
+                foreach (var item in orderedYazilar)
+                {
+                    Obs_Yazi.Add(item.Object);
+                }
+                YaziList.ItemsSource = Obs_Yazi;
+                YaziList.BindingContext = Obs_Yazi;
+            }
         }
 
         private void Lst_ItemSelected(object sender, SelectedItemChangedEventArgs e)

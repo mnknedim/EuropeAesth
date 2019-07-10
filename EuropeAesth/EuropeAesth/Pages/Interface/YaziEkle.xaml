@@ -12,9 +12,8 @@
                         <StackLayout VerticalOptions="FillAndExpand">
                             <Frame HasShadow="True" >
                                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-
                                     <Image x:Name="DefaultResim" Source="ic_addImage.png"  HeightRequest="75"/>
-                                    <Image x:Name="YaziResmi" IsVisible="{Binding Duzenle}" Source="{Binding Obs_Yazi.ImageUrl}" Aspect="Fill" HeightRequest="185"/>
+                                    <Image x:Name="YaziResmi"  Source="{Binding Obs_Yazi.ImageUrl}" Aspect="Fill" HeightRequest="185"/>
                                 </Grid>
                             </Frame>
                             <Frame  HasShadow="True"  CornerRadius="15" BackgroundColor="White">

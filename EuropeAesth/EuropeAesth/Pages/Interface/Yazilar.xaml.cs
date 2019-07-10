@@ -28,6 +28,7 @@ namespace EuropeAesth.Pages.Interface
         public Yazilar ()
 		{
 			InitializeComponent ();
+            
             BindingContext = this;
             YazilarYukle();
             YaziList.ItemSelected += YaziList_ItemSelected;
@@ -36,7 +37,7 @@ namespace EuropeAesth.Pages.Interface
         private async void YaziList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var yaziDuzenle = e.SelectedItem as YaziModel;
-            await Navigation.PushAsync(new YaziEkle() { Obs_Yazi = yaziDuzenle , Duzenle = true});
+            await Navigation.PushModalAsync(new YaziEkle() { Obs_Yazi = yaziDuzenle });
         }
 
         private async void YazilarYukle()

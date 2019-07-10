@@ -20,7 +20,7 @@ namespace EuropeAesth
         {
             InitializeComponent();
             SyncfusionLicenseProvider.RegisterLicense("OTQwNjVAMzEzNzJlMzEyZTMwV0c2ODdyQU1jeDBuTUozM3lVZE1uNnpQTEI0Rkc3WGJxRU5RMXBwOHczND0=");
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new MainPage() ) { BarTextColor = Color.FromHex("#304f72") };
         }
 
         protected override void OnStart()

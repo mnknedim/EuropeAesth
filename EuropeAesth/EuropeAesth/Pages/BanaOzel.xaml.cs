@@ -50,10 +50,10 @@ namespace EuropeAesth.Pages
                     App.Uyg.LoginUser = user;
 
                     if (user.YetkiKod == 1)
-                         App.Current.MainPage = new YoneticiPage();
+                        await Navigation.PushAsync(new YoneticiPage());
 
                     if (user.YetkiKod == 2)
-                        App.Current.MainPage = new TemsilciPage();
+                        await Navigation.PushAsync(new TemsilciPage());
 
                 }
                     

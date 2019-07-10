@@ -28,12 +28,11 @@ namespace EuropeAesth.Pages
 
             var Navigation = App.Current.MainPage.Navigation;
             var item = (ButtonView)e;
-            Navigation.PushModalAsync((item.PageName));
+            Navigation.PushAsync((item.PageName));
         });
 
         private async void BtnGeri_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
         }
 
         private void Temsilciler_Clicked(object sender, EventArgs e)
@@ -48,7 +47,7 @@ namespace EuropeAesth.Pages
 
         private void Yazılar_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new Interface.Yazilar());
+            Navigation.PushAsync(new Interface.Yazilar());
         }
 
         private void Multimedia_Clicked(object sender, EventArgs e)

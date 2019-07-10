@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:pages="clr-namespace:EuropeAesth.MasDetPage"
                   xmlns:europeaesth="clr-namespace:EuropeAesth"
-                  x:Class="EuropeAesth.MasDetPage.MainPage">
+                  x:Class="EuropeAesth.MasDetPage.MainPage"
+                  NavigationPage.HasNavigationBar="False" >
   <MasterDetailPage.Master>
     <pages:MainPageMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
