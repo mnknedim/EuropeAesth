@@ -15,7 +15,7 @@ namespace EuropeAesth
 		{
             NavigationPage.SetHasNavigationBar(this, false);
             this.Title = "Anasayfa";
-            
+           
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             NavigationPage.SetHasNavigationBar(this, false);
 

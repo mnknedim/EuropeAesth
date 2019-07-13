@@ -1,9 +1,11 @@
-﻿using EuropeAesth.Model;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Model;
 using Firebase.Database;
 using Firebase.Database.Query;
 using Firebase.Storage;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using PMSPirelli.Renderer;
 using Syncfusion.SfCalendar.XForms;
 using System;
 using System.Collections.Generic;
@@ -70,7 +72,7 @@ namespace EuropeAesth.Pages.Interface
         }
 
         MediaFile file;
-
+        static IImageResizer _resizer = DependencyService.Get<IImageResizer>();
         private async void ResimYukle_Tabbed(object sender, EventArgs e)
         {
             await CrossMedia.Current.Initialize();
@@ -97,17 +99,31 @@ namespace EuropeAesth.Pages.Interface
 
         private async Task<string> StoreImages(Stream stream)
         {
-            var ImageUrl = Guid.NewGuid().ToString();
-            var stroageImage = await new FirebaseStorage("adjuvanclinic.appspot.com")
-                .Child("AdjuvanImages")
-                .Child(ImageUrl)
-                  .PutAsync(stream);
+            byte[] OrgByte;
+            Stream st = file.GetStream();
+            using (BinaryReader br = new BinaryReader(st))
+            {
+                OrgByte = br.ReadBytes((int)st.Length);
+            }
+            var resizedByte750 = _resizer.ResizeImage(OrgByte, 750, 750).Item1;
+
+            string stroageImage;
+            using (Stream stt= new MemoryStream(resizedByte750))
+            {
+                var ImageUrl = Guid.NewGuid().ToString();
+                stroageImage = await new FirebaseStorage("adjuvanclinic.appspot.com")
+                    .Child("AdjuvanImages")
+                    .Child(ImageUrl)
+                      .PutAsync(stt);
+            }
+
             string imgurl = stroageImage;
             return imgurl;
         }
 
         private async void Yayinla_Clicked(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz...", MaskType.Gradient);
             var ImageName = Guid.NewGuid();
             ImageName.ToString();
 
@@ -118,7 +134,7 @@ namespace EuropeAesth.Pages.Interface
                 Baslik = YaziBaslik.Text,
                 Aciklama = YaziAciklama.Text,
                 ImageUrl = result + ".png",
-                Tarih = DateTime.Now.Date
+                Tarih = DateTime.Now
             };
             
             try
@@ -128,6 +144,7 @@ namespace EuropeAesth.Pages.Interface
                     await firebase.Child("Yazilar").PostAsync(EklenecekYazi);
                     await DisplayAlert("Kaydedildi", "Kayıt Başarılı", "Tamam");
                     await Navigation.PopModalAsync();
+                    UserDialogs.Instance.HideLoading();
                 }
             }
             catch (Exception ex)

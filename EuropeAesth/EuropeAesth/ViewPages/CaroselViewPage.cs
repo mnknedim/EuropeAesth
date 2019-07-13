@@ -1,9 +1,12 @@
 ﻿using CarouselView.FormsPlugin.Abstractions;
 using EuropeAesth.Custom;
+using EuropeAesth.Model;
+using Firebase.Database;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 using Xamarin.Forms;
@@ -13,28 +16,26 @@ namespace EuropeAesth.ViewPages
 	public class CaroselViewPage : ContentView
 	{
         public CarouselViewControl carousel;
-        public class ImageSlider
+        public ObservableCollection<YaziModel> Obs_Yazi
         {
-            public string ImageUrl { get; set; }
-            public string Detail { get; set; }
+            get { return (ObservableCollection<YaziModel>)GetValue(Obs_YaziProperty); }
+            set { SetValue(Obs_YaziProperty, value); }
         }
+        public static readonly BindableProperty Obs_YaziProperty = BindableProperty.Create("Obs_Yazi", typeof(ObservableCollection<YaziModel>),
+            typeof(CaroselViewPage), default(ObservableCollection<YaziModel>));
+
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
+
         public CaroselViewPage ()
 		{
-            ObservableCollection<ImageSlider> collection = new ObservableCollection<ImageSlider>{};
-
-            for (int i = 1; i < 11; i++)
-            {
-                collection.Add(new ImageSlider { ImageUrl = $"slayt{i}.png", Detail = "" });
-            }
-
+            ResimYukle();
             StackLayout body = new StackLayout()
             {
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.Start,
                 HeightRequest = 182,
-
             };
-
             carousel = new CarouselViewControl()
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -53,7 +54,7 @@ namespace EuropeAesth.ViewPages
                 },0,0);
 
                 var lblHeader = new Label() {TextColor = Color.White };
-                lblHeader.SetBinding(Label.TextProperty, "Detail");
+                lblHeader.SetBinding(Label.TextProperty, "Baslik");
                 DetailGrid.Children.Add(lblHeader, 0, 0);
 
                 var SliderGrid = new ExGrid() { VerticalOptions = LayoutOptions.EndAndExpand };
@@ -82,25 +83,38 @@ namespace EuropeAesth.ViewPages
 
             carousel.ItemTemplate = template;
 
-            carousel.ItemsSource = collection;
 
             body.Children.Add(carousel);
 
 
-            StackLayout stack = new StackLayout()
-            {
-                Children = {
-                    body
-                },
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Color.White
-            };
-
-            Content = stack;
+          
+            Content = body;
         }
 
+        private async void ResimYukle()
+        {
+            var tumYazilar = await firebase.Child("Yazilar").OnceAsync<YaziModel>();
+            var osbFirst5 = tumYazilar.OrderByDescending(x => x.Object.Tarih).Take(5);
+            Obs_Yazi = new ObservableCollection<YaziModel>();
+            if (tumYazilar != null)
+            {
+                foreach (var item in osbFirst5)
+                    Obs_Yazi.Add(item.Object);
+            }
+
+            carousel.ItemsSource = Obs_Yazi;
+            carousel.BindingContext = Obs_Yazi;
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == Obs_YaziProperty.PropertyName)
+            {
+
+            }
+        }
     }
 
     
-}
+    }

@@ -34,11 +34,11 @@ namespace EuropeAesth.MasDetPage
             {
                 MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
                 {
-                    new MainPageMenuItem { Id = 0, Title = "Anasayfa", TargetType= typeof(TabbedMainPage) },
-                    new MainPageMenuItem { Id = 1, Title = "Yazilar", TargetType= typeof(MenuYazilar) },
-                    new MainPageMenuItem { Id = 2, Title = "Videolar" },
-                    new MainPageMenuItem { Id = 3, Title = "Resimler" },
-                    new MainPageMenuItem { Id = 4, Title = "Hakkımızda" },
+                    new MainPageMenuItem { Id = 0, Title = "Anasayfa", Icon = "ic_dashboard.png", TargetType= typeof(TabbedMainPage) },
+                    new MainPageMenuItem { Id = 1, Title = "Yazilar", Icon = "ic_yazilar.png", TargetType= typeof(MenuYazilar) },
+                    new MainPageMenuItem { Id = 2, Title = "Videolar", Icon="ic_videolar.png" },
+                    new MainPageMenuItem { Id = 3, Title = "Resimler" , Icon = "ic_resimler.png"},
+                    new MainPageMenuItem { Id = 4, Title = "Hakkımızda" , Icon = "ic_hakkimizda.png"},
                 });
             }
             
@@ -52,6 +52,16 @@ namespace EuropeAesth.MasDetPage
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
             #endregion
+        }
+
+        private void WebButon_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InstaButon_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

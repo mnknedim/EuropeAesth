@@ -53,8 +53,6 @@ namespace EuropeAesth.Pages.Interface
                 YaziList.ItemsSource = Obs_Yazi;
                 YaziList.BindingContext = Obs_Yazi;
             }
-           
-
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)

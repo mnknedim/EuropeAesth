@@ -125,6 +125,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderer\ImageEntryRenderer.cs" />
     <Compile Include="Renderer\ImagePickerRenderer.cs" />
+    <Compile Include="Renderer\ImageResizerRenderer.cs" />
     <None Include="Entitlements1.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -729,5 +730,20 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ekimoperasyon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hakkimizda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_resimler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_videolar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_yazilar.png" />
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@
                                 </Grid>
                             </Frame>
                             <Frame  HasShadow="True"  CornerRadius="15" BackgroundColor="White">
-                                <custom:ImageEntry x:Name="YaziBaslik" Text="{Binding Obs_Yazi.Baslik}" Margin="-15"  Placeholder="Başlık"/>
+                                <custom:ImageEntry x:Name="YaziBaslik" Text="{Binding Obs_Yazi.Baslik}" Margin="-15" IsUpperKeyboard="False" Placeholder="Başlık"/>
                             </Frame>
                             <Frame HasShadow="True"  CornerRadius="15" BackgroundColor="White">
                                 <Editor x:Name="YaziAciklama" Text="{Binding Obs_Yazi.Aciklama}" Margin="-15"  Placeholder="Açıklama" HeightRequest="300"/>

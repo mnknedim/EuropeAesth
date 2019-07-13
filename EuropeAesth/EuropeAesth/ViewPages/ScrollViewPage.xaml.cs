@@ -36,12 +36,13 @@ namespace EuropeAesth.ViewPages
         private async void YazilarYukle()
         {
             var tumYazilar = await firebase.Child("Yazilar").OnceAsync<YaziModel>();
-            var orderedYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).ToList();
+            var orderedYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).Skip(4).ToList();
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)
             {
                 foreach (var item in orderedYazilar)
                 {
+                    item.Object.KisaAciklama = item.Object.Aciklama.Length > 60 ? item.Object.Aciklama.Substring(0, 60) : item.Object.Aciklama;
                     Obs_Yazi.Add(item.Object);
                 }
                 YaziList.ItemsSource = Obs_Yazi;
