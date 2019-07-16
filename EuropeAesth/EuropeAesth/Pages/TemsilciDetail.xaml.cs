@@ -17,10 +17,14 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TemsilciDetail : ContentPage
 	{
+        AllUser secilenTemsilci;
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public TemsilciDetail (AllUser temsilci)
 		{
+            
 			InitializeComponent ();
+            secilenTemsilci = temsilci;
+            BindingContext = this;
             TemsilciSil.Clicked += TemsilciSil_Clicked;
             if (App.Uyg.LoginUser.YetkiKod == 1)
             {
@@ -37,38 +41,28 @@ namespace EuropeAesth.Pages
             st_Temsilci.Children.Add(new HDLabel("Sehir : ", temsilci.Sehir));
         }
 
-        string slctdId = "";
         private async void TemsilciSil_Clicked(object sender, EventArgs e)
         {
-
             var result = await DisplayAlert("Silme işlemi", "Bu temsilciyi silmek istiyor musunuz?", "Sil", "Vazgeç");
             if (result)
             {
+                UserDialogs.Instance.ShowLoading("Siliniyor..", MaskType.Clear);
+
                 try
                 {
-                    UserDialogs.Instance.ShowLoading("Siliniyor..", MaskType.Clear);
-                    var slctd = (AllUser)sender;
                     var AllUser = await firebase.Child("AllUser").OnceAsync<AllUser>();
-                    var SlctUser = AllUser.FirstOrDefault(x => x.Object.UserKod == slctd.UserKod).Key;
+                    var SlctUser = AllUser.FirstOrDefault(x => x.Object.UserKod == secilenTemsilci.UserKod).Key;
                     await firebase.Child("AllUser").Child(SlctUser).DeleteAsync();
-
                     await DisplayAlert("Silindi", "işlem başarılı", "Tamam");
                 }
                 catch (Exception)
                 {
                     await DisplayAlert("Hata", "İşlem sırasında bir sıkıntı oldu. Temsilciyi kontrol edin", "Tamam");
-
                 }
-
-                await Navigation.PopModalAsync();
-
+                UserDialogs.Instance.HideLoading();
+                await Navigation.PopAsync();
             }
-
         }
 
-        private async void BtnGeri_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
     }
 }

@@ -50,10 +50,10 @@ namespace EuropeAesth.ViewPages
             }
         }
 
-        private void Lst_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void Lst_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var SelectedItem = (ImageScrollViewModel)e.SelectedItem;
-            App.Current.MainPage = new ListViewDetail(SelectedItem);
+            var secilen = (YaziModel)e.SelectedItem;
+            await Navigation.PushAsync(new ListViewDetail() { SecYazi = secilen });
         }
     }
 }

@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Custom="clr-namespace:EuropeAesth.Custom"
-             x:Class="EuropeAesth.Pages.TemsilcilerPage">
+             x:Class="EuropeAesth.Pages.TemsilcilerPage" Title="Temsilciler" >
     <ContentPage.Content>
         <StackLayout BackgroundColor="#02b294">
             <Custom:ExGrid>
-                <ListView x:Name="LstTemsilci" ItemTapped="LstTemsilci_ItemTapped" ItemsSource="{Binding}" HeightRequest="50" RowHeight="100" Margin="0,75,0,0"
+                <ListView x:Name="LstTemsilci" ItemTapped="LstTemsilci_ItemTapped" ItemsSource="{Binding}" HeightRequest="50" RowHeight="100" Margin="0,5,0,0"
                           BackgroundColor="Transparent" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -29,11 +29,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button x:Name="BtnGeri" Text="Geri" 
-                            FontSize="Small" FontAttributes="Bold"
-                            TextColor="#0a5e6b" BackgroundColor="Chocolate"
-                            VerticalOptions="End" HorizontalOptions="End"  Margin="30" 
-                            CornerRadius="35" HeightRequest="60" WidthRequest="60" Clicked="BtnGeri_Clicked"/>
+              
             </Custom:ExGrid>
         </StackLayout>
     </ContentPage.Content>

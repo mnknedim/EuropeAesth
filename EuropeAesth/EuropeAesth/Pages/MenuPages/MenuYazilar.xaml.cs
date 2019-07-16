@@ -50,7 +50,7 @@ namespace EuropeAesth.Pages.MenuPages
         private async void YaziList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var selectedYazi = e.SelectedItem as YaziModel;
-            await Navigation.PushAsync(new MenuYazilarOnizleme() { Yazi = selectedYazi });
+            await Navigation.PushAsync(new ListViewDetail() { SecYazi = selectedYazi });
         }
     }
 }

@@ -40,7 +40,7 @@ namespace EuropeAesth.ViewPages
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 220
+                HeightRequest = 220,
             };
 
             DataTemplate template = new DataTemplate(() =>
@@ -53,7 +53,7 @@ namespace EuropeAesth.ViewPages
                     
                 },0,0);
 
-                var lblHeader = new Label() {TextColor = Color.White };
+                var lblHeader = new Label() {TextColor = Color.White,Margin= new Thickness(10,0,0,0) };
                 lblHeader.SetBinding(Label.TextProperty, "Baslik");
                 DetailGrid.Children.Add(lblHeader, 0, 0);
 
@@ -65,12 +65,11 @@ namespace EuropeAesth.ViewPages
                     VerticalOptions = LayoutOptions.FillAndExpand
                 };
                 image.SetBinding(Image.SourceProperty, "ImageUrl");
+                var yazim = Obs_Yazi.Where(x=>x.ImageUrl == image.Source.ToString());
 
                 SliderGrid.Children.Add(image, 0, 0);
                 SliderGrid.Children.Add(DetailGrid, 0, 0);
-
                 
-
                 var stacksample = new StackLayout()
                 {
                     HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -82,13 +81,23 @@ namespace EuropeAesth.ViewPages
             });
 
             carousel.ItemTemplate = template;
-
-
+            
             body.Children.Add(carousel);
-
-
-          
             Content = body;
+        }
+
+       
+
+        private void ImgTabGest_Tapped(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Carousel_Focused(object sender, FocusEventArgs e)
+        {
+            //var secilen = (YaziModel)sender;
+            //await Navigation.PushAsync(new ListViewDetail() { SecYazi = secilen });
+            //YaziList.SelectedItem = null;
         }
 
         private async void ResimYukle()

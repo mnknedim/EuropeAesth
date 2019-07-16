@@ -4,40 +4,10 @@
              x:Class="EuropeAesth.Pages.Tester">
     <ContentPage.Content>
         <StackLayout>
-            <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Image Source="sacekimi.png" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"                                HorizontalOptions="FillAndExpand"/>
-                    <Label Text="FUE Yöntemiyle Saç Ekimi Nedir Nelerdir"  Grid.Row="0" Grid.Column="1" FontSize="Small" FontAttributes="Bold"/>
-                    <Label VerticalTextAlignment="Center" Margin="0,0,0,10"  FontSize="Small" HorizontalTextAlignment="Start" TextColor="Black" Text="06.07.2019"   Grid.Row="1" Grid.Column="1" />
-
-                </Grid>
-            </Frame>
-            <Frame HasShadow="True" BorderColor="Black" HeightRequest="40" Margin="5,10">
-                <Grid Margin="-20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Image Source="doktor.png" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"                                HorizontalOptions="FillAndExpand"/>
-                    <Label Text="Saç Ekimi Nedir?"  Grid.Row="0" Grid.Column="1" FontSize="Small" FontAttributes="Bold"/>
-                    <Label VerticalTextAlignment="End" Margin="0,0,0,10"  FontSize="Micro" HorizontalTextAlignment="Start" TextColor="#878787" Text="06.07.2019"  Grid.Row="1" Grid.Column="1" />
-
-                </Grid>
-            </Frame>
+            <Image Source="sacekimi.png"  HeightRequest="200" Aspect="AspectFill"/>
+            <Label Text="06.07.2019" HorizontalOptions="EndAndExpand" FontSize="Micro" Margin="0,0,10,0" />
+            <Label Text="Saç Ekimi Nedir Ne işe Yarar?" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="10"/>
+            <Label Margin="10" FontFamily="Montserrat" Text="Saç ekimi, çeşitli sebeplerle saç açıklığı oluşmuş ya da %50'den fazla dökülmüş alanlara, sağlıklı bölgelerden dökülmemeye kodlanmış bölgelerden (iki kulak arası ense bölgesinden) alınan saç köklerinin dökülmenin olduğu bölgeye uygun tekniklerle nakledilmesidir." TextColor="#878787"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -31,23 +31,19 @@ namespace EuropeAesth.Pages
             Navigation.PushAsync((item.PageName));
         });
 
-        private async void BtnGeri_Clicked(object sender, EventArgs e)
+        private async void Temsilciler_Clicked(object sender, EventArgs e)
         {
+           await Navigation.PushAsync(new TemsilcilerPage());
         }
 
-        private void Temsilciler_Clicked(object sender, EventArgs e)
+        private async void Hastalar_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new Hastalarim());
         }
 
-        private void Hastalar_Clicked(object sender, EventArgs e)
+        private async void Yazılar_Clicked(object sender, EventArgs e)
         {
-
-        }
-
-        private void Yazılar_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new Interface.Yazilar());
+           await Navigation.PushAsync(new Interface.Yazilar());
         }
 
         private void Multimedia_Clicked(object sender, EventArgs e)

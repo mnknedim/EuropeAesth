@@ -33,6 +33,15 @@ namespace EuropeAesth.Droid
         {
             Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        public async override void OnBackPressed()
+        {
+            var result = await App.Current.MainPage.DisplayAlert("Çıkış", "Çıkmak mı istiyorsunuz?", "Evet", "Hayır");
+            if (result)
+            {
+                base.OnBackPressed();
+            }
+        }
     }
 
 }

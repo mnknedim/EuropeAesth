@@ -26,10 +26,12 @@
     <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.1" />
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+    <PackageReference Include="Octane.Xam.VideoPlayer" Version="3.1.0" />
+    <PackageReference Include="Plugin.Youtube" Version="1.0.1" />
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.1.0.38" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.293080" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,10 +80,16 @@
     <EmbeddedResource Update="Pages\HastaDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Interface\Videolar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\Interface\YaziEkle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Interface\Yazilar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ListViewDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\MenuPages\MenuYazilar.xaml">

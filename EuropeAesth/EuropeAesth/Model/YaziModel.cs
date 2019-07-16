@@ -11,5 +11,6 @@ namespace EuropeAesth.Model
         public string KisaAciklama { get; set; }
         public string ImageUrl { get; set; }
         public DateTime Tarih { get; set; }
+
     }
 }

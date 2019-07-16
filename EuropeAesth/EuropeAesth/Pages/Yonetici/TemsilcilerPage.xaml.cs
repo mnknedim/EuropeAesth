@@ -40,7 +40,7 @@ namespace EuropeAesth.Pages
         {
             var tmslc = (AllUser)e.Item;
 
-            await Navigation.PushModalAsync(new TemsilciDetail(tmslc));
+            await Navigation.PushAsync(new TemsilciDetail(tmslc));
         }
 
         private async void BtnGeri_Clicked(object sender, EventArgs e)
