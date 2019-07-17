@@ -3,11 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EuropeAesth.Pages.Tester">
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="sacekimi.png"  HeightRequest="200" Aspect="AspectFill"/>
-            <Label Text="06.07.2019" HorizontalOptions="EndAndExpand" FontSize="Micro" Margin="0,0,10,0" />
-            <Label Text="Saç Ekimi Nedir Ne işe Yarar?" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="10"/>
-            <Label Margin="10" FontFamily="Montserrat" Text="Saç ekimi, çeşitli sebeplerle saç açıklığı oluşmuş ya da %50'den fazla dökülmüş alanlara, sağlıklı bölgelerden dökülmemeye kodlanmış bölgelerden (iki kulak arası ense bölgesinden) alınan saç köklerinin dökülmenin olduğu bölgeye uygun tekniklerle nakledilmesidir." TextColor="#878787"></Label>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Button Text="ekle" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

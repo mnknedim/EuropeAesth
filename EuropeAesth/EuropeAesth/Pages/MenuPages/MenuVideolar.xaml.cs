@@ -1,4 +1,5 @@
 ﻿using EuropeAesth.Model;
+using EuropeAesth.Pages.ViewDetail;
 using Firebase.Database;
 using System;
 using System.Collections.Generic;
@@ -6,36 +7,25 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace EuropeAesth.Pages.Interface
+namespace EuropeAesth.Pages.MenuPages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Videolar : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MenuVideolar : ContentPage
+    {
         public ObservableCollection<VideoModel> Obs_Video
         {
             get { return (ObservableCollection<VideoModel>)GetValue(Obs_VideoProperty); }
             set { SetValue(Obs_VideoProperty, value); }
         }
         public static readonly BindableProperty Obs_VideoProperty = BindableProperty.Create("Obs_Video", typeof(ObservableCollection<VideoModel>),
-            typeof(Videolar), default(ObservableCollection<VideoModel>));
-
-        private void ImageButton_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new VideoEkle());
-        }
-        public bool FullScreen
-        {
-            get => (bool)GetValue(FullScreenProperty);
-            set => SetValue(FullScreenProperty, value);
-        }
-        public static readonly BindableProperty FullScreenProperty = BindableProperty.Create("FullScreen", typeof(bool), typeof(Videolar), true);
+            typeof(MenuVideolar), default(ObservableCollection<VideoModel>));
 
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
-        public Videolar()
+        public MenuVideolar()
         {
             InitializeComponent();
 
@@ -46,8 +36,8 @@ namespace EuropeAesth.Pages.Interface
 
         private async void VideoList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var duzenleVideo = e.SelectedItem as VideoModel;
-            await Navigation.PushAsync(new VideoEkle() { Obs_Video = duzenleVideo });
+            var selectedVideo = e.SelectedItem as VideoModel;
+            await Navigation.PushAsync(new VideoView() { SecVideo = selectedVideo });
         }
 
         private async void VideolarYukle()
@@ -64,22 +54,5 @@ namespace EuropeAesth.Pages.Interface
                 VideoList.BindingContext = Obs_Video;
             }
         }
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
-            if (width > height)
-            {
-                videostack.VerticalOptions = LayoutOptions.FillAndExpand;
-                videostack.HorizontalOptions = LayoutOptions.FillAndExpand;
-                FullScreen = false;
-
-            }
-            else
-            {
-                FullScreen = true;
-                videostack.VerticalOptions = LayoutOptions.StartAndExpand;
-            }
-        }
-
     }
 }

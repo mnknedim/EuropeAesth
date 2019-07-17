@@ -13,4 +13,14 @@ namespace EuropeAesth.Model
         public DateTime Tarih { get; set; }
 
     }
+
+    public class VideoModel
+    {
+        public string VideoUrl { get; set; }
+        public string Baslik { get; set; }
+        public string Aciklama { get; set; }
+        public string KisaAciklama { get; set; }
+        public string ImageUrl { get; set; }
+        public DateTime Tarih { get; set; }
+    }
 }

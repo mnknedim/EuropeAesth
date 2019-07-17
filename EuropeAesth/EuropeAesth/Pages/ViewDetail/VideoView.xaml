@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:videoplayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
+             x:Class="EuropeAesth.Pages.ViewDetail.VideoView" NavigationPage.HasNavigationBar="{Binding FullScreen}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="videostack">
+                <videoplayer:VideoPlayer x:Name="videoPlayer" AutoPlay="True" FillMode="ResizeAspectFill" DisplayControls="True"/>
+                <StackLayout x:Name="DetayStack" VerticalOptions="StartAndExpand">
+                    <Label Text="{Binding SecVideo.Tarih, StringFormat='{0:dd:MM:yyyy}'}" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" FontSize="Micro" Margin="0,0,10,0" />
+                    <Label Text="{Binding SecVideo.Baslik}" FontSize="Medium" FontAttributes="Bold" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="10"/>
+                    <Label Margin="10" FontFamily="Montserrat" Text="{Binding SecVideo.Aciklama}" TextColor="#878787"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using CarouselView.FormsPlugin.Android;
 using Plugin.CurrentActivity;
+using Octane.Xamarin.Forms.VideoPlayer.Android;
 
 namespace EuropeAesth.Droid
 {

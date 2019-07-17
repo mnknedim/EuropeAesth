@@ -46,8 +46,10 @@ namespace EuropeAesth.Pages
            await Navigation.PushAsync(new Interface.Yazilar());
         }
 
-        private void Multimedia_Clicked(object sender, EventArgs e)
+        private async void Multimedia_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new Interface.Videolar());
+            //await Navigation.PushAsync(new Tester());
 
         }
     }
