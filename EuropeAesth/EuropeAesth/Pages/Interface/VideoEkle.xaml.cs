@@ -47,6 +47,21 @@ namespace EuropeAesth.Pages.Interface
             VideoResim.GestureRecognizers.Add(tabGest);
             DefaultResim.GestureRecognizers.Add(tabGest);
             LblYayinTarih.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            VideoUrl.TextChanged += VideoUrl_TextChanged;
+        }
+
+        private void VideoUrl_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (VideoUrl.Text.Count() > 100)
+            {
+                VideoFrame.IsVisible = true;
+                videoPlayer.Source = VideoUrl.Text;
+            }
+            else
+            {
+                VideoFrame.IsVisible = false;
+                videoPlayer.Source = "";
+            }
         }
 
         private void BasTarih_Tapped(object sender, EventArgs e)
@@ -156,7 +171,7 @@ namespace EuropeAesth.Pages.Interface
 
         private async void Vazgec_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
     }
 }

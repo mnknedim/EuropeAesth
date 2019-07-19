@@ -6,7 +6,7 @@
     <ContentView.Content>
         <StackLayout Margin="0,10,0,0">
             <ScrollView>
-                <StackLayout Margin="10,30">
+                <StackLayout Margin="10,30,10,0">
                     <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
                         <ListView x:Name="YaziList"  HasUnevenRows="True" SeparatorVisibility="None" ItemSelected="Lst_ItemSelected" RefreshControlColor="#afd3c3">
                             <ListView.ItemTemplate >

@@ -2,12 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:videoplayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
-             x:Class="EuropeAesth.Pages.Interface.Videolar" NavigationPage.HasNavigationBar="{Binding FullScreen}">
+             x:Class="EuropeAesth.Pages.Interface.Videolar" NavigationPage.HasNavigationBar="True" Title="Videolar">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="adds.png" Clicked="ImageButton_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout x:Name="videostack" VerticalOptions="StartAndExpand">
             <ScrollView>
-                <StackLayout Margin="10,50">
-                    <ImageButton Source="add.png" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" Clicked="ImageButton_Clicked"/>
+                <StackLayout Margin="10">
                     <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
                         <ListView x:Name="VideoList"  HasUnevenRows="True" SeparatorVisibility="None">
                             <ListView.ItemTemplate >

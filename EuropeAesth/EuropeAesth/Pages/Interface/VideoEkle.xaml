@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:videoplayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
              x:Class="EuropeAesth.Pages.Interface.VideoEkle">
     <ContentPage.Content>
         <Grid BackgroundColor="#ebfcec">
@@ -21,6 +22,9 @@
                             </Frame>
                             <Frame  HasShadow="True"  CornerRadius="15" BackgroundColor="White">
                                 <custom:ImageEntry x:Name="VideoUrl" Text="{Binding Obs_Video.VideoUrl}" Margin="-15" IsUpperKeyboard="False" Placeholder="Video Url"/>
+                            </Frame>
+                            <Frame x:Name="VideoFrame" HeightRequest="150" WidthRequest="200" IsVisible="False">
+                                <videoplayer:VideoPlayer x:Name="videoPlayer" AutoPlay="True" FillMode="ResizeAspectFill" Volume="0" DisplayControls="False"/>
                             </Frame>
                             <Frame HasShadow="True"  CornerRadius="15" BackgroundColor="White">
                                 <Editor x:Name="VideoAciklama" Text="{Binding Obs_Video.Aciklama}" Margin="-15"  Placeholder="Açıklama" HeightRequest="150"/>

@@ -47,7 +47,7 @@ namespace EuropeAesth.Pages.Interface
         private async void VideoList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var duzenleVideo = e.SelectedItem as VideoModel;
-            await Navigation.PushAsync(new VideoEkle() { Obs_Video = duzenleVideo });
+            await Navigation.PushModalAsync(new VideoEkle() { Obs_Video = duzenleVideo });
         }
 
         private async void VideolarYukle()

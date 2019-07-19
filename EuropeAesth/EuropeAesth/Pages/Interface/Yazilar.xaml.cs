@@ -37,17 +37,19 @@ namespace EuropeAesth.Pages.Interface
         private async void YaziList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var yaziDuzenle = e.SelectedItem as YaziModel;
-            await Navigation.PushModalAsync(new YaziEkle() { Obs_Yazi = yaziDuzenle });
+            await Navigation.PushModalAsync(new YaziEkle() { Obs_Yazi = yaziDuzenle, Duzenle = true });
         }
 
         private async void YazilarYukle()
         {
             var tumYazilar =await firebase.Child("Yazilar").OnceAsync<YaziModel>();
+            tumYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).ToList();
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)
             {
                 foreach (var item in tumYazilar)
                 {
+                    item.Object.Id = item.Key;
                     Obs_Yazi.Add(item.Object);
                 }
                 YaziList.ItemsSource = Obs_Yazi;

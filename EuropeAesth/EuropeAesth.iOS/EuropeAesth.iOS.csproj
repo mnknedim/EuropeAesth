@@ -752,4 +752,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_yazilar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\adds.png" />
+  </ItemGroup>
 </Project>

@@ -20,9 +20,9 @@ using Xamarin.Forms.Xaml;
 
 namespace EuropeAesth.Pages.Interface
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class YaziEkle : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class YaziEkle : ContentPage
+    {
         public YaziModel Obs_Yazi
         {
             get { return (YaziModel)GetValue(Obs_YaziProperty); }
@@ -36,33 +36,36 @@ namespace EuropeAesth.Pages.Interface
             set { SetValue(DuzenleProperty, value); }
         }
         public static readonly BindableProperty DuzenleProperty = BindableProperty.Create("Duzenle", typeof(bool),
-            typeof(YaziEkle), false);
+            typeof(YaziEkle), default(bool));
 
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
-        public YaziEkle ()
-		{
-			InitializeComponent ();
+        public YaziEkle()
+        {
+            InitializeComponent();
             BindingContext = this;
             var tabGest = new TapGestureRecognizer();
             tabGest.Tapped += ResimYukle_Tabbed;
             YaziResmi.GestureRecognizers.Add(tabGest);
             DefaultResim.GestureRecognizers.Add(tabGest);
             LblYayinTarih.Text = DateTime.Now.ToString("dd.MM.yyyy");
-		}
+        }
 
         private void BasTarih_Tapped(object sender, EventArgs e)
         {
             CalenderGrid.IsVisible = true;
         }
 
+        string[] DateArray;
+        string[] DateTimeArray;
         private void Calendar_SelectionChanged(object sender, Syncfusion.SfCalendar.XForms.SelectionChangedEventArgs e)
         {
             var sfcalender = sender as SfCalendar;
             var dateString = sfcalender.SelectedDate.Value.ToString();
-            var showDate = dateString.Substring(0, dateString.IndexOf(' '));
-            var dateArray = showDate.Split('.');
+            var showDate = dateString.Split(' ');
+            DateArray = showDate[0].Split('.');
+            DateTimeArray = showDate[1].Split(':');
 
-            LblYayinTarih.Text = showDate;
+            LblYayinTarih.Text = showDate[0];
             CalenderGrid.IsVisible = false;
 
         }
@@ -93,7 +96,7 @@ namespace EuropeAesth.Pages.Interface
             }
             catch (Exception ex)
             {
-               
+
             }
         }
 
@@ -108,7 +111,7 @@ namespace EuropeAesth.Pages.Interface
             var resizedByte750 = _resizer.ResizeImage(OrgByte, 750, 750).Item1;
 
             string stroageImage;
-            using (Stream stt= new MemoryStream(resizedByte750))
+            using (Stream stt = new MemoryStream(resizedByte750))
             {
                 var ImageUrl = Guid.NewGuid().ToString();
                 stroageImage = await new FirebaseStorage("adjuvanclinic.appspot.com")
@@ -127,31 +130,52 @@ namespace EuropeAesth.Pages.Interface
             var ImageName = Guid.NewGuid();
             ImageName.ToString();
 
-            var result = await StoreImages(file.GetStream());
+            string result = "";
 
-            var EklenecekYazi = new YaziModel()
-            {
-                Baslik = YaziBaslik.Text,
-                Aciklama = YaziAciklama.Text,
-                ImageUrl = result + ".png",
-                Tarih = DateTime.Now
-            };
-            
+
+
+            //new DateTime(Convert.ToInt32(DateArray[2]), Convert.ToInt32(DateArray[1]), Convert.ToInt32(DateArray[0]))
             try
             {
-                if (result != null)
+
+                if (Duzenle)
                 {
-                    await firebase.Child("Yazilar").PostAsync(EklenecekYazi);
-                    await DisplayAlert("Kaydedildi", "Kayıt Başarılı", "Tamam");
-                    await Navigation.PopModalAsync();
-                    UserDialogs.Instance.HideLoading();
+                    var EklenecekYazi = new YaziModel()
+                    {
+                        Baslik = YaziBaslik.Text,
+                        Aciklama = YaziAciklama.Text,
+                        ImageUrl = Obs_Yazi.ImageUrl,
+                        Tarih = DateArray == null ? DateTime.Now : new DateTime(Convert.ToInt32(DateArray[2]), Convert.ToInt32(DateArray[1]), Convert.ToInt32(DateArray[0])),
+                    };
+
+                    await firebase.Child("Yazilar").Child(Obs_Yazi.Id).PutAsync(EklenecekYazi);
                 }
+                else
+                {
+                    result = await StoreImages(file.GetStream());
+                    var EklenecekYazi = new YaziModel()
+                    {
+                        Baslik = YaziBaslik.Text,
+                        Aciklama = YaziAciklama.Text,
+                        ImageUrl = result + ".png",
+                        Tarih = DateTime.Now,
+                    };
+
+                    if (result != null)
+                        await firebase.Child("Yazilar").PostAsync(EklenecekYazi);
+
+                }
+
+                await DisplayAlert("Kaydedildi", "Kayıt Başarılı", "Tamam");
+                await Navigation.PopModalAsync();
+                UserDialogs.Instance.HideLoading();
+
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Hata", $"Hata oluştu. Tekrar Deneyiniz. {ex.Message}","Tamam");
+                await DisplayAlert("Hata", $"Hata oluştu. Tekrar Deneyiniz. {ex.Message}", "Tamam");
             }
-            
+
         }
 
         private async void Vazgec_Clicked(object sender, EventArgs e)
