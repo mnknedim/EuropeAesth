@@ -35,10 +35,11 @@ namespace EuropeAesth.Pages.MenuPages
         private async void YazilarYukle()
         {
             var tumYazilar = await firebase.Child("Yazilar").OnceAsync<YaziModel>();
+            var tumYaziSirali = tumYazilar.OrderByDescending(x => x.Object.Tarih).ToList();
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)
             {
-                foreach (var item in tumYazilar)
+                foreach (var item in tumYaziSirali)
                 {
                     Obs_Yazi.Add(item.Object);
                 }

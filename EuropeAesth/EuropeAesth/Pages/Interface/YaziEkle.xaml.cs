@@ -48,6 +48,7 @@ namespace EuropeAesth.Pages.Interface
             YaziResmi.GestureRecognizers.Add(tabGest);
             DefaultResim.GestureRecognizers.Add(tabGest);
             LblYayinTarih.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            
         }
 
         private void BasTarih_Tapped(object sender, EventArgs e)
@@ -132,9 +133,6 @@ namespace EuropeAesth.Pages.Interface
 
             string result = "";
 
-
-
-            //new DateTime(Convert.ToInt32(DateArray[2]), Convert.ToInt32(DateArray[1]), Convert.ToInt32(DateArray[0]))
             try
             {
 

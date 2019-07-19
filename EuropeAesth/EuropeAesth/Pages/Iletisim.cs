@@ -14,7 +14,7 @@ namespace EuropeAesth.Pages
 
             var browser = new WebView();
             browser.Source = "https://adjuvanclinic.com/i%CC%87leti%C5%9Fim";
-
+            browser.Margin = new Thickness(0, -70, 0, 70);
 
             Content = browser;
 		}

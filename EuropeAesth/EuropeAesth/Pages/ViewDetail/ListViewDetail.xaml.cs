@@ -24,7 +24,7 @@ namespace EuropeAesth.Pages
 		{
 			InitializeComponent ();
             BindingContext = this;
-
+            
         }
     }
 }

@@ -44,12 +44,12 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackLayout Margin="0,20" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
-            <StackLayout Orientation="Horizontal"  Margin="10">
-                <ImageButton x:Name="WebButon" Source="ic_web.png" HeightRequest="30" Clicked="WebButon_Clicked"/>
+            <StackLayout  x:Name="WebButon" Orientation="Horizontal"  Margin="10">
+                <ImageButton Source="ic_web.png" HeightRequest="30" Clicked="WebButon_Clicked"/>
                 <Label Text="Web" FontSize="Small" VerticalTextAlignment="Center" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal"  Margin="10">
-                <ImageButton x:Name="InstaButon" Source="ic_instagram.png" HeightRequest="30" Clicked="InstaButon_Clicked" />
+            <StackLayout x:Name="InstaButon" Orientation="Horizontal"  Margin="10">
+                <ImageButton Source="ic_instagram.png" HeightRequest="30" Clicked="InstaButon_Clicked" />
                 <Label Text="Instagram" FontSize="Small" VerticalTextAlignment="Center"/>
             </StackLayout>
         </StackLayout>

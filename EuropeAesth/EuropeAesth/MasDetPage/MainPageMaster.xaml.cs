@@ -25,7 +25,16 @@ namespace EuropeAesth.MasDetPage
 
             BindingContext = new MainPageMasterViewModel();
             ListView = MenuItemsListView;
+
+            var webTab = new TapGestureRecognizer();
+            webTab.Tapped += WebButon_Clicked;
+            WebButon.GestureRecognizers.Add(webTab);
+
+            var instaTab = new TapGestureRecognizer();
+            instaTab.Tapped += InstaButon_Clicked;
+            InstaButon.GestureRecognizers.Add(instaTab);
         }
+
 
         class MainPageMasterViewModel : INotifyPropertyChanged
         {
@@ -39,7 +48,7 @@ namespace EuropeAesth.MasDetPage
                     new MainPageMenuItem { Id = 1, Title = "Yazilar", Icon = "ic_yazilar.png", TargetType= typeof(MenuYazilar) },
                     new MainPageMenuItem { Id = 2, Title = "Videolar", Icon="ic_videolar.png", TargetType= typeof(MenuVideolar)  },
                     new MainPageMenuItem { Id = 3, Title = "Resimler" , Icon = "ic_resimler.png"},
-                    new MainPageMenuItem { Id = 4, Title = "Hakkımızda" , Icon = "ic_hakkimizda.png"},
+                    new MainPageMenuItem { Id = 4, Title = "Hakkımızda" , Icon = "ic_hakkimizda.png", TargetType= typeof(Hakkimizda)},
                 });
             }
             
@@ -57,12 +66,13 @@ namespace EuropeAesth.MasDetPage
 
         private void WebButon_Clicked(object sender, EventArgs e)
         {
-
+            Device.OpenUri(new Uri("https://adjuvanclinic.com/"));
         }
 
         private void InstaButon_Clicked(object sender, EventArgs e)
         {
-
+            Device.OpenUri(new Uri("https://www.instagram.com/adjuvanclinic/"));
+        
         }
     }
 }
