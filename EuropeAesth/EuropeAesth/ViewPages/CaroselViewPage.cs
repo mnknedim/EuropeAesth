@@ -16,6 +16,14 @@ namespace EuropeAesth.ViewPages
 	public class CaroselViewPage : ContentView
 	{
         public CarouselViewControl carousel;
+
+        public Command TappedCommand
+        {
+            get => (Command)GetValue(TappedCommandProperty);
+            set => SetValue(TappedCommandProperty, value);
+        }
+        public static readonly BindableProperty TappedCommandProperty = BindableProperty.Create("TappedCommand", typeof(Command), typeof(CaroselViewPage), default(Command));
+
         public ObservableCollection<YaziModel> Obs_Yazi
         {
             get { return (ObservableCollection<YaziModel>)GetValue(Obs_YaziProperty); }
@@ -38,11 +46,15 @@ namespace EuropeAesth.ViewPages
             };
             carousel = new CarouselViewControl()
             {
+                
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 220,
+                HeightRequest = 230,
+                PositionSelectedCommand = PositionCommand
             };
-
+            carousel.PositionSelected += Carousel_PositionSelected;
+           
+            
             DataTemplate template = new DataTemplate(() =>
             {
                 var DetailGrid = new ExGrid() { HeightRequest = 30, VerticalOptions = LayoutOptions.EndAndExpand};
@@ -60,11 +72,20 @@ namespace EuropeAesth.ViewPages
                 var SliderGrid = new ExGrid() { VerticalOptions = LayoutOptions.EndAndExpand };
 
                 var image = new Image() {
-                    HeightRequest = 220,
+                    HeightRequest = 230,
                     WidthRequest = 120,
-                    VerticalOptions = LayoutOptions.FillAndExpand
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    Aspect = Aspect.Fill,
+                    Margin = new Thickness(0, 0, 0, 15),
                 };
+            
+                var tabGest = new TapGestureRecognizer() {Command = ItemCommand };
+                 
+                image.GestureRecognizers.Add(tabGest);
                 image.SetBinding(Image.SourceProperty, "ImageUrl");
+
+
+
                 var yazim = Obs_Yazi.Where(x=>x.ImageUrl == image.Source.ToString());
 
                 SliderGrid.Children.Add(image, 0, 0);
@@ -81,16 +102,26 @@ namespace EuropeAesth.ViewPages
             });
 
             carousel.ItemTemplate = template;
-            
+            carousel.ShowIndicators = true;
             body.Children.Add(carousel);
             Content = body;
         }
 
-       
+        int LastPosition = 0;
+        private void Carousel_PositionSelected(object sender, PositionSelectedEventArgs e)
+        {
+          
+        }
+
+        public Command ItemCommand = new Command(() => {
+
+        });
+
+        public Command PositionCommand = new Command(() => {
+        });
 
         private void ImgTabGest_Tapped(object sender, EventArgs e)
         {
-            
         }
 
         private void Carousel_Focused(object sender, FocusEventArgs e)
