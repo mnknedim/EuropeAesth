@@ -4,10 +4,9 @@
              xmlns:ex="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.ViewPages.ScrollViewPage">
     <ContentView.Content>
-        <StackLayout Margin="0,10,0,0">
-            <ScrollView>
-                <StackLayout Margin="10,35,10,0">
-                    <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
+        <StackLayout >
+            <ScrollView >
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" x:Name="CariStack" >
                         <ListView x:Name="YaziList"  HasUnevenRows="True" SeparatorVisibility="None" ItemSelected="Lst_ItemSelected" RefreshControlColor="#afd3c3">
                             <ListView.ItemTemplate >
                                 <DataTemplate >
@@ -38,7 +37,6 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackLayout>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

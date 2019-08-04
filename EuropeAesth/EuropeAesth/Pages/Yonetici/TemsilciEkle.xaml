@@ -59,14 +59,6 @@
                                 VerticalOptions="EndAndExpand"  Margin="55,30,55,0"
                                 CornerRadius="10" Clicked="Kayit_Clicked"/>
 
-                        <Label Text="Vazgeç" Margin="10" 
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           HorizontalTextAlignment="Center">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Vazgec_Tapped"></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>
                     </StackLayout>
                 </ScrollView>
             </Grid>

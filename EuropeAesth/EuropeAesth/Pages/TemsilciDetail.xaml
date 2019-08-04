@@ -7,21 +7,23 @@
         <StackLayout BackgroundColor="#02b294">
             <custom:ExGrid>
                 <BoxView BackgroundColor="White" VerticalOptions="FillAndExpand" Opacity="0.8" CornerRadius="15" Margin="35,55,33,0"></BoxView>
-                <ScrollView Margin="35,55">
+                <ScrollView Margin="35,55,35,30">
                     <StackLayout Margin="10,55">
                         <Label Text="Temsilci Bilgileri"
                            HorizontalTextAlignment="Center"
                            FontSize="Medium" FontAttributes="Bold"></Label>
                         <StackLayout x:Name="st_Temsilci">
                         </StackLayout>
-                       
+
                         <Button x:Name="bilgiDuzenle" Text="Bilgileri düzenle"
                                     BackgroundColor="GhostWhite"
                                     Margin="100,20"
+                                TextColor="Black"
                                     IsVisible="False"
                                     />
                         <Button x:Name="TemsilciSil" Text="Temsilciyi sil"
                                     BackgroundColor="Red"
+                                TextColor="White"
                                     Margin="100,20"
                                 Clicked="TemsilciSil_Clicked"
                                 IsVisible="False"

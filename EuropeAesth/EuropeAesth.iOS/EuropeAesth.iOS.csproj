@@ -87,6 +87,7 @@
     <OptimizePNGs>true</OptimizePNGs>
     <CodesignProvision>Dist Ali</CodesignProvision>
     <BuildIpa>true</BuildIpa>
+    <MtouchSdkVersion>12.1</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -126,7 +127,7 @@
     <Compile Include="Renderer\ImageEntryRenderer.cs" />
     <Compile Include="Renderer\ImagePickerRenderer.cs" />
     <Compile Include="Renderer\ImageResizerRenderer.cs" />
-    <None Include="Entitlements1.plist" />
+    <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

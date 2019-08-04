@@ -1,6 +1,7 @@
 ﻿using CarouselView.FormsPlugin.Abstractions;
 using EuropeAesth.Custom;
 using EuropeAesth.Model;
+using EuropeAesth.Pages;
 using Firebase.Database;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,16 @@ namespace EuropeAesth.ViewPages
 	public class CaroselViewPage : ContentView
 	{
         public CarouselViewControl carousel;
-
-        public Command TappedCommand
+        static int LastPosition = 0;
+        static ObservableCollection<YaziModel> yaziForClick;
+       public Command TappedCommand
         {
             get => (Command)GetValue(TappedCommandProperty);
             set => SetValue(TappedCommandProperty, value);
         }
         public static readonly BindableProperty TappedCommandProperty = BindableProperty.Create("TappedCommand", typeof(Command), typeof(CaroselViewPage), default(Command));
 
-        public ObservableCollection<YaziModel> Obs_Yazi
+        public  ObservableCollection<YaziModel> Obs_Yazi
         {
             get { return (ObservableCollection<YaziModel>)GetValue(Obs_YaziProperty); }
             set { SetValue(Obs_YaziProperty, value); }
@@ -42,14 +44,13 @@ namespace EuropeAesth.ViewPages
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 182,
             };
             carousel = new CarouselViewControl()
             {
                 
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 230,
+                HeightRequest = 250,
                 PositionSelectedCommand = PositionCommand
             };
             carousel.PositionSelected += Carousel_PositionSelected;
@@ -57,7 +58,7 @@ namespace EuropeAesth.ViewPages
             
             DataTemplate template = new DataTemplate(() =>
             {
-                var DetailGrid = new ExGrid() { HeightRequest = 30, VerticalOptions = LayoutOptions.EndAndExpand};
+                var DetailGrid = new ExGrid() { HeightRequest = 30, VerticalOptions = LayoutOptions.EndAndExpand , Margin = new Thickness(0,-30,0,30)};
                 DetailGrid.Children.Add(new StackLayout()
                 {
                     BackgroundColor = Color.Black,
@@ -69,17 +70,18 @@ namespace EuropeAesth.ViewPages
                 lblHeader.SetBinding(Label.TextProperty, "Baslik");
                 DetailGrid.Children.Add(lblHeader, 0, 0);
 
-                var SliderGrid = new ExGrid() { VerticalOptions = LayoutOptions.EndAndExpand };
+                var SliderGrid = new ExGrid() { VerticalOptions = LayoutOptions.FillAndExpand };
 
                 var image = new Image() {
                     HeightRequest = 230,
                     WidthRequest = 120,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     Aspect = Aspect.Fill,
-                    Margin = new Thickness(0, 0, 0, 15),
+                    Margin = new Thickness(0, 0, 0, 30),
                 };
             
-                var tabGest = new TapGestureRecognizer() {Command = ItemCommand };
+                var tabGest = new TapGestureRecognizer();
+                tabGest.Tapped += TabGest_Tapped;
                  
                 image.GestureRecognizers.Add(tabGest);
                 image.SetBinding(Image.SourceProperty, "ImageUrl");
@@ -107,29 +109,22 @@ namespace EuropeAesth.ViewPages
             Content = body;
         }
 
-        int LastPosition = 0;
-        private void Carousel_PositionSelected(object sender, PositionSelectedEventArgs e)
+        private async void TabGest_Tapped(object sender, EventArgs e)
         {
-          
+            var selected = yaziForClick.Where(x => x.Id == LastPosition.ToString()).FirstOrDefault();
+            await Navigation.PushAsync(new ListViewDetail() { SecYazi = selected });
         }
 
-        public Command ItemCommand = new Command(() => {
+        private void Carousel_PositionSelected(object sender, PositionSelectedEventArgs e)
+        {
+            LastPosition = e.NewValue;
+        }
 
-        });
 
         public Command PositionCommand = new Command(() => {
         });
 
-        private void ImgTabGest_Tapped(object sender, EventArgs e)
-        {
-        }
-
-        private void Carousel_Focused(object sender, FocusEventArgs e)
-        {
-            //var secilen = (YaziModel)sender;
-            //await Navigation.PushAsync(new ListViewDetail() { SecYazi = secilen });
-            //YaziList.SelectedItem = null;
-        }
+       
 
         private async void ResimYukle()
         {
@@ -138,10 +133,16 @@ namespace EuropeAesth.ViewPages
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)
             {
+                int id = 0;
                 foreach (var item in osbFirst5)
+                {
+                    item.Object.Id = id.ToString();
                     Obs_Yazi.Add(item.Object);
-            }
+                    id++;
 
+                }
+            }
+            yaziForClick = Obs_Yazi;
             carousel.ItemsSource = Obs_Yazi;
             carousel.BindingContext = Obs_Yazi;
         }

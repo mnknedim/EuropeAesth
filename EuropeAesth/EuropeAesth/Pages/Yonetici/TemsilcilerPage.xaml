@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Custom="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.Pages.TemsilcilerPage" Title="Temsilciler" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="adds.png" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#02b294">
             <Custom:ExGrid>

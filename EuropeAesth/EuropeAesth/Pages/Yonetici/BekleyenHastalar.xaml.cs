@@ -38,7 +38,7 @@ namespace EuropeAesth.Pages.Yonetici
         private async void LstBekleyen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var hasta = (Hasta)e.Item;
-            await Navigation.PushModalAsync(new HastaDetail(hasta));
+            await Navigation.PushAsync(new HastaDetail(hasta));
         }
     }
 }
