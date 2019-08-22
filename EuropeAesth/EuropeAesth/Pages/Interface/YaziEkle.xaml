@@ -24,7 +24,6 @@
                             </Frame>
                             <Frame CornerRadius="10"  HorizontalOptions="StartAndExpand" HeightRequest="10" Margin="0,5" IsClippedToBounds="False" HasShadow="True" BackgroundColor="White" >
                                 <Grid  Margin="-15" >
-                                  
                                     <custom:ImageEntry HeightRequest="40" BackgroundColor="White" Margin="10,0" Image="ic_calender"  HorizontalOptions="FillAndExpand" IsEnabled="False" VerticalOptions="CenterAndExpand"/>
                                     <Label x:Name="LblYayinTarih" Margin="45,0,5,0" FontSize="Small" Text="09.07.2019" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                                         <Label.GestureRecognizers>
@@ -34,7 +33,7 @@
                                 </Grid>
                             </Frame>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                <Button Text="Temizle" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Bisque" CornerRadius="15"/>
+                                <Button x:Name="Sil" Text="Sil" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Red" CornerRadius="15"/>
                                 <Button x:Name="Vazgec" Text="Vazgeç" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Brown" CornerRadius="15" Clicked="Vazgec_Clicked"/>
                                 <Button x:Name="Yayinla" Text="Yayınla" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Green" CornerRadius="15" Clicked="Yayinla_Clicked"/>
                             </StackLayout>

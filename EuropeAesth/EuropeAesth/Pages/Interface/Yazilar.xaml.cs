@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,6 +43,7 @@ namespace EuropeAesth.Pages.Interface
 
         private async void YazilarYukle()
         {
+
             var tumYazilar =await firebase.Child("Yazilar").OnceAsync<YaziModel>();
             tumYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).ToList();
             Obs_Yazi = new ObservableCollection<YaziModel>();
@@ -55,7 +57,39 @@ namespace EuropeAesth.Pages.Interface
                 YaziList.ItemsSource = Obs_Yazi;
                 YaziList.BindingContext = Obs_Yazi;
             }
+
+            CheckChange();
         }
+
+        private void CheckChange()
+        {
+            firebase.Child("Yazilar")
+                .AsObservable<YaziModel>()
+                .Where(yazi => !Obs_Yazi.Contains(yazi.Object) && yazi.EventType == Firebase.Database.Streaming.FirebaseEventType.InsertOrUpdate)
+                .Subscribe(yazi =>
+                {
+                    //Obs_Yazi.Clear();
+                    //if (!Obs_Yazi.Contains(yazi.Object))
+                    //{
+                    //    yazi.Object.Id = yazi.Key;
+                    //    Obs_Yazi.Add(yazi.Object);
+                    //}
+                });
+
+            firebase.Child("Yazilar")
+                .AsObservable<YaziModel>()
+                .Where(yazi => Obs_Yazi.Contains(yazi.Object) && yazi.EventType == Firebase.Database.Streaming.FirebaseEventType.Delete)
+                .Subscribe(yazi =>
+                {
+                    //Obs_Yazi.Clear();
+                    //if (!Obs_Yazi.Contains(yazi.Object))
+                    //{
+                    //    yazi.Object.Id = yazi.Key;
+                    //    Obs_Yazi.Add(yazi.Object);
+                    //}
+                });
+        }
+
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {

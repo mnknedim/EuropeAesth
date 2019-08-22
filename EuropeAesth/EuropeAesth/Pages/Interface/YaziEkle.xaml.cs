@@ -48,7 +48,21 @@ namespace EuropeAesth.Pages.Interface
             YaziResmi.GestureRecognizers.Add(tabGest);
             DefaultResim.GestureRecognizers.Add(tabGest);
             LblYayinTarih.Text = DateTime.Now.ToString("dd.MM.yyyy");
-            
+            Sil.Clicked += Sil_Clicked;
+        }
+
+        private async void Sil_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await firebase.Child("Yazilar").Child(Obs_Yazi.Id).DeleteAsync();
+                await DisplayAlert("Silindi", "", "Tamam");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Hata", "Tekrar deneyin", "Tamam");
+            }
+            await Navigation.PopModalAsync();
         }
 
         private void BasTarih_Tapped(object sender, EventArgs e)
@@ -68,7 +82,6 @@ namespace EuropeAesth.Pages.Interface
 
             LblYayinTarih.Text = showDate[0];
             CalenderGrid.IsVisible = false;
-
         }
         private void CalenderBox_Tapped(object sender, EventArgs e)
         {

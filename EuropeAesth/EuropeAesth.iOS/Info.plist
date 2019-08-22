@@ -28,6 +28,16 @@
 	<string>com.adjuvan.EuropeAesth</string>
 	<key>CFBundleVersion</key>
 	<string>1.4</string>
+
+  <key>NSCalendarsUsageDescription</key>
+  <string>This app need to access your calendar events</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>My description about why I need this capability</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>My description about why I need this capability</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>My description about why I need this capability</string>
+  
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
