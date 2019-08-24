@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,19 +34,23 @@ namespace EuropeAesth.Pages.Interface
             BindingContext = this;
             YazilarYukle();
             YaziList.ItemSelected += YaziList_ItemSelected;
-		}
+
+            //MessagingCenter.Subscribe<string>(this, "UpdateOrInsertOrDelete", (sender) => {
+            //    YazilarYukle();
+            //});
+        }
 
         private async void YaziList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var yaziDuzenle = e.SelectedItem as YaziModel;
             await Navigation.PushModalAsync(new YaziEkle() { Obs_Yazi = yaziDuzenle, Duzenle = true });
+
         }
 
         private async void YazilarYukle()
         {
-
             var tumYazilar =await firebase.Child("Yazilar").OnceAsync<YaziModel>();
-            tumYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).ToList();
+            //tumYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).ToList();
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)
             {
@@ -53,47 +58,73 @@ namespace EuropeAesth.Pages.Interface
                 {
                     item.Object.Id = item.Key;
                     Obs_Yazi.Add(item.Object);
+                    
                 }
-                YaziList.ItemsSource = Obs_Yazi;
-                YaziList.BindingContext = Obs_Yazi;
+                Obs_Yazi = new ObservableCollection<YaziModel>(Obs_Yazi.OrderByDescending(x => x.Tarih).ToList());
+                //YaziList.ItemsSource = Obs_Yazi;
+                //YaziList.BindingContext = Obs_Yazi;
             }
 
-            CheckChange();
+           CheckChange();
         }
 
         private void CheckChange()
         {
             firebase.Child("Yazilar")
                 .AsObservable<YaziModel>()
-                .Where(yazi => !Obs_Yazi.Contains(yazi.Object) && yazi.EventType == Firebase.Database.Streaming.FirebaseEventType.InsertOrUpdate)
+                .Where(yazi => yazi.EventType == Firebase.Database.Streaming.FirebaseEventType.InsertOrUpdate)
                 .Subscribe(yazi =>
                 {
-                    //Obs_Yazi.Clear();
-                    //if (!Obs_Yazi.Contains(yazi.Object))
-                    //{
-                    //    yazi.Object.Id = yazi.Key;
-                    //    Obs_Yazi.Add(yazi.Object);
-                    //}
+                    var rs = Obs_Yazi.Any(x=>x.Id == yazi.Key);
+                    if (!rs)//Insert
+                    {
+                        yazi.Object.Id = yazi.Key;
+                        Obs_Yazi.Add(yazi.Object);
+                        Obs_Yazi = new ObservableCollection<YaziModel>(Obs_Yazi.OrderByDescending(x => x.Tarih).ToList());
+                       
+                    }
+                    else//update
+                    {
+                        var item = Obs_Yazi.Where(x => x.Id == yazi.Key).FirstOrDefault();
+                        var itemIndex = Obs_Yazi.IndexOf(item);
+                        if (yazi.Object.Tarih != item.Tarih)
+                        {
+                            Obs_Yazi[itemIndex] = yazi.Object;
+                            Obs_Yazi = new ObservableCollection<YaziModel>(Obs_Yazi.OrderByDescending(x => x.Tarih).ToList());
+                        }
+
+                    }
                 });
 
             firebase.Child("Yazilar")
                 .AsObservable<YaziModel>()
-                .Where(yazi => Obs_Yazi.Contains(yazi.Object) && yazi.EventType == Firebase.Database.Streaming.FirebaseEventType.Delete)
-                .Subscribe(yazi =>
+                .Where(yazi =>  yazi.EventType == Firebase.Database.Streaming.FirebaseEventType.Delete)
+                .Subscribe(async yazi =>
                 {
-                    //Obs_Yazi.Clear();
-                    //if (!Obs_Yazi.Contains(yazi.Object))
-                    //{
-                    //    yazi.Object.Id = yazi.Key;
-                    //    Obs_Yazi.Add(yazi.Object);
-                    //}
+                    List<YaziModel> yazis = new List<YaziModel>();
+                    var tumYazilar = await firebase.Child("Yazilar").OnceAsync<YaziModel>();
+                    foreach (var item in tumYazilar)
+                        yazis.Add(item.Object);
+
+                    Obs_Yazi = new ObservableCollection<YaziModel>(yazis.OrderByDescending(x => x.Tarih).ToList());
+                    
                 });
+
         }
 
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new YaziEkle());
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == Obs_YaziProperty.PropertyName)
+            {
+
+            }
         }
     }
 }

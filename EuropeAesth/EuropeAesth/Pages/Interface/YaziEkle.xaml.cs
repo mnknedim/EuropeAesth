@@ -57,6 +57,7 @@ namespace EuropeAesth.Pages.Interface
             {
                 await firebase.Child("Yazilar").Child(Obs_Yazi.Id).DeleteAsync();
                 await DisplayAlert("Silindi", "", "Tamam");
+                MessagingCenter.Send<string>(Duzenle.ToString(), "UpdateOrInsertOrDelete");
             }
             catch (Exception ex)
             {
@@ -114,6 +115,7 @@ namespace EuropeAesth.Pages.Interface
             }
         }
 
+        bool imageChange = false;
         private async Task<string> StoreImages(Stream stream)
         {
             byte[] OrgByte;
@@ -122,7 +124,7 @@ namespace EuropeAesth.Pages.Interface
             {
                 OrgByte = br.ReadBytes((int)st.Length);
             }
-            var resizedByte750 = _resizer.ResizeImage(OrgByte, 750, 750).Item1;
+            var resizedByte750 = _resizer.ResizeImage(OrgByte, 600, 600).Item1;
 
             string stroageImage;
             using (Stream stt = new MemoryStream(resizedByte750))
@@ -135,6 +137,7 @@ namespace EuropeAesth.Pages.Interface
             }
 
             string imgurl = stroageImage;
+            imageChange = true;
             return imgurl;
         }
 
@@ -143,19 +146,17 @@ namespace EuropeAesth.Pages.Interface
             UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz...", MaskType.Gradient);
             var ImageName = Guid.NewGuid();
             ImageName.ToString();
-
             string result = "";
-
             try
             {
-
                 if (Duzenle)
                 {
+                    result = await StoreImages(file?.GetStream());
                     var EklenecekYazi = new YaziModel()
                     {
                         Baslik = YaziBaslik.Text,
                         Aciklama = YaziAciklama.Text,
-                        ImageUrl = Obs_Yazi.ImageUrl,
+                        ImageUrl = imageChange == true ? result : Obs_Yazi.ImageUrl,
                         Tarih = DateArray == null ? DateTime.Now : new DateTime(Convert.ToInt32(DateArray[2]), Convert.ToInt32(DateArray[1]), Convert.ToInt32(DateArray[0])),
                     };
 
@@ -177,6 +178,8 @@ namespace EuropeAesth.Pages.Interface
 
                 }
 
+                MessagingCenter.Send<string>(Duzenle.ToString(), "UpdateOrInsertOrDelete");
+
                 await DisplayAlert("Kaydedildi", "Kayıt Başarılı", "Tamam");
                 await Navigation.PopModalAsync();
                 UserDialogs.Instance.HideLoading();
@@ -185,6 +188,7 @@ namespace EuropeAesth.Pages.Interface
             catch (Exception ex)
             {
                 await DisplayAlert("Hata", $"Hata oluştu. Tekrar Deneyiniz. {ex.Message}", "Tamam");
+                UserDialogs.Instance.HideLoading();
             }
 
         }

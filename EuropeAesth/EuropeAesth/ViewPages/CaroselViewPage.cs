@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -86,7 +87,9 @@ namespace EuropeAesth.ViewPages
                 image.GestureRecognizers.Add(tabGest);
                 image.SetBinding(Image.SourceProperty, "ImageUrl");
 
-
+                //MessagingCenter.Subscribe<string>(this, "UpdateOrInsertOrDelete", (sender) => {
+                //    ResimYukle();
+                //});
 
                 var yazim = Obs_Yazi.Where(x=>x.ImageUrl == image.Source.ToString());
 
@@ -145,16 +148,29 @@ namespace EuropeAesth.ViewPages
             yaziForClick = Obs_Yazi;
             carousel.ItemsSource = Obs_Yazi;
             carousel.BindingContext = Obs_Yazi;
+
+            //CheckChange();
+
         }
 
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void CheckChange()
         {
-            base.OnPropertyChanged(propertyName);
-            if (propertyName == Obs_YaziProperty.PropertyName)
-            {
+            firebase.Child("Yazilar")
+                 .AsObservable<YaziModel>()
+                 .Subscribe(yazi =>
+                 {
+                     var firstFive = Obs_Yazi.Take(5);
+                     var rs = firstFive.Any(x => x.Id == yazi.Key);
+                     if (!rs)
+                     {
+                         ResimYukle();
+                     }
+                 });
 
-            }
+           
         }
+
+      
     }
 
     
