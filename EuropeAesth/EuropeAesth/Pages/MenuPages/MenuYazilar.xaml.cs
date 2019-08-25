@@ -29,7 +29,7 @@ namespace EuropeAesth.Pages.MenuPages
 			InitializeComponent ();
             BindingContext = this;
             YazilarYukle();
-            YaziList.ItemSelected += YaziList_ItemSelected;
+           // YaziList.ItemTapped += YaziList_ItemSelected;
         }
 
         private async void YazilarYukle()
@@ -42,16 +42,15 @@ namespace EuropeAesth.Pages.MenuPages
                 foreach (var item in tumYaziSirali)
                 {
                     Obs_Yazi.Add(item.Object);
-                }
-                YaziList.ItemsSource = Obs_Yazi;
-                YaziList.BindingContext = Obs_Yazi;
+                } 
             }
         }
 
-        private async void YaziList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void YaziList_ItemSelected(object sender, ItemTappedEventArgs e)
         {
-            var selectedYazi = e.SelectedItem as YaziModel;
+            var selectedYazi = e.Item as YaziModel;
             await Navigation.PushAsync(new ListViewDetail() { SecYazi = selectedYazi });
+            YaziList.SelectedItem = null;
         }
     }
 }

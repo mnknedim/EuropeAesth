@@ -52,6 +52,10 @@
                 <ImageButton Source="ic_instagram.png" HeightRequest="30" Clicked="InstaButon_Clicked" />
                 <Label Text="Instagram" FontSize="Small" VerticalTextAlignment="Center"/>
             </StackLayout>
+            <StackLayout x:Name="TwitterButon" Orientation="Horizontal"  Margin="10">
+                <ImageButton Source="ic_twitter.png" HeightRequest="30" Clicked="TwitterButon_Clicked" />
+                <Label Text="Twitter" FontSize="Small" VerticalTextAlignment="Center"/>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 </ContentPage>

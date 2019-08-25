@@ -33,6 +33,10 @@ namespace EuropeAesth.MasDetPage
             var instaTab = new TapGestureRecognizer();
             instaTab.Tapped += InstaButon_Clicked;
             InstaButon.GestureRecognizers.Add(instaTab);
+
+            var twtTab = new TapGestureRecognizer();
+            twtTab.Tapped += TwitterButon_Clicked;
+            TwitterButon.GestureRecognizers.Add(twtTab);
         }
 
 
@@ -73,6 +77,11 @@ namespace EuropeAesth.MasDetPage
         {
             Device.OpenUri(new Uri("https://www.instagram.com/adjuvanclinic/"));
         
+        }
+
+        private void TwitterButon_Clicked(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://twitter.com/adjuvanclinic"));
         }
     }
 }

@@ -53,17 +53,22 @@ namespace EuropeAesth.Pages.Interface
 
         private async void Sil_Clicked(object sender, EventArgs e)
         {
-            try
+            var rs = await DisplayAlert("Silme işlemi", "Devam etmek istiyor musunuz?", "Evet", "Hayır");
+            if (rs)
             {
-                await firebase.Child("Yazilar").Child(Obs_Yazi.Id).DeleteAsync();
-                await DisplayAlert("Silindi", "", "Tamam");
-                MessagingCenter.Send<string>(Duzenle.ToString(), "UpdateOrInsertOrDelete");
+                try
+                {
+                    await firebase.Child("Yazilar").Child(Obs_Yazi.Id).DeleteAsync();
+                    await DisplayAlert("Silindi", "", "Tamam");
+                    await Navigation.PopModalAsync();
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Hata", "Tekrar deneyin", "Tamam");
+                }
+                
             }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Hata", "Tekrar deneyin", "Tamam");
-            }
-            await Navigation.PopModalAsync();
+          
         }
 
         private void BasTarih_Tapped(object sender, EventArgs e)

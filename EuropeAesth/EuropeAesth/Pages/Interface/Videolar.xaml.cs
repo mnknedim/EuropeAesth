@@ -41,13 +41,14 @@ namespace EuropeAesth.Pages.Interface
 
             BindingContext = this;
             VideolarYukle();
-            VideoList.ItemSelected += VideoList_ItemSelected;
+            VideoList.ItemTapped += VideoList_ItemSelected;
         }
 
-        private async void VideoList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void VideoList_ItemSelected(object sender, ItemTappedEventArgs e)
         {
-            var duzenleVideo = e.SelectedItem as VideoModel;
+            var duzenleVideo = e.Item as VideoModel;
             await Navigation.PushModalAsync(new VideoEkle() { Obs_Video = duzenleVideo });
+            VideoList.SelectedItem = null;
         }
 
         private async void VideolarYukle()
@@ -58,6 +59,7 @@ namespace EuropeAesth.Pages.Interface
             {
                 foreach (var item in tumVideolar)
                 {
+                    item.Object.Id = item.Key;
                     Obs_Video.Add(item.Object);
                 }
                 VideoList.ItemsSource = Obs_Video;

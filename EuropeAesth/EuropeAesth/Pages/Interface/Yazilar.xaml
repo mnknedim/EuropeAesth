@@ -8,10 +8,10 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView>
+            <ScrollView VerticalOptions="FillAndExpand">
                 <StackLayout Margin="10">
                     <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
-                        <ListView x:Name="YaziList" ItemsSource="{Binding Obs_Yazi}" HasUnevenRows="True" SeparatorVisibility="None">
+                        <ListView x:Name="YaziList" ItemsSource="{Binding Obs_Yazi}" HasUnevenRows="True" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
                             <ListView.ItemTemplate >
                                 <DataTemplate >
                                     <ViewCell>

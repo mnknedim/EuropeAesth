@@ -15,8 +15,10 @@ namespace EuropeAesth
 		{
             NavigationPage.SetHasNavigationBar(this, false);
             this.Title = "Anasayfa";
-           
+           this.
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false);
+
             NavigationPage.SetHasNavigationBar(this, false);
 
             Children.Add(new NavigationPage(new Anasayfa() { Title = "Anasayfa", Icon = "ic_anasayfa.png" }) { Title = "Anasayfa", Icon = "ic_anasayfa.png" });

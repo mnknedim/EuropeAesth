@@ -31,7 +31,7 @@ namespace EuropeAesth.Pages
         public HastaDetail (Hasta _Hasta)
 		{
 			InitializeComponent ();
-            if (App.Uyg.LoginUser.YetkiKod == 1)
+            if (App.Uyg.LoginUser.YetkiKod == 1 && this.Title != "Taburcu")
             {
                 HastaSil.IsVisible = true;
 
@@ -71,7 +71,18 @@ namespace EuropeAesth.Pages
         private async void LoadTemsilci()
         {
             var temsilciler = await firebase.Child("AllUser").OnceAsync<AllUser>();
-            TemsilciName = temsilciler.FirstOrDefault(x => x.Object.UserKod == _hasta.KullaniciHasta.TemsilciKod).Object.AdSoyad;
+            try
+            {
+                TemsilciName = temsilciler.FirstOrDefault(x => x.Object.UserKod == _hasta.KullaniciHasta.TemsilciKod).Object.AdSoyad;
+
+            }
+            catch (Exception ex)
+            {
+                if (TemsilciName == null)
+                {
+                    TemsilciName = _hasta.KullaniciHasta.TemsilciKod;
+                }
+            }
         }
 
 
@@ -94,7 +105,7 @@ namespace EuropeAesth.Pages
             await firebase.Child("KayitliHasta").Child(hasta.Key).PutAsync(hasta.Object);
             UserDialogs.Instance.HideLoading();
             await DisplayAlert("Taburcu", "Hasta taburcu edildi", "Tamam");
-            App.Current.MainPage = new YoneticiPage();
+            await Navigation.PopAsync();
         }
 
         private async void HastaSil_Clicked(object sender, EventArgs e)
@@ -107,7 +118,7 @@ namespace EuropeAesth.Pages
             await firebase.Child("KullaniciHastalar").Child(Kullancihasta.Key).DeleteAsync();
             UserDialogs.Instance.HideLoading();
             await DisplayAlert("Silme", "Hasta silindi", "Tamam");
-            App.Current.MainPage = new YoneticiPage();
+            await Navigation.PopAsync();
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

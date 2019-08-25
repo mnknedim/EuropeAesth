@@ -1,9 +1,11 @@
-﻿using EuropeAesth.Model;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Model;
 using Firebase.Database;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,12 +35,60 @@ namespace EuropeAesth.Pages.Yonetici
             }
 
             LstBekleyen.BindingContext = obsBekleyen;
-        }
 
+            //CheckChange();
+        }
+        //private void CheckChange()
+        //{
+        //    firebase.Child("Yazilar")
+        //        .AsObservable<KayitliHasta>()
+        //        .Where(yazi => yazi.EventType == Firebase.Database.Streaming.FirebaseEventType.InsertOrUpdate)
+        //        .Subscribe(yazi =>
+        //        {
+        //            var rs = obsBekleyen.Any(x => x.KullaniciHasta.Id == yazi.Object.HastaId);
+        //            if (!rs)//Insert
+        //            {
+        //                UserDialogs.Instance.ShowLoading("Yenileniyor", MaskType.None);
+        //                yazi.Object.Id = yazi.Key;
+        //                Obs_Yazi.Add(yazi.Object);
+        //                Obs_Yazi = new ObservableCollection<YaziModel>(Obs_Yazi.OrderByDescending(x => x.Tarih).ToList());
+        //            }
+        //            else//update
+        //            {
+        //                var item = Obs_Yazi.Where(x => x.Id == yazi.Key).FirstOrDefault();
+        //                var itemIndex = Obs_Yazi.IndexOf(item);
+        //                if (yazi.Object.Tarih != item.Tarih)
+        //                {
+        //                    Obs_Yazi[itemIndex] = yazi.Object;
+        //                    Obs_Yazi = new ObservableCollection<YaziModel>(Obs_Yazi.OrderByDescending(x => x.Tarih).ToList());
+        //                }
+        //                UserDialogs.Instance.ShowLoading("Yenileniyor", MaskType.None);
+
+        //            }
+        //            UserDialogs.Instance.HideLoading();
+        //        });
+
+        //    firebase.Child("Yazilar")
+        //        .AsObservable<YaziModel>()
+        //        .Where(yazi => yazi.EventType == Firebase.Database.Streaming.FirebaseEventType.Delete)
+        //        .Subscribe(async yazi =>
+        //        {
+        //            List<YaziModel> yazis = new List<YaziModel>();
+        //            var tumYazilar = await firebase.Child("Yazilar").OnceAsync<YaziModel>();
+        //            foreach (var item in tumYazilar)
+        //                yazis.Add(item.Object);
+
+        //            Obs_Yazi = new ObservableCollection<YaziModel>(yazis.OrderByDescending(x => x.Tarih).ToList());
+
+        //        });
+
+        //}
         private async void LstBekleyen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var hasta = (Hasta)e.Item;
             await Navigation.PushAsync(new HastaDetail(hasta));
+
+            LstBekleyen.SelectedItem = null;
         }
     }
 }

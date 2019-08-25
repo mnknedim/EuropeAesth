@@ -7,7 +7,7 @@
             <ScrollView>
                 <StackLayout Margin="10,50">
                     <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
-                        <ListView x:Name="VideoList"  HasUnevenRows="True" SeparatorVisibility="None">
+                        <ListView x:Name="VideoList" ItemsSource="{Binding Obs_Video}" HasUnevenRows="True" SeparatorVisibility="None">
                             <ListView.ItemTemplate >
                                 <DataTemplate >
                                     <ViewCell>

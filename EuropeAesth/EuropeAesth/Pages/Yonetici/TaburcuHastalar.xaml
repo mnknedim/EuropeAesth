@@ -6,8 +6,8 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="#02b294">
             <Custom:ExGrid>
-                <ListView x:Name="LstTaburcu" ItemTapped ="LstTaburcu_ItemTapped" ItemsSource="{Binding}" HeightRequest="50" RowHeight="100" Margin="0,75,0,0"
-                          BackgroundColor="Transparent" SeparatorVisibility="None">
+                <ListView x:Name="LstTaburcu"  ItemsSource="{Binding}" HeightRequest="50" RowHeight="100" Margin="0,75,0,0"
+                          BackgroundColor="Transparent" SeparatorVisibility="None" ItemTapped="LstTaburcu_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

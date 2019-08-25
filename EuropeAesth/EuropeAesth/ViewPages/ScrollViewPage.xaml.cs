@@ -30,13 +30,21 @@ namespace EuropeAesth.ViewPages
         public ScrollViewPage()
         {
             InitializeComponent();
+            BindingContext = this;
+            
             YazilarYukle();
+            YaziList.ItemTapped += async (s,e) => {
+                var secilen = (YaziModel)e.Item;
+                await Navigation.PushAsync(new ListViewDetail() { SecYazi = secilen });
+                
+                YaziList.SelectedItem = null;
+            };
         }
 
         private async void YazilarYukle()
         {
             var tumYazilar = await firebase.Child("Yazilar").OnceAsync<YaziModel>();
-            var orderedYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).Skip(4).ToList();
+            var orderedYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).Skip(5).ToList();
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)
             {
@@ -45,15 +53,9 @@ namespace EuropeAesth.ViewPages
                     item.Object.KisaAciklama = item.Object.Aciklama.Length > 60 ? item.Object.Aciklama.Substring(0, 60) : item.Object.Aciklama;
                     Obs_Yazi.Add(item.Object);
                 }
-                YaziList.ItemsSource = Obs_Yazi;
-                YaziList.BindingContext = Obs_Yazi;
             }
+
         }
 
-        private async void Lst_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var secilen = (YaziModel)e.SelectedItem;
-            await Navigation.PushAsync(new ListViewDetail() { SecYazi = secilen });
-        }
     }
 }

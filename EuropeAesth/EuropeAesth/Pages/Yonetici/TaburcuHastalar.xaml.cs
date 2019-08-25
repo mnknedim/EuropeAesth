@@ -35,9 +35,11 @@ namespace EuropeAesth.Pages.Yonetici
             LstTaburcu.BindingContext = obsTaburcular;
         }
 
-        private void LstTaburcu_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void LstTaburcu_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            var hasta = (Hasta)e.Item;
+            await Navigation.PushAsync(new HastaDetail(hasta));
+            LstTaburcu.SelectedItem = null;
         }
     }
 }

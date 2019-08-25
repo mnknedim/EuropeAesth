@@ -1,4 +1,5 @@
-﻿using EuropeAesth.Model;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Model;
 using Firebase.Database;
 using Firebase.Storage;
 using System;
@@ -33,24 +34,23 @@ namespace EuropeAesth.Pages.Interface
             
             BindingContext = this;
             YazilarYukle();
-            YaziList.ItemSelected += YaziList_ItemSelected;
+            YaziList.ItemTapped += YaziList_ItemSelected;
 
             //MessagingCenter.Subscribe<string>(this, "UpdateOrInsertOrDelete", (sender) => {
             //    YazilarYukle();
             //});
         }
 
-        private async void YaziList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void YaziList_ItemSelected(object sender , ItemTappedEventArgs e)
         {
-            var yaziDuzenle = e.SelectedItem as YaziModel;
+            var yaziDuzenle = e.Item as YaziModel;
             await Navigation.PushModalAsync(new YaziEkle() { Obs_Yazi = yaziDuzenle, Duzenle = true });
-
+            YaziList.SelectedItem = null;
         }
 
         private async void YazilarYukle()
         {
             var tumYazilar =await firebase.Child("Yazilar").OnceAsync<YaziModel>();
-            //tumYazilar = tumYazilar.OrderByDescending(x => x.Object.Tarih).ToList();
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)
             {
@@ -61,8 +61,6 @@ namespace EuropeAesth.Pages.Interface
                     
                 }
                 Obs_Yazi = new ObservableCollection<YaziModel>(Obs_Yazi.OrderByDescending(x => x.Tarih).ToList());
-                //YaziList.ItemsSource = Obs_Yazi;
-                //YaziList.BindingContext = Obs_Yazi;
             }
 
            CheckChange();
@@ -78,10 +76,10 @@ namespace EuropeAesth.Pages.Interface
                     var rs = Obs_Yazi.Any(x=>x.Id == yazi.Key);
                     if (!rs)//Insert
                     {
+                        UserDialogs.Instance.ShowLoading("Yenileniyor", MaskType.None);
                         yazi.Object.Id = yazi.Key;
                         Obs_Yazi.Add(yazi.Object);
                         Obs_Yazi = new ObservableCollection<YaziModel>(Obs_Yazi.OrderByDescending(x => x.Tarih).ToList());
-                       
                     }
                     else//update
                     {
@@ -92,8 +90,10 @@ namespace EuropeAesth.Pages.Interface
                             Obs_Yazi[itemIndex] = yazi.Object;
                             Obs_Yazi = new ObservableCollection<YaziModel>(Obs_Yazi.OrderByDescending(x => x.Tarih).ToList());
                         }
+                        UserDialogs.Instance.ShowLoading("Yenileniyor", MaskType.None);
 
                     }
+                    UserDialogs.Instance.HideLoading();
                 });
 
             firebase.Child("Yazilar")
@@ -107,24 +107,12 @@ namespace EuropeAesth.Pages.Interface
                         yazis.Add(item.Object);
 
                     Obs_Yazi = new ObservableCollection<YaziModel>(yazis.OrderByDescending(x => x.Tarih).ToList());
-                    
                 });
-
         }
-
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new YaziEkle());
-        }
-
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (propertyName == Obs_YaziProperty.PropertyName)
-            {
-
-            }
         }
     }
 }

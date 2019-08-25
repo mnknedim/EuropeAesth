@@ -173,5 +173,25 @@ namespace EuropeAesth.Pages.Interface
         {
             await Navigation.PopModalAsync();
         }
+
+        private async void Sil_Clicked(object sender, EventArgs e)
+        {
+            var rs = await DisplayAlert("Silme işlemi", "Devam etmek istiyor musunuz?", "Evet", "Hayır");
+            if (rs)
+            {
+                try
+                {
+                    await firebase.Child("Videolar").Child(Obs_Video.Id).DeleteAsync();
+                    await DisplayAlert("Silindi", "", "Tamam");
+                    await Navigation.PopModalAsync();
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Hata", "Tekrar deneyin", "Tamam");
+                }
+
+            }
+
+        }
     }
 }

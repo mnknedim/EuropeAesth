@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EuropeAesth.Pages.ListViewDetail">
+             x:Class="EuropeAesth.Pages.ListViewDetail" Title="{Binding SecYazi.Baslik}">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Image Source="{Binding SecYazi.ImageUrl}"  HeightRequest="200" Aspect="AspectFill"/>
+                <Image x:Name="YaziResim" Source="{Binding SecYazi.ImageUrl}" Aspect="AspectFill"/>
                 <Label Text="{Binding SecYazi.Tarih, StringFormat='{0:dd:MM:yyyy}'}" HorizontalOptions="EndAndExpand" FontSize="Micro" Margin="0,0,10,0" />
                 <Label Text="{Binding SecYazi.Baslik}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="10"/>
                 <Label Margin="10" FontFamily="Montserrat" Text="{Binding SecYazi.Aciklama}" TextColor="#878787"></Label>

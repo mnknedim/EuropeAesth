@@ -4,14 +4,9 @@
              xmlns:viewpages="clr-namespace:EuropeAesth.ViewPages"
              x:Class="EuropeAesth.Pages.Anasayfa" NavigationPage.HasNavigationBar="True" Title="Anasayfa" >
     <ContentPage.Content>
-        <StackLayout>
-            <ScrollView VerticalOptions="FillAndExpand">
-                <StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand">
                     <viewpages:CaroselViewPage  />
                     <viewpages:ScrollViewPage />
                 </StackLayout>
-            </ScrollView>
-
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

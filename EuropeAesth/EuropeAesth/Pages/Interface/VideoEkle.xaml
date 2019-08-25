@@ -41,7 +41,7 @@
                                 </Grid>
                             </Frame>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                <Button Text="Temizle" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Bisque" CornerRadius="15"/>
+                                <Button x:Name="Sil" Text="Sil" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Red" CornerRadius="15" Clicked="Sil_Clicked"/>
                                 <Button x:Name="Vazgec" Text="Vazgeç" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Brown" CornerRadius="15" Clicked="Vazgec_Clicked"/>
                                 <Button x:Name="Yayinla" Text="Yayınla" TextColor="White" HorizontalOptions="EndAndExpand" BackgroundColor="Green" CornerRadius="15" Clicked="Yayinla_Clicked"/>
                             </StackLayout>

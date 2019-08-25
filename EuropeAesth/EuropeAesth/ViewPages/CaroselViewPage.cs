@@ -74,8 +74,8 @@ namespace EuropeAesth.ViewPages
                 var SliderGrid = new ExGrid() { VerticalOptions = LayoutOptions.FillAndExpand };
 
                 var image = new Image() {
-                    HeightRequest = 230,
-                    WidthRequest = 120,
+                    //HeightRequest = 230,
+                    //WidthRequest = 120,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     Aspect = Aspect.Fill,
                     Margin = new Thickness(0, 0, 0, 30),

@@ -31,12 +31,12 @@ namespace EuropeAesth.Pages.MenuPages
 
             BindingContext = this;
             VideolarYukle();
-            VideoList.ItemSelected += VideoList_ItemSelected;
+            VideoList.ItemTapped += VideoList_ItemSelected;
         }
 
-        private async void VideoList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void VideoList_ItemSelected(object sender, ItemTappedEventArgs e)
         {
-            var selectedVideo = e.SelectedItem as VideoModel;
+            var selectedVideo = e.Item as VideoModel;
             await Navigation.PushAsync(new VideoView() { SecVideo = selectedVideo });
         }
 
@@ -50,8 +50,6 @@ namespace EuropeAesth.Pages.MenuPages
                 {
                     Obs_Video.Add(item.Object);
                 }
-                VideoList.ItemsSource = Obs_Video;
-                VideoList.BindingContext = Obs_Video;
             }
         }
     }
