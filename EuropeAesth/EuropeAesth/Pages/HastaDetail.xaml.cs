@@ -40,7 +40,8 @@ namespace EuropeAesth.Pages
 
                 if (_Hasta.KayitliHasta.OnayDurumu == 1)
                     TaburcuEt.IsVisible = true;
-
+                if (_Hasta.KayitliHasta.OnayDurumu == 2)
+                    HastaSil.IsVisible = false;
             }
 
             LoadTemsilci();
@@ -110,15 +111,22 @@ namespace EuropeAesth.Pages
 
         private async void HastaSil_Clicked(object sender, EventArgs e)
         {
-            UserDialogs.Instance.ShowLoading("Taburcu ediliyor..", MaskType.Clear);
-            var Kayitlihasta = (await firebase.Child("KayitliHasta").OnceAsync<KayitliHasta>()).FirstOrDefault(x => x.Object.HastaId == _hasta.KayitliHasta.HastaId);
-            var Kullancihasta = (await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>()).FirstOrDefault(x => x.Object.Id == _hasta.KullaniciHasta.Id);
-            
-            await firebase.Child("KayitliHasta").Child(Kayitlihasta.Key).DeleteAsync();
-            await firebase.Child("KullaniciHastalar").Child(Kullancihasta.Key).DeleteAsync();
-            UserDialogs.Instance.HideLoading();
-            await DisplayAlert("Silme", "Hasta silindi", "Tamam");
-            await Navigation.PopAsync();
+            var result = await DisplayAlert("Silme işlemi","Hastayı silmek istiyor musunuz?","Evet","Hayır");
+
+            if (result)
+            {
+
+                UserDialogs.Instance.ShowLoading("Taburcu ediliyor..", MaskType.Clear);
+                var Kayitlihasta = (await firebase.Child("KayitliHasta").OnceAsync<KayitliHasta>()).FirstOrDefault(x => x.Object.HastaId == _hasta.KayitliHasta.HastaId);
+                var Kullancihasta = (await firebase.Child("KullaniciHastalar").OnceAsync<KullaniciHasta>()).FirstOrDefault(x => x.Object.Id == _hasta.KullaniciHasta.Id);
+
+                await firebase.Child("KayitliHasta").Child(Kayitlihasta.Key).DeleteAsync();
+                await firebase.Child("KullaniciHastalar").Child(Kullancihasta.Key).DeleteAsync();
+                UserDialogs.Instance.HideLoading();
+                await DisplayAlert("Silme", "Hasta silindi", "Tamam");
+                await Navigation.PopAsync();
+            }
+
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EuropeAesth.Pages.MenuPages.MenuVideolar">
     <ContentPage.Content>
-        <StackLayout>
-            <ScrollView>
-                <StackLayout Margin="10,50">
+                <StackLayout Margin="10,5">
                     <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
                         <ListView x:Name="VideoList" ItemsSource="{Binding Obs_Video}" HasUnevenRows="True" SeparatorVisibility="None">
                             <ListView.ItemTemplate >
@@ -38,7 +36,5 @@
                         </ListView>
                     </StackLayout>
                 </StackLayout>
-            </ScrollView>
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

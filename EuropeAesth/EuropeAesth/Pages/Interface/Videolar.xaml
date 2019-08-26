@@ -8,7 +8,6 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout x:Name="videostack" VerticalOptions="StartAndExpand">
-            <ScrollView>
                 <StackLayout Margin="10">
                     <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
                         <ListView x:Name="VideoList"  HasUnevenRows="True" SeparatorVisibility="None">
@@ -41,7 +40,6 @@
                         </ListView>
                     </StackLayout>
                 </StackLayout>
-            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

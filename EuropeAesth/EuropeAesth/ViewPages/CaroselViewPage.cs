@@ -35,6 +35,14 @@ namespace EuropeAesth.ViewPages
         public static readonly BindableProperty Obs_YaziProperty = BindableProperty.Create("Obs_Yazi", typeof(ObservableCollection<YaziModel>),
             typeof(CaroselViewPage), default(ObservableCollection<YaziModel>));
 
+        public ObservableCollection<VideoModel> Obs_Video
+        {
+            get { return (ObservableCollection<VideoModel>)GetValue(Obs_VideoProperty); }
+            set { SetValue(Obs_VideoProperty, value); }
+        }
+        public static readonly BindableProperty Obs_VideoProperty = BindableProperty.Create("Obs_Video", typeof(ObservableCollection<VideoModel>),
+            typeof(CaroselViewPage), default(ObservableCollection<VideoModel>));
+
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
 
         public CaroselViewPage ()

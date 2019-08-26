@@ -8,8 +8,6 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView VerticalOptions="FillAndExpand">
-                <StackLayout Margin="10">
                     <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
                         <ListView x:Name="YaziList" ItemsSource="{Binding Obs_Yazi}" HasUnevenRows="True" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
                             <ListView.ItemTemplate >
@@ -40,8 +38,6 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
-                </StackLayout>
-            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
