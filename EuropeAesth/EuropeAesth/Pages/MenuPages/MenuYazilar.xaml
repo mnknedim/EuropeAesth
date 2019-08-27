@@ -6,7 +6,7 @@
     <ContentPage.Content>
                 <StackLayout Margin="10,5">
                     <StackLayout HorizontalOptions="FillAndExpand" x:Name="CariStack">
-                        <ListView x:Name="YaziList" ItemsSource="{Binding Obs_Yazi}"  HasUnevenRows="True" SeparatorVisibility="None">
+                        <ListView x:Name="YaziList" ItemsSource="{Binding Obs_Yazi}" ItemTapped="YaziList_ItemTapped" HasUnevenRows="True" SeparatorVisibility="None">
                             <ListView.ItemTemplate >
                                 <DataTemplate >
                                     <ViewCell>

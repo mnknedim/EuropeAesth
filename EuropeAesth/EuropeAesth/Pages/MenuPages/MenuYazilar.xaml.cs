@@ -46,7 +46,7 @@ namespace EuropeAesth.Pages.MenuPages
             }
         }
 
-        private async void YaziList_ItemSelected(object sender, ItemTappedEventArgs e)
+        private async void YaziList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedYazi = e.Item as YaziModel;
             await Navigation.PushAsync(new ListViewDetail() { SecYazi = selectedYazi });
