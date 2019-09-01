@@ -111,6 +111,7 @@ namespace EuropeAesth.Pages
             {
                 await firebase.Child("AllUser").PostAsync(Temsilci);
                 await DisplayAlert("Kayıt", "Başarılı", "Tamam");
+                await Navigation.PopAsync();
                 
             }
             catch (Exception ex)

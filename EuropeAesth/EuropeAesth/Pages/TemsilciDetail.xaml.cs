@@ -55,10 +55,11 @@ namespace EuropeAesth.Pages
                     await firebase.Child("AllUser").Child(SlctUser).DeleteAsync();
                     await DisplayAlert("Silindi", "işlem başarılı", "Tamam");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await DisplayAlert("Hata", "İşlem sırasında bir sıkıntı oldu. Temsilciyi kontrol edin", "Tamam");
                 }
+
                 UserDialogs.Instance.HideLoading();
                 await Navigation.PopAsync();
             }

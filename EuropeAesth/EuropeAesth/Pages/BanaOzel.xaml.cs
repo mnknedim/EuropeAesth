@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,9 +21,16 @@ namespace EuropeAesth.Pages
         public BanaOzel ()
 		{
 			InitializeComponent ();
+            
+
 		}
 
-        private async void GirisButon_Clicked(object sender, EventArgs e)
+        private void GirisButon_Clicked(object sender, EventArgs e)
+        {
+            Giris(UserName.Text, Password.Text);
+        }
+
+        private async void Giris(string userN, string pass)
         {
             try
             {
@@ -37,7 +44,7 @@ namespace EuropeAesth.Pages
                 var userResult = await firebase.Child("AllUser").OnceAsync<AllUser>();
                 if (userResult != null)
                 {
-                    var user = userResult.FirstOrDefault(x => x.Object.UserKod == UserName.Text && x.Object.Parola == Password.Text).Object;
+                    var user = userResult.FirstOrDefault(x => x.Object.UserKod == userN && x.Object.Parola == pass).Object;
                     if (user == null)
                     {
                         await DisplayAlert("Hatalı Giriş", "Lütfen bilgileri kontrol edin", "Tamam");
@@ -47,7 +54,18 @@ namespace EuropeAesth.Pages
                     App.Uyg.LoginUser = user;
 
                     if (user.YetkiKod == 1)
+                    {
                         await Navigation.PushAsync(new YoneticiPage());
+                        try
+                        {
+                            await SecureStorage.SetAsync("UserKod", userN);
+                            await SecureStorage.SetAsync("Parola", pass);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw;
+                        }
+                    }
 
                     if (user.YetkiKod == 2)
                         await Navigation.PushAsync(new TemsilciPage());

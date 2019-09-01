@@ -19,9 +19,6 @@ namespace EuropeAesth.Pages
 		{
 			InitializeComponent ();
 
-          
-            //UstStack.Children.Add(new ButtonView { ImageUrl = "ic_hastaKabul.png", UnderText = "Hasta Kabul", PageName = new TestPage(), TappedCommand = CallPages });
-           
         }
 
         public Command CallPages = new Command((e) => {
