@@ -1,29 +1,25 @@
 ﻿using Acr.UserDialogs;
+using EuropeAesth.MasDetPage;
 using EuropeAesth.Model;
-using EuropeAesth.ViewPages;
 using Firebase.Database;
-using Firebase.Database.Query;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace EuropeAesth.Pages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BanaOzel : ContentPage
     {
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public BanaOzel ()
 		{
 			InitializeComponent ();
-            
+            UserDialogs.Instance.HideLoading();
+        }
 
-		}
 
         private void GirisButon_Clicked(object sender, EventArgs e)
         {
@@ -75,7 +71,11 @@ namespace EuropeAesth.Pages
             {
                 await DisplayAlert("Hata", "Lütfen bilgileirnizi kontrol edin ve tekrar deneyin", "Tamam");
             }
+
             UserDialogs.Instance.HideLoading();
+
+           App.Current.MainPage = new NavigationPage(new MainPage()) { BarTextColor = Color.FromHex("#304f72") };
+
         }
 
         private void Kayit_Tapped(object sender, EventArgs e)

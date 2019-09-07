@@ -56,82 +56,28 @@ namespace EuropeAesth.MasDetPage
                 MainPageMenuItem banaOzelPage = null;
 
 
-                Task.Run(async () => {
-                    banaOzelPage = await CheckLogined(); });
+                if (App.Uyg.PageMenuItem == null) { 
+                    App.Uyg.PageMenuItem = new MainPageMenuItem
+                    {
+                        Id = 5,
+                        Title = "Bana Özel",
+                        Icon = "ic_user.png",
+                        TargetType = typeof(BanaOzel)
+                    };
+                }
+
 
 
                 MenuItems = new ObservableCollection<MainPageMenuItem>(new[]
-                { 
+                {
                     new MainPageMenuItem { Id = 0, Title = "Anasayfa", Icon = "ic_dashboard.png", TargetType= typeof(TabbedMainPage) },
                     new MainPageMenuItem { Id = 1, Title = "Yazilar", Icon = "ic_yazilar.png", TargetType= typeof(MenuYazilar) },
                     new MainPageMenuItem { Id = 2, Title = "Videolar", Icon="ic_videolar.png", TargetType= typeof(MenuVideolar)  },
                     new MainPageMenuItem { Id = 3, Title = "Resimler" , Icon = "ic_resimler.png"},
                     new MainPageMenuItem { Id = 4, Title = "Hakkımızda" , Icon = "ic_hakkimizda.png", TargetType= typeof(Hakkimizda)},
-                    banaOzelPage
-                });
+                    new MainPageMenuItem { Id = 5, Title = "Profilim", Icon = "ic_user.png", TargetType = typeof(BanaOzel)}
+            });
             }
-
-            private async Task<MainPageMenuItem> CheckLogined()
-            {
-                MainPageMenuItem page = null;
-                try
-                {
-                    var userName = await SecureStorage.GetAsync("UserKod");
-                    var passWord = await SecureStorage.GetAsync("Parola");
-
-                    if (userName == null)
-                        return new MainPageMenuItem
-                        {
-                            Id = 5,
-                            Title = "Bana Özel",
-                            Icon = "ic_user.png",
-                            TargetType = typeof(BanaOzel)
-                        };
-
-                    UserDialogs.Instance.ShowLoading("Lütfen Bekleyiniz..", MaskType.Black);
-
-                    var userResult = await firebase.Child("AllUser").OnceAsync<AllUser>();
-                    if (userResult != null)
-                    {
-                        var user = userResult.FirstOrDefault(x => x.Object.UserKod == userName && x.Object.Parola == passWord).Object;
-                        if (user == null)
-                            page = new MainPageMenuItem
-                            {
-                                Id = 5,
-                                Title = "Bana Özel",
-                                Icon = "ic_user.png",
-                                TargetType = typeof(BanaOzel)
-                            };
-
-                        App.Uyg.LoginUser = user;
-
-                        if (user.YetkiKod == 1)
-                            page = new MainPageMenuItem
-                            {
-                                Id = 5,
-                                Title = "Bana Özel",
-                                Icon = "ic_user.png",
-                                TargetType = typeof(YoneticiPage)
-                            };
-
-                        if (user.YetkiKod == 2)
-                            page = new MainPageMenuItem
-                            {
-                                Id = 5,
-                                Title = "Bana Özel",
-                                Icon = "ic_user.png",
-                                TargetType = typeof(TemsilciPage)
-                            };
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Possible that device doesn't support secure storage on device.
-                }
-
-                return page;
-            }
-
 
 
             #region INotifyPropertyChanged Implementation

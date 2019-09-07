@@ -1,8 +1,13 @@
-﻿using EuropeAesth.MasDetPage;
+﻿using Acr.UserDialogs;
+using EuropeAesth.MasDetPage;
 using EuropeAesth.Model;
 using EuropeAesth.Pages;
+using Firebase.Database;
 using Syncfusion.Licensing;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,8 +18,10 @@ namespace EuropeAesth
     {
         public static App Uyg => Current as App;
 
+        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public TemsilciModel LoginTemsilci;
         public AllUser LoginUser;
+        public MainPageMenuItem PageMenuItem;
         public string GirenMail;
         public App()
         {
@@ -23,9 +30,14 @@ namespace EuropeAesth
             MainPage = new NavigationPage(new MainPage() ) { BarTextColor = Color.FromHex("#304f72") };
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
-            // Handle when your app starts
+            await CheckLogined();
+        }
+
+        private async Task CheckLogined()
+        {
+           
         }
 
         protected override void OnSleep()
