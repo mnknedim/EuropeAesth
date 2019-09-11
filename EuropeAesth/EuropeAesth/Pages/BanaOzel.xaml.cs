@@ -64,7 +64,20 @@ namespace EuropeAesth.Pages
                     }
 
                     if (user.YetkiKod == 2)
+                    {
                         await Navigation.PushAsync(new TemsilciPage());
+
+                        try
+                        {
+                            await SecureStorage.SetAsync("UserKod", userN);
+                            await SecureStorage.SetAsync("Parola", pass);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw;
+                        }
+                    }
+                        
                 }
             }
             catch (Exception)
@@ -74,7 +87,7 @@ namespace EuropeAesth.Pages
 
             UserDialogs.Instance.HideLoading();
 
-           App.Current.MainPage = new NavigationPage(new MainPage()) { BarTextColor = Color.FromHex("#304f72") };
+          App.Current.MainPage = new NavigationPage(new MainPage()) { BarTextColor = Color.FromHex("#304f72") };
 
         }
 

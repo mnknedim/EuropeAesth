@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.Pages.TemsilciPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_exit.png" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout >
                 <Grid VerticalOptions="FillAndExpand">
@@ -13,6 +16,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <BoxView BackgroundColor="#02b294"/>
+                    
                 <StackLayout>
                     <Button x:Name="BtnHastaEkle" Text="Hasta Ekle" 
                             FontSize="Medium" FontAttributes="Bold"
@@ -25,11 +29,6 @@
                             VerticalOptions="CenterAndExpand"  Margin="55,0,55,50" 
                             CornerRadius="10" HeightRequest="100" Clicked="BtnHastalarim_Clicked"/>
                     
-                    <Button x:Name="BtnGeri" Text="Geri" 
-                            FontSize="Small" FontAttributes="Bold"
-                            TextColor="#0a5e6b" BackgroundColor="Chocolate"
-                            VerticalOptions="End" HorizontalOptions="End"  Margin="30" 
-                            CornerRadius="35" HeightRequest="60" WidthRequest="60" Clicked="BtnGeri_Clicked"/>
                 </StackLayout>
                 </Grid>
         </StackLayout>

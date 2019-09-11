@@ -220,6 +220,9 @@
     <PackageReference Include="Plugin.Youtube">
       <Version>1.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.1.5.188</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
       <Version>17.2.0.46</Version>
     </PackageReference>

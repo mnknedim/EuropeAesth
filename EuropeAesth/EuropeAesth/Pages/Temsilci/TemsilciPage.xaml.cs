@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using EuropeAesth.Component;
+using EuropeAesth.MasDetPage;
 using EuropeAesth.Model;
 using EuropeAesth.Pages.Temsilci;
 using Firebase.Database;
@@ -9,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -85,6 +86,13 @@ namespace EuropeAesth.Pages
         private void BtnGeri_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new TabbedMainPage();
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            SecureStorage.Remove("UserKod");
+            SecureStorage.Remove("Parola");
+            App.Current.MainPage = new NavigationPage(new MainPage()) { BarTextColor = Color.FromHex("#304f72") };
         }
     }
 }

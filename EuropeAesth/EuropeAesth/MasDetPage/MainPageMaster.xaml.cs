@@ -75,7 +75,7 @@ namespace EuropeAesth.MasDetPage
                     new MainPageMenuItem { Id = 2, Title = "Videolar", Icon="ic_videolar.png", TargetType= typeof(MenuVideolar)  },
                     new MainPageMenuItem { Id = 3, Title = "Resimler" , Icon = "ic_resimler.png"},
                     new MainPageMenuItem { Id = 4, Title = "Hakkımızda" , Icon = "ic_hakkimizda.png", TargetType= typeof(Hakkimizda)},
-                    new MainPageMenuItem { Id = 5, Title = "Profilim", Icon = "ic_user.png", TargetType = typeof(BanaOzel)}
+                    
             });
             }
 

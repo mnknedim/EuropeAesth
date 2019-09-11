@@ -16,8 +16,7 @@ namespace EuropeAesth.MasDetPage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : MasterDetailPage
     {
-        FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
-
+        
         public MainPage()
         {
             InitializeComponent();
@@ -33,9 +32,10 @@ namespace EuropeAesth.MasDetPage
                 return;
 
             if (item.Title == "Profilim")
-                page = await CheckLogin();
+            {
 
-            else
+            }
+          
                 page = (Page)Activator.CreateInstance(item.TargetType);
            
             page.Title = item.Title;
@@ -46,49 +46,6 @@ namespace EuropeAesth.MasDetPage
             MasterPage.ListView.SelectedItem = null;
         }
 
-        private async Task<Page> CheckLogin()
-        {
-            Page page = null;
-            try
-            {
-                var userName = await SecureStorage.GetAsync("UserKod");
-                var passWord = await SecureStorage.GetAsync("Parola");
-
-                if (userName == null)
-                {
-                    UserDialogs.Instance.HideLoading();
-                    page = new BanaOzel();
-
-                }
-
-                var userResult = await firebase.Child("AllUser").OnceAsync<AllUser>();
-                if (userResult != null)
-                {
-                    var user = userResult.FirstOrDefault(x => x.Object.UserKod == userName && x.Object.Parola == passWord).Object;
-                    if (user == null)
-                    {
-                        UserDialogs.Instance.HideLoading();
-                        page = new BanaOzel();
-                    }
-
-                    App.Uyg.LoginUser = user;
-
-                    if (user.YetkiKod == 1)
-                        page = new YoneticiPage();
-
-                    if (user.YetkiKod == 2)
-                        page = new TemsilciPage();
-
-                }
-                UserDialogs.Instance.HideLoading();
-
-            }
-            catch (Exception ex)
-            {
-                // Possible that device doesn't support secure storage on device.
-            }
-
-            return page;
-        }
+        
     }
 }

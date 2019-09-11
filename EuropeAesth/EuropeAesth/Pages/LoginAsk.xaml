@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EuropeAesth.Pages.LoginAsk">
+    <pages:PopupPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Frame HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="White" VerticalOptions="CenterAndExpand">
+                <StackLayout Margin="-10">
+                    <Image Source="googleSignIn.png"  />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Grid HorizontalOptions="StartAndExpand">
+                            <BoxView BackgroundColor="#cfcfcf" CornerRadius="3"/>
+                            <Button BackgroundColor="White" Text="Kayıt" TextColor="#0392b5" Margin="2" CornerRadius="3"/>
+                        </Grid>
+                        <Grid HorizontalOptions="EndAndExpand">
+                            <BoxView BackgroundColor="#cfcfcf" CornerRadius="3"/>
+                            <Button x:Name="Giris" BackgroundColor="White" Clicked="Giris_Clicked" Text="Giriş" TextColor="#0392b5" Margin="2" CornerRadius="3"/>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

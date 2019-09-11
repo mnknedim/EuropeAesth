@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewpages="clr-namespace:EuropeAesth.ViewPages"
              x:Class="EuropeAesth.Pages.Anasayfa" NavigationPage.HasNavigationBar="True" Title="Anasayfa" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="UserLogin" IconImageSource="ic_loginUser.png" Clicked="UserLogin_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-                <StackLayout VerticalOptions="FillAndExpand">
-                    <viewpages:CaroselViewPage  />
-                    <viewpages:ScrollViewPage />
-                </StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <viewpages:CaroselViewPage  />
+            <viewpages:ScrollViewPage />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
