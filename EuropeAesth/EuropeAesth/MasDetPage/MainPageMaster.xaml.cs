@@ -24,6 +24,14 @@ namespace EuropeAesth.MasDetPage
     {
         public ListView ListView;
 
+        public GoogleProfile GProfile
+        {
+            get => (GoogleProfile)GetValue(GProfileProperty);
+            set => SetValue(GProfileProperty, value);
+        }
+        public static readonly BindableProperty GProfileProperty =
+        BindableProperty.Create(nameof(GProfile), typeof(GoogleProfile), typeof(MainPageMaster), default(GoogleProfile));
+
 
         public MainPageMaster()
         {
@@ -43,6 +51,12 @@ namespace EuropeAesth.MasDetPage
             var twtTab = new TapGestureRecognizer();
             twtTab.Tapped += TwitterButon_Clicked;
             TwitterButon.GestureRecognizers.Add(twtTab);
+
+            MessagingCenter.Subscribe<GoogleProfile>(this, "GoogleUser", (sender) => {
+
+                GProfile = sender;
+            });
+
         }
 
 
@@ -106,6 +120,16 @@ namespace EuropeAesth.MasDetPage
         private void TwitterButon_Clicked(object sender, EventArgs e)
         {
             Device.OpenUri(new Uri("https://twitter.com/adjuvanclinic"));
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == GProfileProperty.PropertyName)
+            {
+                UserName.Text = GProfile.Name;
+                UserPic.Source = GProfile.Picture.AbsolutePath;
+            }
         }
     }
 }

@@ -8,7 +8,8 @@ using Android.Widget;
 using Android.OS;
 using CarouselView.FormsPlugin.Android;
 using Plugin.CurrentActivity;
-using Octane.Xamarin.Forms.VideoPlayer.Android;
+using Plugin.GoogleClient;
+using Android.Content;
 
 namespace EuropeAesth.Droid
 {
@@ -20,7 +21,10 @@ namespace EuropeAesth.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            Rg.Plugins.Popup.Popup.Init(this,savedInstanceState);
             Acr.UserDialogs.UserDialogs.Init(this);
+            ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
+            GoogleClientManager.Initialize(this);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -33,6 +37,12 @@ namespace EuropeAesth.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
             Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            GoogleClientManager.OnAuthCompleted(requestCode, resultCode, data);
         }
 
         public async override void OnBackPressed()

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="EuropeAesth.MasDetPage.MainPageMaster"
              Title="Master">
     <StackLayout>
@@ -9,6 +10,8 @@
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}">
             <ListView.Header>
+
+
                 <Grid BackgroundColor="#02b294">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
@@ -16,18 +19,24 @@
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
-                    <Label
-              Grid.Column="1"
-              Grid.Row="2"
-              Text="Adjuvan Clinic"
-              TextColor="White"
-              Style="{DynamicResource SubtitleStyle}"/>
+                    <StackLayout Grid.Column="1"
+                          Grid.Row="2" Orientation="Horizontal">
+                        <abstractions:CircleImage x:Name="UserPic" Source="{Binding GProfile.Picture}" HeightRequest="50" WidthRequest="50" />
+                        <Label x:Name="UserName"
+                          Margin="10,0,0,0"
+                          Text="{Binding GProfile.Name}"
+                            VerticalTextAlignment="Center"
+                          TextColor="White"
+                          Style="{DynamicResource SubtitleStyle}"/>
+                    </StackLayout>
                 </Grid>
+
+
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -45,15 +54,15 @@
         </ListView>
         <StackLayout Margin="0,20" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
             <StackLayout  x:Name="WebButon" Orientation="Horizontal"  Margin="10">
-                <ImageButton Source="ic_web.png" HeightRequest="30" Clicked="WebButon_Clicked"/>
+                <ImageButton Source="ic_web.png" HeightRequest="30" />
                 <Label Text="Web" FontSize="Small" VerticalTextAlignment="Center" />
             </StackLayout>
             <StackLayout x:Name="InstaButon" Orientation="Horizontal"  Margin="10">
-                <ImageButton Source="ic_instagram.png" HeightRequest="30" Clicked="InstaButon_Clicked" />
+                <ImageButton Source="ic_instagram.png" HeightRequest="30"/>
                 <Label Text="Instagram" FontSize="Small" VerticalTextAlignment="Center"/>
             </StackLayout>
             <StackLayout x:Name="TwitterButon" Orientation="Horizontal"  Margin="10">
-                <ImageButton Source="ic_twitter.png" HeightRequest="30" Clicked="TwitterButon_Clicked" />
+                <ImageButton Source="ic_twitter.png" HeightRequest="30" />
                 <Label Text="Twitter" FontSize="Small" VerticalTextAlignment="Center"/>
             </StackLayout>
         </StackLayout>

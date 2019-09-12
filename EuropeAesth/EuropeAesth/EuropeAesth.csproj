@@ -27,9 +27,11 @@
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.1" />
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
     <PackageReference Include="Octane.Xam.VideoPlayer" Version="3.1.0" />
+    <PackageReference Include="Plugin.GoogleClient" Version="1.1.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.2.0.46" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
@@ -162,5 +164,9 @@
     <EmbeddedResource Update="ViewPages\ScrollViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="VM\" />
   </ItemGroup>
 </Project>

@@ -5,10 +5,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EuropeAesth.Pages.LoginAsk">
     <pages:PopupPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Frame HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="White" VerticalOptions="CenterAndExpand">
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Frame HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="White" VerticalOptions="CenterAndExpand" Margin="75,20">
                 <StackLayout Margin="-10">
-                    <Image Source="googleSignIn.png"  />
+                    <Image Source="googleSignIn.png"  WidthRequest="250" x:Name="GoogleButton" />
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Grid HorizontalOptions="StartAndExpand">
                             <BoxView BackgroundColor="#cfcfcf" CornerRadius="3"/>
