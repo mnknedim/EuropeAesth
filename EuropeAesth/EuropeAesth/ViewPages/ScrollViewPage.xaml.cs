@@ -51,6 +51,7 @@ namespace EuropeAesth.ViewPages
                 foreach (var item in orderedYazilar)
                 {
                     item.Object.KisaAciklama = item.Object.Aciklama.Length > 60 ? item.Object.Aciklama.Substring(0, 60) : item.Object.Aciklama;
+                    item.Object.Id = item.Key;
                     Obs_Yazi.Add(item.Object);
                 }
             }

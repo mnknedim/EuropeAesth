@@ -30,6 +30,7 @@
     <PackageReference Include="Plugin.GoogleClient" Version="1.1.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.2.0.46" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="17.2.0.51" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />

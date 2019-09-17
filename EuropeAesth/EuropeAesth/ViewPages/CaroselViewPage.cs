@@ -122,8 +122,9 @@ namespace EuropeAesth.ViewPages
 
         private async void TabGest_Tapped(object sender, EventArgs e)
         {
-            var selected = yaziForClick.Where(x => x.Id == LastPosition.ToString()).FirstOrDefault();
-            await Navigation.PushAsync(new ListViewDetail() { SecYazi = selected });
+            var selectResult = yaziForClick.Where(x => x.SelectedId == LastPosition.ToString()).FirstOrDefault();
+
+            await Navigation.PushAsync(new ListViewDetail() { SecYazi = selectResult});
         }
 
         private void Carousel_PositionSelected(object sender, PositionSelectedEventArgs e)
@@ -144,12 +145,13 @@ namespace EuropeAesth.ViewPages
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)
             {
-                int id = 0;
+                int selected_id = 0;
                 foreach (var item in osbFirst5)
                 {
-                    item.Object.Id = id.ToString();
+                    item.Object.SelectedId = selected_id.ToString();
+                    item.Object.Id = item.Key;
                     Obs_Yazi.Add(item.Object);
-                    id++;
+                    selected_id++;
 
                 }
             }

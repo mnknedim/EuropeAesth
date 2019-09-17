@@ -20,6 +20,7 @@ namespace EuropeAesth
 
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public TemsilciModel LoginTemsilci;
+        public GoogleProfile GoogleGirisYapan;
         public AllUser LoginUser;
         public MainPageMenuItem PageMenuItem;
         public string GirenMail;
