@@ -1,6 +1,8 @@
-﻿using EuropeAesth.Model;
+﻿using Acr.UserDialogs;
+using EuropeAesth.Model;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,46 +43,67 @@ namespace EuropeAesth.Pages
             displayInfo = DeviceDisplay.MainDisplayInfo;
             YaziResim.HeightRequest = displayInfo.Height / 10;
             BindingContext = this;
-
+            //if (App.Uyg.GoogleGirisYapan != null || App.Uyg.LoginUser != null)
+            //{
+            //    EditorStack.IsEnabled = false;
+            //    YorumEditor.Text = "Yorum yapmak için giriş yapın";
+            //}
             LoadYorumlar();
         }
 
         private async void LoadYorumlar()
         {
             var response = await firebase.Child("Yorumlar").OnceAsync<YorumlarModel>();
-            var result = response.Where(x => x.Object.YaziId == SecYazi.Id);
+            var result = response.Where(x => x.Object.YaziId == SecYazi.Id && x.Object.Onayli == true);
             List<YorumlarModel> yorumList = new List<YorumlarModel>();
 
             foreach (var item in result)
-                Yorumlar.Add(item.Object);
+                yorumList.Add(item.Object);
 
-            //YorumlarList.ItemsSource = Yorumlar;
-            YorumlarList.BindingContext = Yorumlar;
+            Yorumlar = new ObservableCollection<YorumlarModel>(yorumList);
+            YorumlarList.HeightRequest = Yorumlar.Count * 175;
+
+            var userName = await SecureStorage.GetAsync("UserKod");
+            var gLogin = await SecureStorage.GetAsync("GoogleLogin");
+            if (userName == null && gLogin == null)
+            {
+                EditorStack.IsVisible = false;
+                GirisYapStack.IsVisible = true;
+            }
+            // YorumlarList.BindingContext = Yorumlar;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("Bekleyin", MaskType.None);
             try
             {
                 var dateTime = DateTime.Now.ToString("dd.MM.yyyy");
                 var yorum = new YorumlarModel
                 {
-                    UserName = "nedim",
+                    UserName = App.Uyg.GoogleGirisYapan.Name ?? "Admin",
                     YorumText = YorumEditor.Text,
                     YaziId = SecYazi.Id,
-                    DateTime = dateTime
+                    DateTime = dateTime,
+                    YildizPuan = Convert.ToInt32(YildizPuan.Value),
+                    Onayli = true
                 };
 
                 await firebase.Child("Yorumlar").PostAsync(yorum);
-
+                Yorumlar.Add(yorum);
+                YorumlarList.BindingContext = Yorumlar;
+                UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
             {
-
-                
+                UserDialogs.Instance.HideLoading();
             }
-            
+        }
 
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            await Navigation.PushPopupAsync(new LoginAsk(), true);
+            
         }
     }
 }

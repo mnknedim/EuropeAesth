@@ -10,5 +10,7 @@ namespace EuropeAesth.Model
         public string DateTime{ get; set; }
         public string UserName { get; set; }
         public string YorumText { get; set; }
+        public bool Onayli { get; set; }
+        public int YildizPuan { get; set; }
     }
 }

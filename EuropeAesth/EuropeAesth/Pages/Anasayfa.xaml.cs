@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using EuropeAesth.Model;
+using EuropeAesth.Pages.GoogleUser;
 using Firebase.Database;
 using Rg.Plugins.Popup.Extensions;
 using System;
@@ -34,10 +35,18 @@ namespace EuropeAesth.Pages
             {
                 var userName = await SecureStorage.GetAsync("UserKod");
                 var passWord = await SecureStorage.GetAsync("Parola");
+                var gLogin = await SecureStorage.GetAsync("GoogleLogin");
 
                 if (userName == null)
                 {
-                   await Navigation.PushPopupAsync(new LoginAsk(),true);
+                    if (gLogin != null)
+                    {
+                        await Navigation.PushAsync(new GUserPage());
+                        var gUserResponse = await firebase.Child("GoogleUsers").OnceAsync<GoogleProfile>();
+                        App.Uyg.GoogleGirisYapan = gUserResponse.Where(x => x.Object.Email == gLogin).FirstOrDefault().Object;
+                    }
+                    else
+                        await Navigation.PushPopupAsync(new LoginAsk(), true);
                 }
 
                 var userResult = await firebase.Child("AllUser").OnceAsync<AllUser>();
@@ -56,7 +65,6 @@ namespace EuropeAesth.Pages
                         {
                             await Navigation.PushAsync(new YoneticiPage());
                         }
-                           
 
                         else if (user.YetkiKod == 2)
                         {

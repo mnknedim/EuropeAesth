@@ -12,9 +12,10 @@
                     <Label Text="{Binding SecYazi.Baslik}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="10"/>
                     <Label Margin="10" FontFamily="Montserrat" Text="{Binding SecYazi.Aciklama}" TextColor="#878787"></Label>
                 </StackLayout>
-                <xforms:SfRating HorizontalOptions="StartAndExpand" Margin="10" ItemSize="35"/>
+                <xforms:SfRating x:Name="YildizPuan" HorizontalOptions="StartAndExpand" Margin="10" ItemSize="35"/>
                 <StackLayout x:Name="YorumlarStack">
-                    <ListView x:Name="YorumlarList">
+                    <Label Text="Yorumlar" Margin="10" FontAttributes="Bold"/>
+                    <ListView x:Name="YorumlarList" ItemsSource="{Binding Yorumlar}" RowHeight="170" HasUnevenRows="True">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -41,14 +42,20 @@
                     </ListView>
                     
                 </StackLayout>
-                <StackLayout Margin="0,20" x:Name="EditorStack">
-                    <Label Text="Yorumlar" Margin="10" FontAttributes="Bold"/>
-                    
-                    <Frame HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="10">
-                        <Editor x:Name="YorumEditor" Margin="-15" HeightRequest="100"/>
-                    </Frame>
-                    <Button Text="GÖNDER" Clicked="Button_Clicked" TextColor="White" CornerRadius="10" BackgroundColor="#5dbe85" HorizontalOptions="EndAndExpand" Margin="10,0"/>
-                </StackLayout>
+                <Grid>
+                    <StackLayout x:Name="EditorStack" Margin="0,20" >
+                        <Frame HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="10">
+                            <Editor x:Name="YorumEditor" Margin="-15" HeightRequest="100" />
+                        </Frame>
+                        <Button Text="GÖNDER" Clicked="Button_Clicked" TextColor="White" CornerRadius="10" BackgroundColor="#5dbe85" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                    </StackLayout>
+                    <StackLayout x:Name="GirisYapStack" VerticalOptions="CenterAndExpand" IsVisible="False">
+                        <Label Text="Yorum yapmak için giriş yapmalısınız" HorizontalOptions="CenterAndExpand"/>
+                        <Button Text="Giriş Yap" TextColor="White" CornerRadius="10" HorizontalOptions="CenterAndExpand" BackgroundColor="#5dbe85" Margin="0,15" Clicked="Button_Clicked_1"/>
+                    </StackLayout>
+
+                </Grid>
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
