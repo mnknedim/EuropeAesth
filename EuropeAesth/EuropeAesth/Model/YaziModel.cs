@@ -7,6 +7,7 @@ namespace EuropeAesth.Model
     public class YaziModel
     {
         public string Id { get; set; }
+        public string SelectedId { get; set; }
         public string Baslik { get; set; }
         public string Aciklama { get; set; }
         public string KisaAciklama { get; set; }

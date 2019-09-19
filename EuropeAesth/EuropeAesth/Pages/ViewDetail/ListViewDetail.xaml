@@ -1,14 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xforms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              x:Class="EuropeAesth.Pages.ListViewDetail" Title="{Binding SecYazi.Baslik}">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Image x:Name="YaziResim" Source="{Binding SecYazi.ImageUrl}" Aspect="AspectFill"/>
-                <Label Text="{Binding SecYazi.Tarih, StringFormat='{0:dd:MM:yyyy}'}" HorizontalOptions="EndAndExpand" FontSize="Micro" Margin="0,0,10,0" />
-                <Label Text="{Binding SecYazi.Baslik}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="10"/>
-                <Label Margin="10" FontFamily="Montserrat" Text="{Binding SecYazi.Aciklama}" TextColor="#878787"></Label>
+                <StackLayout>
+                    <Image x:Name="YaziResim" Source="{Binding SecYazi.ImageUrl}" Aspect="AspectFill"/>
+                    <Label Text="{Binding SecYazi.Tarih, StringFormat='{0:dd:MM:yyyy}'}" HorizontalOptions="EndAndExpand" FontSize="Micro" Margin="0,0,10,0" />
+                    <Label Text="{Binding SecYazi.Baslik}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="10"/>
+                    <Label Margin="10" FontFamily="Montserrat" Text="{Binding SecYazi.Aciklama}" TextColor="#878787"></Label>
+                </StackLayout>
+                <xforms:SfRating HorizontalOptions="StartAndExpand" Margin="10" ItemSize="35"/>
+                <StackLayout x:Name="YorumlarStack">
+                    <ListView x:Name="YorumlarList">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Frame HasShadow="True" BackgroundColor="Bisque" Margin="15">
+                                            <Grid Margin="-10" HorizontalOptions="FillAndExpand">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Text="{Binding UserName}" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
+                                                <Label Text="{Binding YorumText}" Grid.Row="1" Grid.Column="0"/>
+                                                <Label Text="{Binding DateTime}" Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" FontSize="Micro"/>
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                </StackLayout>
+                <StackLayout Margin="0,20" x:Name="EditorStack">
+                    <Label Text="Yorumlar" Margin="10" FontAttributes="Bold"/>
+                    
+                    <Frame HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="10">
+                        <Editor x:Name="YorumEditor" Margin="-15" HeightRequest="100"/>
+                    </Frame>
+                    <Button Text="GÖNDER" Clicked="Button_Clicked" TextColor="White" CornerRadius="10" BackgroundColor="#5dbe85" HorizontalOptions="EndAndExpand" Margin="10,0"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
