@@ -50,7 +50,6 @@ namespace EuropeAesth.Pages
             }
             catch (Exception ex)
             {
-                await PopupNavigation.Instance.PopAsync();
             }
         }
 
