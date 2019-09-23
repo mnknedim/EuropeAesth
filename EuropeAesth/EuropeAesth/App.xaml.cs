@@ -27,7 +27,7 @@ namespace EuropeAesth
         public App()
         {
             InitializeComponent();
-            SyncfusionLicenseProvider.RegisterLicense("OTQwNjVAMzEzNzJlMzEyZTMwV0c2ODdyQU1jeDBuTUozM3lVZE1uNnpQTEI0Rkc3WGJxRU5RMXBwOHczND0=");
+            SyncfusionLicenseProvider.RegisterLicense("MTQ2NTEzQDMxMzcyZTMyMmUzMFFNSFpPd2RsMm9XTUxFYUxGOHBXMUVwa3JUS3QyOWEyZzBVVWRNQndsWm89");
             MainPage = new NavigationPage(new MainPage() ) { BarTextColor = Color.FromHex("#304f72") };
         }
 

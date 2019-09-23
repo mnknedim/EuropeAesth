@@ -4,6 +4,7 @@ using System.Linq;
 using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using Octane.Xamarin.Forms.VideoPlayer.iOS;
+using Plugin.GoogleClient;
 using Syncfusion.SfCalendar.XForms.iOS;
 using UIKit;
 
@@ -25,12 +26,18 @@ namespace EuropeAesth.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             CarouselViewRenderer.Init();
+            Syncfusion.SfRating.XForms.iOS.SfRatingRenderer.Init();
             FormsVideoPlayer.Init();
+            GoogleClientManager.Initialize();
             SfCalendarRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            return GoogleClientManager.OnOpenUrl(app, url, options);
         }
     }
 }

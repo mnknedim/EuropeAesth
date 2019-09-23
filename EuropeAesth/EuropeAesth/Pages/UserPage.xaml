@@ -4,24 +4,25 @@
              xmlns:custom="clr-namespace:EuropeAesth.Custom"
              x:Class="EuropeAesth.Pages.UserPage">
     <ContentPage.Content>
-        <ScrollView>
             <StackLayout >
-                <custom:ExGrid >
-                    <Image Source="arkplan.png" 
-                       Aspect="AspectFill" 
-                       VerticalOptions="FillAndExpand"
-                       HorizontalOptions="FillAndExpand"
-                       ></Image>
-                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                        <StackLayout x:Name="UstStack" Orientation="Horizontal">
-                            
-                        </StackLayout>
-                        <StackLayout x:Name="AltStack" Orientation="Horizontal">
-
-                        </StackLayout>
-                    </StackLayout>
-                </custom:ExGrid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="AD"/>
+                <Label Text="SOYAD"/>
+                <Label Text="EMAİL"/>
+                <Label Text="{Binding Name}"/>
+                <Label Text="{Binding GivenName}"/>
+                <Label Text="{Binding Email}"/>
+            </Grid>
             </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

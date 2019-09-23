@@ -8,6 +8,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding GProfil.Name}"/>
+            <Label Text="{Binding GProfil.GivenName}"/>
+            <Label Text="{Binding GProfil.Email}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

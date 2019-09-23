@@ -91,7 +91,8 @@ namespace EuropeAesth.Pages
 
                 await firebase.Child("Yorumlar").PostAsync(yorum);
                 Yorumlar.Add(yorum);
-                YorumlarList.BindingContext = Yorumlar;
+                YorumEditor.Text = "";
+                YorumlarList.ItemsSource = Yorumlar;
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
