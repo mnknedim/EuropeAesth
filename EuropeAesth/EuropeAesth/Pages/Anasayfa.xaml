@@ -8,7 +8,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
-            <viewpages:CaroselViewPage  />
+            <viewpages:CaroselViewPage x:Name="caroselViewPage" HeightRequest="{Binding CaroselHeight}"/>
             <viewpages:ScrollViewPage />
         </StackLayout>
     </ContentPage.Content>

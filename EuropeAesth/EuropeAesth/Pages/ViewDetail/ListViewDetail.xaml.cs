@@ -19,6 +19,14 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListViewDetail : ContentPage
 	{
+        public double CaroselHeight
+        {
+            get => (double)GetValue(CaroselHeightProperty);
+            set => SetValue(CaroselHeightProperty, value);
+        }
+        public static readonly BindableProperty CaroselHeightProperty =
+            BindableProperty.Create(nameof(CaroselHeight), typeof(double), typeof(ListViewDetail), default(double));
+
         public YaziModel SecYazi
         {
             get { return (YaziModel)GetValue(SecYaziProperty); }
@@ -41,7 +49,7 @@ namespace EuropeAesth.Pages
 		{
 			InitializeComponent ();
             displayInfo = DeviceDisplay.MainDisplayInfo;
-            YaziResim.HeightRequest = displayInfo.Height / 10;
+            CaroselHeight = displayInfo.Height / 4 ;
             BindingContext = this;
             //if (App.Uyg.GoogleGirisYapan != null || App.Uyg.LoginUser != null)
             //{
@@ -103,8 +111,11 @@ namespace EuropeAesth.Pages
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
+            var page = this;
             await Navigation.PushPopupAsync(new LoginAsk(), true);
-            
+
+            EditorStack.IsVisible = true;
+            GirisYapStack.IsVisible = false;
         }
     }
 }

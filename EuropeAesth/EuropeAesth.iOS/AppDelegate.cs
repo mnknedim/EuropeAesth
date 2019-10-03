@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using Octane.Xamarin.Forms.VideoPlayer.iOS;
-using Plugin.GoogleClient;
 using Syncfusion.SfCalendar.XForms.iOS;
 using UIKit;
 
@@ -25,19 +25,22 @@ namespace EuropeAesth.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            UINavigationBar.Appearance.TintColor = UIColor.FromRGB(10,165,93);
+            global::Xamarin.Forms.Forms.Init();
+            Rg.Plugins.Popup.Popup.Init();
             CarouselViewRenderer.Init();
             Syncfusion.SfRating.XForms.iOS.SfRatingRenderer.Init();
             FormsVideoPlayer.Init();
-            GoogleClientManager.Initialize();
             SfCalendarRenderer.Init();
-            global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
         }
-        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
-        {
-            return GoogleClientManager.OnOpenUrl(app, url, options);
-        }
+        //public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        //{
+        //    base.OpenUrl(app, url, options);
+        //}
+
+
     }
 }

@@ -24,13 +24,13 @@ namespace EuropeAesth.MasDetPage
     {
         public ListView ListView;
 
-        public GoogleProfile GProfile
+        public GoogleUser GProfile
         {
-            get => (GoogleProfile)GetValue(GProfileProperty);
+            get => (GoogleUser)GetValue(GProfileProperty);
             set => SetValue(GProfileProperty, value);
         }
         public static readonly BindableProperty GProfileProperty =
-        BindableProperty.Create(nameof(GProfile), typeof(GoogleProfile), typeof(MainPageMaster), default(GoogleProfile));
+        BindableProperty.Create(nameof(GProfile), typeof(GoogleUser), typeof(MainPageMaster), default(GoogleUser));
 
 
         public MainPageMaster()
@@ -52,7 +52,7 @@ namespace EuropeAesth.MasDetPage
             twtTab.Tapped += TwitterButon_Clicked;
             TwitterButon.GestureRecognizers.Add(twtTab);
 
-            MessagingCenter.Subscribe<GoogleProfile>(this, "GoogleUser", (sender) => {
+            MessagingCenter.Subscribe<GoogleUser>(this, "GoogleUser", (sender) => {
 
                 GProfile = sender;
             });
@@ -128,7 +128,7 @@ namespace EuropeAesth.MasDetPage
             if (propertyName == GProfileProperty.PropertyName)
             {
                 UserName.Text = GProfile.Name;
-                UserPic.Source = GProfile.Picture.AbsolutePath;
+                //UserPic.Source = GProfile._Picture.AbsolutePath;
             }
         }
     }

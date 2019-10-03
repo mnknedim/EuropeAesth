@@ -7,7 +7,7 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout>
-                    <Image x:Name="YaziResim" Source="{Binding SecYazi.ImageUrl}" Aspect="AspectFill"/>
+                    <Image x:Name="YaziResim" Source="{Binding SecYazi.ImageUrl}" HeightRequest="{Binding CaroselHeight}" Aspect="Fill"/>
                     <Label Text="{Binding SecYazi.Tarih, StringFormat='{0:dd:MM:yyyy}'}" HorizontalOptions="EndAndExpand" FontSize="Micro" Margin="0,0,10,0" />
                     <Label Text="{Binding SecYazi.Baslik}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Margin="10"/>
                     <Label Margin="10" FontFamily="Montserrat" Text="{Binding SecYazi.Aciklama}" TextColor="#878787"></Label>
@@ -51,7 +51,7 @@
                     </StackLayout>
                     <StackLayout x:Name="GirisYapStack" VerticalOptions="CenterAndExpand" IsVisible="False">
                         <Label Text="Yorum yapmak için giriş yapmalısınız" HorizontalOptions="CenterAndExpand"/>
-                        <Button Text="Giriş Yap" TextColor="White" CornerRadius="10" HorizontalOptions="CenterAndExpand" BackgroundColor="#5dbe85" Margin="0,15" Clicked="Button_Clicked_1"/>
+                        <Button Text="Giriş Yap" TextColor="White" CornerRadius="10" HorizontalOptions="CenterAndExpand" BackgroundColor="#5dbe85" Margin="0,15" Padding="10,5" Clicked="Button_Clicked_1"/>
                     </StackLayout>
 
                 </Grid>

@@ -3,8 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EuropeAesth.Pages.Tester">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand">
-            <Button Text="ekle" Clicked="Button_Clicked"/>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Frame HasShadow="True" HorizontalOptions="CenterAndExpand" BackgroundColor="White" VerticalOptions="CenterAndExpand" Margin="75,20">
+                <StackLayout Margin="-10">
+                        <Grid HorizontalOptions="EndAndExpand">
+                            <BoxView BackgroundColor="#cfcfcf" CornerRadius="3"/>
+                            <Image Source="googleSignIn.png" Aspect="Fill" HeightRequest="50" WidthRequest="250" x:Name="GoogleButton" />
+                        </Grid>
+                        <Grid HorizontalOptions="EndAndExpand">
+                            <BoxView BackgroundColor="#cfcfcf" CornerRadius="3"/>
+                            <Button x:Name="Giris" BackgroundColor="White" Padding="5,0" Text="Giriş" TextColor="#0392b5" Margin="2" CornerRadius="3"/>
+                        </Grid>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

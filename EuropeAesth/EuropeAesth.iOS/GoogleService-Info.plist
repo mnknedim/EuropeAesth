@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>58389443523-9qshrut3mj5hdjrdur9eqt0l9aiarlhq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.58389443523-9qshrut3mj5hdjrdur9eqt0l9aiarlhq</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>58389443523-3uqmjn00o3rornhu347us3tt7g4vjrbq.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAFerPb_kBaLyMOXhSVxYIB46nF5MUvTnw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>58389443523</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.adjuvan.EuropeAesth</string>
+	<key>PROJECT_ID</key>
+	<string>adjuvanclinic</string>
+	<key>STORAGE_BUCKET</key>
+	<string>adjuvanclinic.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:58389443523:ios:20e006875df21277190376</string>
+	<key>DATABASE_URL</key>
+	<string>https://adjuvanclinic.firebaseio.com</string>
+</dict>
+</plist>

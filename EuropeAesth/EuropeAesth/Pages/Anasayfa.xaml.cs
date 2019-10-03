@@ -19,9 +19,21 @@ namespace EuropeAesth.Pages
 	{
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
 
+        public double CaroselHeight
+        {
+            get => (double)GetValue(CaroselHeightProperty);
+            set => SetValue(CaroselHeightProperty, value);
+        }
+        public static readonly BindableProperty CaroselHeightProperty =
+            BindableProperty.Create(nameof(CaroselHeight), typeof(double), typeof(Anasayfa), default(double));
+
+        DisplayInfo displayInfo;
         public Anasayfa ()
 		{
             InitializeComponent ();
+            BindingContext = this;
+            displayInfo = DeviceDisplay.MainDisplayInfo;
+            CaroselHeight = displayInfo.Height / 4.1;
         }
 
         private void UserLogin_Clicked(object sender, EventArgs e)
@@ -41,12 +53,13 @@ namespace EuropeAesth.Pages
                 {
                     if (gLogin != null)
                     {
-                        await Navigation.PushAsync(new GUserPage());
-                        var gUserResponse = await firebase.Child("GoogleUsers").OnceAsync<GoogleProfile>();
-                        App.Uyg.GoogleGirisYapan = gUserResponse.Where(x => x.Object.Email == gLogin).FirstOrDefault().Object;
+                        var gUserResponse = await firebase.Child("GoogleUsers").OnceAsync<Model.GoogleUser>();
+                        var googleProfile = gUserResponse.FirstOrDefault(x => x.Object.Email == gLogin)?.Object;
+                        await Navigation.PushAsync(new GUserPage(googleProfile));
+                        
                     }
                     else
-                        await Navigation.PushPopupAsync(new LoginAsk(), true);
+                        await Navigation.PushPopupAsync(new LoginAsk("Anasayfa"), true);
                 }
 
                 var userResult = await firebase.Child("AllUser").OnceAsync<AllUser>();
@@ -71,11 +84,7 @@ namespace EuropeAesth.Pages
                             await Navigation.PushAsync(new TemsilciPage());
                             
                         }
-
                     }
-
-                   
-
                 }
                 
             }
