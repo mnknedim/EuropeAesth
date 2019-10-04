@@ -171,10 +171,4 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Plugin.GoogleClient">
-      <HintPath>..\..\..\..\..\.nuget\packages\plugin.googleclient\1.1.1\lib\netstandard2.0\Plugin.GoogleClient.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 </Project>

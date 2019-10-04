@@ -73,7 +73,8 @@ namespace EuropeAesth.VM
 
         private void GoogleLogin()
         {
-            DependencyService.Get<IGoogleManager>().Login(OnLoginComplete);
+           //   _googleManager.Login(OnLoginComplete);
+          DependencyService.Get<IGoogleManager>().Login(OnLoginComplete);
         }
 
         private void OnLoginComplete(GoogleUser googleUser, string message)

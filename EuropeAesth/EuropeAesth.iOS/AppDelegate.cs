@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CarouselView.FormsPlugin.iOS;
+using EuropeAesth.Renderer;
 using Foundation;
+using Google.SignIn;
 using Octane.Xamarin.Forms.VideoPlayer.iOS;
 using Syncfusion.SfCalendar.XForms.iOS;
 using UIKit;
+using Xamarin.Forms;
 
 namespace EuropeAesth.iOS
 {
@@ -25,6 +28,9 @@ namespace EuropeAesth.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            DependencyService.Register<IGoogleManager, GoogleManager>();
+            var googleServiceDictionary = NSDictionary.FromFile("GoogleService-Info.plist");
+            SignIn.SharedInstance.ClientID = googleServiceDictionary["CLIENT_ID"].ToString();
             UINavigationBar.Appearance.TintColor = UIColor.FromRGB(10,165,93);
             global::Xamarin.Forms.Forms.Init();
             Rg.Plugins.Popup.Popup.Init();
@@ -36,10 +42,11 @@ namespace EuropeAesth.iOS
 
             return base.FinishedLaunching(app, options);
         }
-        //public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
-        //{
-        //    base.OpenUrl(app, url, options);
-        //}
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            var openUrlOptions = new UIApplicationOpenUrlOptions(options);
+            return SignIn.SharedInstance.HandleUrl(url, openUrlOptions.SourceApplication, openUrlOptions.Annotation);
+        }
 
 
     }
