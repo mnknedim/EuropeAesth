@@ -33,7 +33,11 @@ namespace EuropeAesth.Pages
             InitializeComponent ();
             BindingContext = this;
             displayInfo = DeviceDisplay.MainDisplayInfo;
-            CaroselHeight = displayInfo.Height / 4.1;
+            CaroselHeight = displayInfo.Height / 4.5;
+            if (displayInfo.Density <= 1.2)
+            {
+                CaroselHeight = displayInfo.Height / 2.7;
+            }
         }
 
         private void UserLogin_Clicked(object sender, EventArgs e)

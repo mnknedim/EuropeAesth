@@ -53,11 +53,11 @@ namespace EuropeAesth.iOS
 				_onLoginComplete?.Invoke(null, error.LocalizedDescription);
 		}
 
-		[Export("signIn:didDisconnectWithUser:withError:")]
-		public void DidDisconnect(SignIn signIn, Model.GoogleUser user, NSError error)
-		{
-			// Perform any operations when the user disconnects from app here.
-		}
+		//[Export("signIn:didDisconnectWithUser:withError:")]
+		//public void DidDisconnect(SignIn signIn, Model.GoogleUser user, NSError error)
+		//{
+		//	// Perform any operations when the user disconnects from app here.
+		//}
 
 		[Export("signInWillDispatch:error:")]
 		public void WillDispatch(SignIn signIn, NSError error)

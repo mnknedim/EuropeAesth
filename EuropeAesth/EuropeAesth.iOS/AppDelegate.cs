@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using CarouselView.FormsPlugin.iOS;
+﻿using CarouselView.FormsPlugin.iOS;
 using EuropeAesth.Renderer;
 using Foundation;
 using Google.SignIn;

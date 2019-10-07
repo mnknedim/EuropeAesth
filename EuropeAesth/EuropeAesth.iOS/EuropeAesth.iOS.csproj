@@ -66,7 +66,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements1.plist</CodesignEntitlements>
     <OptimizePNGs>true</OptimizePNGs>
-    <CodesignProvision>Adjvan Dev</CodesignProvision>
+    <CodesignProvision>Dev Ali2</CodesignProvision>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <MtouchFloat32>false</MtouchFloat32>
     <MtouchSdkVersion>
@@ -87,13 +87,13 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignEntitlements>Entitlements1.plist</CodesignEntitlements>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchUseLlvm>false</MtouchUseLlvm>
     <MtouchUseThumb>false</MtouchUseThumb>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <OptimizePNGs>true</OptimizePNGs>
-    <CodesignProvision>Dev Ali2</CodesignProvision>
+    <CodesignProvision>Dist Ali</CodesignProvision>
     <BuildIpa>true</BuildIpa>
     <MtouchSdkVersion>
     </MtouchSdkVersion>
@@ -139,7 +139,7 @@
     <Compile Include="Renderer\ImageEntryRenderer.cs" />
     <Compile Include="Renderer\ImagePickerRenderer.cs" />
     <Compile Include="Renderer\ImageResizerRenderer.cs" />
-    <None Include="Entitlements1.plist">
+    <None Include="Entitlements.plist">
       <SubType>Designer</SubType>
     </None>
     <BundleResource Include="GoogleService-Info.plist">
@@ -224,9 +224,6 @@
     <PackageReference Include="CarouselView.FormsPlugin">
       <Version>5.2.0</Version>
     </PackageReference>
-    <PackageReference Include="Google.Apis.Auth">
-      <Version>1.41.1</Version>
-    </PackageReference>
     <PackageReference Include="Octane.Xam.VideoPlayer">
       <Version>3.1.0</Version>
     </PackageReference>
@@ -259,7 +256,7 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.778463" />
     <PackageReference Include="Xamarin.Google.iOS.SignIn">
-      <Version>4.0.0</Version>
+      <Version>4.4.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -268,6 +265,30 @@
       <Project>{5D9F1AFB-2EF9-42E5-8B1D-3F2B96FA8454}</Project>
       <Name>EuropeAesth</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\defaultImage%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\defaultImage%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_addImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_addImage%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_addImage%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_adjuvan_actionBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_adjuvan_actionBar%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_adjuvan_actionBar%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_anasayfa.png" />
@@ -279,6 +300,15 @@
     <BundleResource Include="Resources\ic_anasayfa%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_back%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_back%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_banaOzel.png" />
   </ItemGroup>
   <ItemGroup>
@@ -286,69 +316,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_banaOzel%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_hasta_ekle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_hasta_ekle%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_hasta_ekle%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_iletisim.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_iletisim%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_iletisim%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_mesaj.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_mesaj%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_mesaj%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_user%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_user%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logoAndroid%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\SatirPanel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\SatirPanel%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\SatirPanel%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\UstLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\UstLogo%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\UstLogo%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\splashScreen.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_calender.png" />
@@ -360,6 +327,15 @@
     <BundleResource Include="Resources\ic_calender%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_dashboard%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_dashboard%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_dropdown.png" />
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +343,123 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_dropdown%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_exit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_exit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hakkimizda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hakkimizda%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hakkimizda%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hasta_ekle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hasta_ekle%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hasta_ekle%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hastaKabul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hastaKabul%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hastaKabul%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hastane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hastane%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hastane%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hotel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hotel%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_hotel%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_iletisim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_iletisim%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_iletisim%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_instagram%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_instagram%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kabulHastalar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kabulHastalar%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kabulHastalar%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kayit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kayit%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kayit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kodUret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kodUret%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_kodUret%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_loginUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_loginUser%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_loginUser%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_mesaj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_mesaj%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_mesaj%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_password.png" />
@@ -378,6 +471,51 @@
     <BundleResource Include="Resources\ic_password%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_resimler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_resimler%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_resimler%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TaburcuEt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TaburcuEt%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TaburcuEt%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TemsilciEkle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TemsilciEkle%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TemsilciEkle%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Temsilciler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Temsilciler%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Temsilciler%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TemsilciSil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TemsilciSil%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_TemsilciSil%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_tl.png" />
   </ItemGroup>
   <ItemGroup>
@@ -385,6 +523,33 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_tl%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_transfer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_transfer%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_transfer%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_twitter%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_twitter%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_user%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_user%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_user_login.png" />
@@ -396,36 +561,105 @@
     <BundleResource Include="Resources\ic_user_login%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_dashboard.png" />
+    <BundleResource Include="Resources\ic_userLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_hakkimizda.png" />
+    <BundleResource Include="Resources\ic_userLogo%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_resimler.png" />
+    <BundleResource Include="Resources\ic_userLogo%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_videolar.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ic_videolar%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_videolar%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_web%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_web%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ic_yazilar.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_loginUser.png" />
+    <BundleResource Include="Resources\ic_yazilar%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon-60.png" />
+    <BundleResource Include="Resources\ic_yazilar%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon-40.png" />
+    <BundleResource Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\splashScreenLogo.png" />
+    <BundleResource Include="Resources\Logo%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_adjuvan_actionBar.png" />
+    <BundleResource Include="Resources\Logo%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\googleSignIn.png" />
+    <BundleResource Include="Resources\logoandroid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoandroid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoandroid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoHastaneBilgileri.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoHastaneBilgileri%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoHastaneBilgileri%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SatirPanel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SatirPanel%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SatirPanel%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splashScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splashScreen%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splashScreen%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Ustlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Ustlogo%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Ustlogo%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\adds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\adds%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\adds%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\defaultImage.png" />
   </ItemGroup>
 </Project>

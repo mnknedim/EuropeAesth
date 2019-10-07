@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2128" translatesAutoresizingMaskIntoConstraints="NO" image="splashScreenLogo.png" semanticContentAttribute="playback" misplaced="YES">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2128" translatesAutoresizingMaskIntoConstraints="NO" image="splashScreenLogo.png" semanticContentAttribute="playback" misplaced="YES" ambiguous="YES">
                                 <rect key="frame" x="87" y="304" width="240" height="128"/>
                                 <constraints>
                                     <constraint id="2129" firstAttribute="height" constant="128"/>
@@ -38,7 +38,4 @@
             <point key="canvasLocation" x="349" y="339"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="splashScreenLogo.png" width="325" height="271"/>
-    </resources>
 </document>

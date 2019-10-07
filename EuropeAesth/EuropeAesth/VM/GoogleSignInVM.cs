@@ -77,7 +77,7 @@ namespace EuropeAesth.VM
           DependencyService.Get<IGoogleManager>().Login(OnLoginComplete);
         }
 
-        private void OnLoginComplete(GoogleUser googleUser, string message)
+        private async void OnLoginComplete(GoogleUser googleUser, string message)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace EuropeAesth.VM
                     CheckGoogleUser(googleUser);
                     if (ToPage == "Anasayfa")
                     {
-                        App.Current.MainPage.Navigation.PushAsync(new GUserPage(GoogleUser));
+                        await App.Current.MainPage.Navigation.PushAsync(new GUserPage(GoogleUser));
                     }
                     else
                     {
@@ -98,7 +98,9 @@ namespace EuropeAesth.VM
                 }
                 else
                 {
-                    App.Current.MainPage.DisplayAlert("Hata", message, "Tamam");
+                    await App.Current.MainPage.DisplayAlert("Hata", message, "Tamam");
+                    await PopupNavigation.Instance.PopAsync();
+
                 }
             }
             catch (Exception e)
