@@ -4,6 +4,7 @@ using EuropeAesth.Model;
 using Firebase.Database;
 using System;
 using System.Linq;
+using EuropeAesth.VM;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,7 +15,7 @@ namespace EuropeAesth.Pages
 	public partial class BanaOzel : ContentPage
     {
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
-        public BanaOzel ()
+        public BanaOzel() 
 		{
 			InitializeComponent ();
             UserDialogs.Instance.HideLoading();

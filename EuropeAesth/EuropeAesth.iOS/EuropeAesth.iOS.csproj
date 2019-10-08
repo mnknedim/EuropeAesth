@@ -32,7 +32,8 @@
     <CodesignProvision>Dev Ali2</CodesignProvision>
     <OptimizePNGs>true</OptimizePNGs>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-    <CodesignEntitlements>Entitlements1.plist</CodesignEntitlements>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IOSDebugOverWiFi>false</IOSDebugOverWiFi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -87,7 +88,7 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>iPhone Distribution: Ali Kilic (Y2QXKLX492)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchUseLlvm>false</MtouchUseLlvm>
     <MtouchUseThumb>false</MtouchUseThumb>
@@ -97,7 +98,8 @@
     <BuildIpa>true</BuildIpa>
     <MtouchSdkVersion>
     </MtouchSdkVersion>
-    <MtouchExtraArgs>--registrar:dynamic</MtouchExtraArgs>
+    <MtouchExtraArgs>
+    </MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -124,7 +126,7 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <OptimizePNGs>true</OptimizePNGs>
-    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchNoSymbolStrip>false</MtouchNoSymbolStrip>
     <BuildIpa>true</BuildIpa>
     <MtouchFloat32>false</MtouchFloat32>
   </PropertyGroup>
@@ -139,13 +141,15 @@
     <Compile Include="Renderer\ImageEntryRenderer.cs" />
     <Compile Include="Renderer\ImagePickerRenderer.cs" />
     <Compile Include="Renderer\ImageResizerRenderer.cs" />
-    <None Include="Entitlements.plist">
-      <SubType>Designer</SubType>
-    </None>
     <BundleResource Include="GoogleService-Info.plist">
       <SubType>Designer</SubType>
     </BundleResource>
-    <None Include="Info.plist" />
+    <None Include="Entitlements.plist">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Info.plist">
+      <SubType>Designer</SubType>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,7 +260,7 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.778463" />
     <PackageReference Include="Xamarin.Google.iOS.SignIn">
-      <Version>4.4.0</Version>
+      <Version>4.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

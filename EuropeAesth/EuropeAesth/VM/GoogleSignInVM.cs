@@ -98,7 +98,7 @@ namespace EuropeAesth.VM
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Hata", message, "Tamam");
+                    await App.Current.MainPage.DisplayAlert("Error", message, "Tamam");
                     await PopupNavigation.Instance.PopAsync();
 
                 }

@@ -20,7 +20,6 @@ namespace EuropeAesth.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginAsk : PopupPage
     {
-        private Page ToPage;
 		public LoginAsk (string newPage = null)// (newpage) nerden çağrıldı LoginAsk
 		{
 			InitializeComponent ();

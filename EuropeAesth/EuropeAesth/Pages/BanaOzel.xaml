@@ -64,6 +64,8 @@
                         </Frame>
 
                         <Button x:Name="BtnGiris" Text="Giriş" TextColor="#0a5e6b" BackgroundColor="#ddfad8" VerticalOptions="EndAndExpand"  Margin="55,30,55,0" CornerRadius="10" Clicked="GirisButon_Clicked"/>
+                       
+                        
                     </StackLayout>
 
                 </Grid>
