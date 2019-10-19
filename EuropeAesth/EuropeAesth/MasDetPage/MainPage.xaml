@@ -9,7 +9,7 @@
     <pages:MainPageMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-        <NavigationPage x:Name="naviPage" BarTextColor="#62aa93" IconImageSource="ic_adjuvan_actionBar.png">
+        <NavigationPage x:Name="naviPage" BarTextColor="#62aa93" IconImageSource="ic_menu.png">
       <x:Arguments>
         <europeaesth:TabbedMainPage />
       </x:Arguments>

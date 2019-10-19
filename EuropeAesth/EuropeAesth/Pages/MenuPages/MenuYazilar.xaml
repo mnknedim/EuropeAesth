@@ -22,7 +22,7 @@
                                                         <RowDefinition Height="Auto"/>
                                                         <RowDefinition Height="*"/>
                                                     </Grid.RowDefinitions>
-                                                    <Image Source="{Binding ImageUrl}" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"                                HorizontalOptions="FillAndExpand"/>
+                                                    <Image Source="{Binding ImageUrl}" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"                               />
                                                     <Label Text="{Binding Baslik}"  Grid.Row="0" Grid.Column="1" FontSize="Small" FontAttributes="Bold"/>
                                                     <Label Text="{Binding Tarih, StringFormat='{0:dd:MM:yyyy}'}" TextColor="#797a79" Grid.Row="0" Grid.Column="2" FontSize="Micro" HorizontalTextAlignment="End" Margin="5,2" />
                                                     <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Aciklama}"/>

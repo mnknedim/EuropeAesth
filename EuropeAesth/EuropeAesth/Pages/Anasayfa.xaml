@@ -4,11 +4,13 @@
              xmlns:viewpages="clr-namespace:EuropeAesth.ViewPages"
              x:Class="EuropeAesth.Pages.Anasayfa" NavigationPage.HasNavigationBar="True" Title="Anasayfa" >
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="UserLogin" IconImageSource="ic_loginUser.png" Clicked="UserLogin_Clicked" />
+        <ToolbarItem x:Name="UserLogin" IconImageSource="ic_hesabim.png" Clicked="UserLogin_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
-            <viewpages:CaroselViewPage x:Name="caroselViewPage" HeightRequest="{Binding CaroselHeight}"/>
+            <Frame CornerRadius="5" HasShadow="True" Margin="10,5">
+                <viewpages:CaroselViewPage x:Name="caroselViewPage" HeightRequest="{Binding CaroselHeight}" Margin="-20"/>
+            </Frame>
             <viewpages:ScrollViewPage />
         </StackLayout>
     </ContentPage.Content>

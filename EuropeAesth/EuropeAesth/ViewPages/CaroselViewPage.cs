@@ -95,10 +95,6 @@ namespace EuropeAesth.ViewPages
                 image.GestureRecognizers.Add(tabGest);
                 image.SetBinding(Image.SourceProperty, "ImageUrl");
 
-                //MessagingCenter.Subscribe<string>(this, "UpdateOrInsertOrDelete", (sender) => {
-                //    ResimYukle();
-                //});
-
                 var yazim = Obs_Yazi.Where(x=>x.ImageUrl == image.Source.ToString());
 
                 SliderGrid.Children.Add(image, 0, 0);
@@ -141,6 +137,7 @@ namespace EuropeAesth.ViewPages
         private async void ResimYukle()
         {
             var tumYazilar = await firebase.Child("Yazilar").OnceAsync<YaziModel>();
+            var tumVideolar = await firebase.Child("Videolar").OnceAsync<VideoModel>();
             var osbFirst5 = tumYazilar.OrderByDescending(x => x.Object.Tarih).Take(5);
             Obs_Yazi = new ObservableCollection<YaziModel>();
             if (tumYazilar != null)

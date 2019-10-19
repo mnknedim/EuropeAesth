@@ -48,6 +48,7 @@ namespace EuropeAesth.Pages.MenuPages
             {
                 foreach (var item in tumVideolar)
                 {
+                    item.Object.Id = item.Key;
                     Obs_Video.Add(item.Object);
                 }
             }
