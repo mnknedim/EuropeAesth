@@ -49,7 +49,7 @@ namespace EuropeAesth.Pages
 		{
 			InitializeComponent ();
             displayInfo = DeviceDisplay.MainDisplayInfo;
-            CaroselHeight = displayInfo.Height / 5 ;
+            CaroselHeight = displayInfo.Height / 7 ;
             BindingContext = this;
             //if (App.Uyg.GoogleGirisYapan != null || App.Uyg.LoginUser != null)
             //{

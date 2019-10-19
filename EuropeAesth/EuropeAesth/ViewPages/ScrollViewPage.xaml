@@ -18,7 +18,7 @@
     <ContentView.Content>
       
         <StackLayout HorizontalOptions="FillAndExpand"  x:Name="CariStack" >
-                <ListView x:Name="YaziList" ItemsSource="{Binding Obs_Yazi}"  HasUnevenRows="True" SeparatorVisibility="None" RefreshControlColor="#afd3c3">
+                <ListView x:Name="YaziList" ItemsSource="{Binding Obs_Yazi}"  HasUnevenRows="True" VerticalOptions="FillAndExpand" SeparatorVisibility="None" RefreshControlColor="#afd3c3" >
                 <ListView.ItemTemplate >
                     <DataTemplate >
                         <ViewCell>

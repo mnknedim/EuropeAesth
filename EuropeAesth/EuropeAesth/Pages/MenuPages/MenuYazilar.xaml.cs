@@ -42,7 +42,10 @@ namespace EuropeAesth.Pages.MenuPages
                 foreach (var item in tumYaziSirali)
                 {
                     Obs_Yazi.Add(item.Object);
-                } 
+                }
+
+                YaziList.IsVisible = true;
+                ActivityIndicator.IsVisible = false;
             }
         }
 
