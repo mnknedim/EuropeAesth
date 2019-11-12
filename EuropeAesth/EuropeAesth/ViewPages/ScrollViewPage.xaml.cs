@@ -17,6 +17,14 @@ namespace EuropeAesth.ViewPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScrollViewPage : ContentView
     {
+        public double ListViewScrollValue
+        {
+            get { return (double)GetValue(ListViewScrollValueProperty); }
+            set { SetValue(ListViewScrollValueProperty, value); }
+        }
+        public static readonly BindableProperty ListViewScrollValueProperty = BindableProperty.Create("ListViewScrollValue", typeof(double),
+            typeof(ScrollViewPage), default(double));
+
         public ObservableCollection<YaziModel> Obs_Yazi
         {
             get { return (ObservableCollection<YaziModel>)GetValue(Obs_YaziProperty); }
@@ -39,6 +47,7 @@ namespace EuropeAesth.ViewPages
                 
                 YaziList.SelectedItem = null;
             };
+
         }
 
         private async void YazilarYukle()

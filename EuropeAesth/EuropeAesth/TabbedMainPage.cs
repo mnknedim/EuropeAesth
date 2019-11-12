@@ -22,7 +22,7 @@ namespace EuropeAesth
             NavigationPage.SetHasNavigationBar(this, false);
 
             Children.Add(new NavigationPage(new Anasayfa() { Title = "Anasayfa", Icon = "ic_anasayfa.png" }) { Title = "Anasayfa", Icon = "ic_anasayfa.png" });
-            //Children.Add(new NavigationPage(new BanaOzel() { Title = "Bana Özel", Icon = "ic_user.png" }) { Title = "Bana Özel", Icon = "ic_user.png" });
+            Children.Add(new NavigationPage(new SacAnalizPage() { Title = "Saç Analiz", Icon = "ic_analiz.png" }) { Title = "Saç Analiz", Icon = "ic_analiz.png" });
             Children.Add(new NavigationPage(new Iletisim() { Title = "İletişim", Icon = "ic_iletisim.png" }) { Title = "İletişim", Icon = "ic_iletisim.png" });
         }
 	}

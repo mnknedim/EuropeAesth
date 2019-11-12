@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EuropeAesth.Pages.SacAnalizPage">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand">
+            <BoxView BackgroundColor="#02b294"/>
+            <ScrollView>
+                <StackLayout VerticalOptions="CenterAndExpand" Margin="120,0">
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label Text="Ön Taraf" HorizontalOptions="CenterAndExpand"/>
+                        <Frame HasShadow="True" BackgroundColor="White">
+                            <Image x:Name="AnalizOn" Source="analizOn.png" Margin="-15" AutomationId="On"></Image>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label Text="Sağ Taraf" HorizontalOptions="CenterAndExpand"/>
+                        <Frame HasShadow="True"
+                      
+                           BackgroundColor="White">
+                            <Image x:Name="AnalizSag" Source="analizSag.png" Margin="-15" AutomationId="Sag" ></Image>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <Label Text="Sol Taraf" HorizontalOptions="CenterAndExpand"/>
+                        <Frame HasShadow="True"
+                      
+                           BackgroundColor="White">
+                            <Image x:Name="AnalizSol" Source="analizSol.png"  Margin="-15" AutomationId="Sol" ></Image>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout>
+                        <Frame BackgroundColor="AliceBlue">
+                            <Entry x:Name="EntryMail" Placeholder="Email Adresiniz." FontSize="Micro" Margin="-16" BackgroundColor="AliceBlue"/>
+                        </Frame>
+                        <Button x:Name="BtnSend" Text="Analiz Et" TextColor="#02b294" BackgroundColor="#ddfad8" HorizontalOptions="CenterAndExpand" Padding="10" Margin="0,10,0,0" CornerRadius="8" Clicked="BtnSend_OnClicked"></Button>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

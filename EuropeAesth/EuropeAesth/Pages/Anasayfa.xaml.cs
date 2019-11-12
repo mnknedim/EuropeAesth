@@ -36,8 +36,9 @@ namespace EuropeAesth.Pages
             CaroselHeight = displayInfo.Height / 5.2;
             if (displayInfo.Density <= 1.2)
             {
-                CaroselHeight = displayInfo.Height / 2.7;
+                CaroselHeight = displayInfo.Height / 3;
             }
+
         }
 
         private void UserLogin_Clicked(object sender, EventArgs e)
