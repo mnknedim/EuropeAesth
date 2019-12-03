@@ -30,7 +30,8 @@ namespace EuropeAesth.Pages.Interface
         FirebaseClient firebase = new FirebaseClient("https://adjuvanclinic.firebaseio.com/");
         public Yazilar ()
 		{
-			InitializeComponent ();
+            
+            InitializeComponent();
             
             BindingContext = this;
             YazilarYukle();

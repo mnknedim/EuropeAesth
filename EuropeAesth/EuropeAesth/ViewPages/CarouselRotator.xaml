@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xForms="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
+             x:Class="EuropeAesth.ViewPages.CarouselRotator">
+  <ContentView.Content>
+      <StackLayout>
+            <xForms:SfRotator
+                x:Name="Rotator"
+                BackgroundColor="Transparent"
+                DotPlacement="OutSide"
+                DotsBorderColor="Transparent"
+                HeightRequest="266"
+                HorizontalOptions="StartAndExpand"
+                ItemsSource="{Binding FeaturedStories}"
+                NavigationDirection="Horizontal"
+                NavigationStripMode="Dots"
+                SelectedDotColor="Chocolate"
+                UnselectedDotColor="DimGray"
+                VerticalOptions="Start">
+                <xForms:SfRotator.ItemTemplate>
+                    <DataTemplate>
+
+                    </DataTemplate>
+                </xForms:SfRotator.ItemTemplate>
+            </xForms:SfRotator>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

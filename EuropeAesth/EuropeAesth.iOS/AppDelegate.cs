@@ -4,6 +4,7 @@ using Foundation;
 using Google.SignIn;
 using Octane.Xamarin.Forms.VideoPlayer.iOS;
 using Syncfusion.SfCalendar.XForms.iOS;
+using Syncfusion.SfRotator.XForms.iOS;
 using UIKit;
 using Xamarin.Forms;
 
@@ -29,6 +30,7 @@ namespace EuropeAesth.iOS
             SignIn.SharedInstance.ClientID = googleServiceDictionary["CLIENT_ID"].ToString();
             UINavigationBar.Appearance.TintColor = UIColor.FromRGB(10,165,93);
             global::Xamarin.Forms.Forms.Init();
+            new SfRotatorRenderer();
             Rg.Plugins.Popup.Popup.Init();
             CarouselViewRenderer.Init();
             Syncfusion.SfRating.XForms.iOS.SfRatingRenderer.Init();

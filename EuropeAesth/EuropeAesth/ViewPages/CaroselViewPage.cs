@@ -114,6 +114,11 @@ namespace EuropeAesth.ViewPages
             carousel.ShowIndicators = true;
             body.Children.Add(carousel);
             Content = body;
+
+            //MessagingCenter.Subscribe<string>(this, "MainScrolled", (sender) =>
+            //    {
+            //        carousel.HeightRequest = -(Convert.ToDouble(sender));
+            //    });
         }
 
         private async void TabGest_Tapped(object sender, EventArgs e)

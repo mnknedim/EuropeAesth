@@ -67,5 +67,9 @@ namespace EuropeAesth.ViewPages
 
         }
 
+        private void YaziList_OnScrolled(object sender, ScrolledEventArgs e)
+        {
+            //MessagingCenter.Send<string>(e.ScrollY.ToString(),"MainScrolled");
+        }
     }
 }

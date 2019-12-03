@@ -7,13 +7,13 @@
         <ToolbarItem x:Name="UserLogin" IconImageSource="ic_hesabim.png" Clicked="UserLogin_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView x:Name="MainScroll">
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Frame CornerRadius="5" HasShadow="True" Margin="10,5">
-                <viewpages:CaroselViewPage x:Name="caroselViewPage" HeightRequest="{Binding CaroselHeight}" Margin="-20"/>
-            </Frame>
-            <viewpages:ScrollViewPage x:Name="scrollViewpage"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Frame CornerRadius="5" HasShadow="True" Margin="10,5">
+                    <viewpages:CaroselViewPage x:Name="caroselViewPage" HeightRequest="{Binding CaroselHeight}" Margin="-20"/>
+                </Frame>
+                <viewpages:ScrollViewPage x:Name="scrollViewpage"/>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
